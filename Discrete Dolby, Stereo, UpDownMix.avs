@@ -24,7 +24,7 @@ audio=MergeChannels(ch1, ch2, ch3, ch4, ch5, ch6)
 
 AudioDub(video, audio)
 
-Normalize(0.89, show=false)
+Normalize(0.22, show=false)
 
 SuperEq("C:\Programmi\AviSynth 2.5\Equalizer Presets\Loudness.feq")
 SuperEq("O:\episodi\Equalizer Presets\Home Theater.feq")
