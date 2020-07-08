@@ -26,9 +26,6 @@ AudioDub(video, audio)
 
 Normalize(0.22, show=false)
 
-SuperEq("C:\Programmi\AviSynth 2.5\Equalizer Presets\Loudness.feq")
-SuperEq("O:\episodi\Equalizer Presets\Home Theater.feq")
-
 __________________________________________________________
 2.0 to 5.1
 UpAction() #action movies only
