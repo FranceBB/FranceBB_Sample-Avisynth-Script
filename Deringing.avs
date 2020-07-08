@@ -1,0 +1,1 @@
+BlindPP(quant=21, cpu=6, ipp=false, moderate_h=5, moderate_v=5) #max quant=31, strong

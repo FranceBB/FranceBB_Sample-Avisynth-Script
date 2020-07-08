@@ -1,0 +1,1 @@
+DeScratch(mindif=5, asym=10, maxgap=3, maxwidth=3, minlen=90, maxlen=2048, maxangle=5, blurlen=15, keep=30, border=2, modeY=3, modeU=3, modeV=3, mindifUV=0, mark=false, minwidth=1)
