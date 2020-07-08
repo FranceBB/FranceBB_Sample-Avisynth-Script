@@ -8,4 +8,4 @@ separatefields()
 selectevery(4,0,3)
 weave()
 
-#encoder: MPEG-2 (mpeg2enc) - AC3 (Aftern) - MPEG-PS (A+V) .ps | flag 4:3 or 16:9 - flag interlaced TFF
+#encoder: MPEG-2 (mpeg2enc) - AC3 (Aftern) - .ts | flag 4:3 or 16:9 - flag interlaced TFF
