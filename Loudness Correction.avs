@@ -6,8 +6,6 @@ AudioDub(video, audio)
 ResampleAudio(48000)
 Normalize(0.22, show=false)
 
-SuperEq("C:\Programmi\AviSynth 2.5\Equalizer Presets\Loudness.feq")
-
 SuperEq("C:\Programmi\AviSynth 2.5\Equalizer Presets\Home Theater.feq")
 
 #Positive values increase loudness, negative values decrease it
