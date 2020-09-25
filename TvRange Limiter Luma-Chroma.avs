@@ -14,4 +14,4 @@ Limiter(min_luma=1024, max_luma=15040, min_chroma=1024, max_chroma=15040)
 Limiter(min_luma=4096, max_luma=60160, min_chroma=4096, max_chroma=60160)
 
 #32bit
-Limiter(min_luma=0.0625, max_luma=0.91796875, min_chroma=0.0625, max_chroma=0.91796875)
+Limiter(min_luma=0.0627450980392157, max_luma=0.9215686274509804, min_chroma=-0.4392156862745098, max_chroma=0.4196078431372549)
