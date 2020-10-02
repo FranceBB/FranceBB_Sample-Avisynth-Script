@@ -26,7 +26,7 @@ NNEDI3 (Upscale & Downscale using Neural Network)
 #opt=1 C, opt=2 SSE2, opt=3 SSE4.1, 
 #opt=4 AVX, opt=5 AVX2, opt=6 FMA3, opt=7 FMA4
 
-#8bit
+#8bit, 10bit, 12bit, 14bit, 16bit, 32bit planar
 
 nnedi3_rpow2(cshift="Spline64ResizeMT", rfactor=2, fwidth=1920, fheight=1080, nsize=4, nns=4, qual=1, etype=0, pscrn=2, threads=0, csresize=true, mpeg2=true, threads_rs=0, logicalCores_rs=true, MaxPhysCore_rs=true, SetAffinity_rs=false, opt=3)
 
