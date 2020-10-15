@@ -1,0 +1,1163 @@
+﻿{
+  "workflow": {
+    "wf_name": "HuffYUV_in",
+    "wf_id": "20190906004104",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 30,
+      "priority": "2 (normal)",
+      "timeout_level": 3
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 5,
+      "work_age": 5,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "D:\\encoder\\encoder\\Processors\\.cache\\wfs\\20190906004104\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": false,
+      "protected": false,
+      "password": ""
+    },
+    "updated": "2020-09-29T12:28:43.363-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20190906-003818-494-A82CD56ABE01",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "name": "HuffYUV_in SPORT",
+        "description": "HuffYUV in SPORT Node 1",
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20190906-004014-893-7E21D713BA9E",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20190906-004043-938-FBDE0B5CCB52",
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "bypass": false,
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 525,
+        "pos_y": 350,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165742-683-0890696A9C2D",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "name": "HuffYUV_in SPORT",
+        "description": "HuffYUV in SPORT Node 2",
+        "pos_x": 75,
+        "pos_y": 125,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-173723-858-034daa89b9cc",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20190906-004014-893-7e21d713ba9e"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\HuffYUV_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\HuffYUV_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "pos_x": 345,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-173755-358-69C24C33E43B",
+        "type": "op_cond",
+        "execute_on": "any",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\HuffYUV_in",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-173805-196-a48cafb5332f"
+          }
+        ],
+        "bypass": false,
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "pos_x": 345,
+        "pos_y": 125,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-173805-196-A48CAFB5332F",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435,
+        "pos_y": 125,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-180357-894-BA52FEFB8FAC",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "name": "HuffYUV_in PCE",
+        "description": "HuffYUV in PCE Node 1",
+        "pos_x": 75,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-183010-440-42C67CDD11BF",
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-183029-875-07c0e12aea7e"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\HuffYUV_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\HuffYUV_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "pos_x": 345,
+        "pos_y": 175,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-183029-875-07C0E12AEA7E",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435,
+        "pos_y": 175,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1720-5150-7a1d-b014b18ad200",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "name": "HuffYUV_in SPORT",
+        "description": "HuffYUV in SPORT Node 1 Van000",
+        "pos_x": 165,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "enc_av_customff",
+        "execute_on": "success",
+        "description": "Huff Yuv lossless encoding",
+        "properties": {
+          "audio": {
+            "codec": "",
+            "bitrate": ""
+          },
+          "video": {
+            "codec": "",
+            "bitrate": ""
+          },
+          "ff_options": "-c:v ffvhuff -c:a pcm_s24le -ac %i_a_channels% -pix_fmt yuv422p16le -s %i_width%:%i_height% -r %f_frame_rate% -af loudnorm=I=-24:LRA=1 -ar 48000",
+          "extension": "mkv"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "id": "20200505-1854-5265-1cd0-a7602ac0fa81",
+        "name": "HuffYuv",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-173723-858-034daa89b9cc"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-173755-358-69C24C33E43B"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-183010-440-42C67CDD11BF"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-1947-3582-12c7-167acf4f17e9"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1753-1633-3075-7a15b1079df8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1755-3958-9e10-32a419f700cc"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1758-1004-9127-3c56411e0b00"
+          }
+        ],
+        "pos_x": 255,
+        "pos_y": 350,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1945-2375-5a6d-79458048b929",
+        "name": "HuffYUV_in TG24",
+        "description": "HuffYUV in TG24 Node 1",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 500,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200514-1947-3582-12c7-167acf4f17e9",
+        "name": "Node 1 TG24",
+        "description": "Node 1 TG24",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200514-1948-1589-08a4-510176d3f4cc"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\HuffYUV_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\HuffYUV_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345,
+        "pos_y": 500,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200514-1948-1589-08a4-510176d3f4cc",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435,
+        "pos_y": 500,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1949-5331-8a79-c20850d173c6",
+        "name": "HuffYUV_in PCE",
+        "description": "HuffYUV in PCE Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1951-3763-787f-0504e0638486",
+        "description": "HuffYUV in TG24 Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "HuffYUV_in TG24",
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 500,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1751-5131-780f-6975517357bb",
+        "name": "HuffYUV_in PCE",
+        "description": "HuffYUV in PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1752-2715-8d1d-86d6234feeb3",
+        "name": "HuffYUV_in PCE",
+        "description": "HuffYUV in PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1753-1633-3075-7a15b1079df8",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\HuffYUV_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\HuffYUV_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1754-0632-9e25-61ba3fe5d199"
+          }
+        ],
+        "pos_x": 345,
+        "pos_y": 225,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1754-0632-9e25-61ba3fe5d199",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435,
+        "pos_y": 225,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1754-2764-1278-1428a4bb97ee",
+        "name": "HuffYUV_in PCE",
+        "description": "HuffYUV in PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1755-0214-1647-689b7d72f2f4",
+        "name": "HuffYUV_in PCE",
+        "description": "HuffYUV in PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1755-3958-9e10-32a419f700cc",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\HuffYUV_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\HuffYUV_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1756-1392-76ce-b681a19aa648"
+          }
+        ],
+        "pos_x": 345,
+        "pos_y": 275,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1756-1392-76ce-b681a19aa648",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435,
+        "pos_y": 275,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1757-0191-7bc4-9229dc2d3c3b",
+        "name": "HuffYUV_in PCE",
+        "description": "HuffYUV in PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1757-3796-2908-a4e5098ef194",
+        "name": "HuffYUV_in PCE",
+        "description": "HuffYUV in PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\HuffYUV_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20200505-1854-5265-1cd0-a7602ac0fa81"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1758-1004-9127-3c56411e0b00",
+        "description": "PCE Node 4",
+        "name": "PCE Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\HuffYUV_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\HuffYUV_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1758-2174-8551-d6327dcad4b0"
+          }
+        ],
+        "pos_x": 345,
+        "pos_y": 325,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1758-2174-8551-d6327dcad4b0",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435,
+        "pos_y": 325,
+        "start_proc": false
+      }
+    ]
+  }
+}

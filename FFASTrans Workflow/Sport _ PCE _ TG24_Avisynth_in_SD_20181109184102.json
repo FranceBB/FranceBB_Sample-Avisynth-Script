@@ -1,0 +1,3394 @@
+﻿{
+  "workflow": {
+    "wf_name": "Avisynth_in_SD",
+    "wf_id": "20181109184102",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 5,
+      "priority": "2 (normal)",
+      "timeout_level": 10
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 5,
+      "work_age": 5,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "C:\\encoder\\encoder\\Processors\\.cache\\wfs\\20181109184102\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": false,
+      "protected": true,
+      "password": "CE79659EB75F7B1C566E50FA"
+    },
+    "updated": "2020-09-03T18:00:27.027-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20181109-184513-883-c15be52cf3f8",
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "name": "Avisynth_in_SD SPR",
+        "description": "Avisynth_in per i file SD Sport Node1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 100.014204494695,
+        "start_proc": true
+      },
+      {
+        "id": "20181109-184736-293-C7947C55F769",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20181109-185050-683-50a4a6da0167"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-185855-983-0b43c0683e44"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-185911-734-b4f8d04dfd7c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-185931-214-b8b19899fc7e"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-190018-457-da975401604f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-190041-578-fa9ee432666e"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-190227-443-19b30e8ee595"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-190307-542-b8c184312404"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-190329-048-ab969447b164"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-190346-730-952c056fa42d"
+          },
+          {
+            "type": "cmd_run",
+            "id": "20200903-1759-1891-5c71-3f6911cd1af3"
+          }
+        ],
+        "bypass": false,
+        "name": "Avisynth x64 Indexing",
+        "description": "Indexing",
+        "properties": {
+          "audio": {
+            "use": true,
+            "channels": 32,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "format": "YUV 4:2:2 8bit",
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 400.184658431038,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-185050-683-50A4A6DA0167",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 8 ch",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 8,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-185855-983-0B43C0683E44",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 7 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20181109-190446-243-293d71293517"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 7,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-185911-734-B4F8D04DFD7C",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 6 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20181109-190532-590-e91ee1f1cb8e"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 6,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-185931-214-B8B19899FC7E",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 5 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20181109-190553-243-46860ac87f66"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 5,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190018-457-DA975401604F",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 4 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20181109-190613-129-869de30e0324"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 4,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190041-578-FA9EE432666E",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 3 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20181109-190642-216-5a1b68451397"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 3,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190227-443-19B30E8EE595",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 2 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20181109-190748-214-d39d8221cac4"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 2,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190307-542-B8C184312404",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 2 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20181109-190724-993-b355b25feee6"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 2,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190329-048-AB969447B164",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 1 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20181109-190705-389-9ff0d0818927"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 1,
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190346-730-952C056FA42D",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 0 ch",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-191351-858-a853470fd40b"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 0,
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 675.340907872685,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190446-243-293D71293517",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 7->7, 1->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525.255680904514,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190532-590-E91EE1F1CB8E",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525.255680904514,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190553-243-46860AC87F66",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 1->6, 2->7, 3->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            1,
+            2,
+            3,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525.255680904514,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190613-129-869DE30E0324",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 1->5, 2->6, 3->7, 4->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            1,
+            2,
+            3,
+            4,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525.255680904514,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190642-216-5A1B68451397",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 1->4, 2->5, 3->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            1,
+            2,
+            3,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525.255680904514,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190705-389-9FF0D0818927",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 1->2, 1->3, 1->4, 1->5, 1->6, 1->7, 1->8.",
+        "properties": {
+          "mapping": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525.255680904514,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190724-993-B355B25FEEE6",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 1->3, 2->4, 1->5, 2->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525.255680904514,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190748-214-D39D8221CAC4",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 1->4, 2->5, 3->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            1,
+            2,
+            3,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20181109-190840-563-070539b9f46c"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525.255680904514,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190840-563-070539B9F46C",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "YADIF 2xFPS"
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20181109-190951-177-0cfb829826db"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-191010-301-194656b9716a"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Bob-deinterlacing if needed",
+        "pos_x": 705.357953266319,
+        "pos_y": 400.184658431038,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-190951-177-0CFB829826DB",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if frame rate >= 50",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20181109-191104-345-06e929dc9322"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 795.409089447222,
+        "pos_y": 350.156249441647,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191010-301-194656B9716A",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "smaller than (<)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "description": "if frame rate < 50",
+        "outbounds": [
+          {
+            "type": "avs_v_fpsconv",
+            "id": "20181109-191031-213-114ae83b6741"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 795.409089447222,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191031-213-114AE83B6741",
+        "type": "avs_v_fpsconv",
+        "execute_on": "success",
+        "name": "Blending",
+        "description": "Blending.",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20181109-191104-345-06e929dc9322"
+          }
+        ],
+        "properties": {
+          "fps_conv": 50,
+          "motion_comp": false,
+          "keep_fps": false,
+          "motion_comp_quality": "Medium",
+          "fps_custom": "",
+          "blend": true
+        },
+        "bypass": false,
+        "pos_x": 885.460225628125,
+        "pos_y": 400.184658431038,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191104-345-06E929DC9322",
+        "type": "avs_custom",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20181109-191131-171-4518121ed6d5"
+          }
+        ],
+        "bypass": false,
+        "name": "Limiter Tv Range v2",
+        "description": "Brings luma and chroma in Tv Range 0.7mV 16-235.",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\nImport(\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\ResizeKAR.avsi\")\r\n\r\n\r\nc=Converttoyv16(m_clip)\r\n#resized=ResizeKAR(c, 1920, 1080, \"Spline64Resize\")\r\nresized=c\r\nm_clip=Limiter(resized, min_luma=16, max_luma=235, min_chroma=16, max_chroma=240)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "pos_x": 975.511361809027,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191131-171-4518121ED6D5",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "type": "avs_custom",
+        "execute_on": "success",
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\n\r\nr=ResampleAudio(m_clip, 48000)\r\nn=Normalize(r, 0.22)\r\nm_clip=ConvertAudioTo24bit(n)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_imxd10",
+            "id": "20181109-191153-789-5732f4828eb5"
+          }
+        ],
+        "bypass": false,
+        "name": "Loudness Correction",
+        "description": "Loudness Correction at -24LUFS.",
+        "pos_x": 1065.56249798993,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191153-789-5732F4828EB5",
+        "type": "enc_av_imxd10",
+        "name": "IMX 50",
+        "description": "x262 to encode in MPEG-2 4:2:2 planar yv16 720x576 25i TFF Limited BT601",
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "video": {
+            "type": "50 Mbit",
+            "format": "PAL (720×608)",
+            "dar": "16:9",
+            "interlacing": "Autodetect",
+            "resizing": "Fill and keep aspect",
+            "active_width": false,
+            "processing": "Full transcoding"
+          },
+          "audio": {
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitdepth": 24,
+            "codec": "pcm_s24le",
+            "samplerate": 48000,
+            "bitrate": null,
+            "layout": "default",
+            "streams": [
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8
+                ]
+              }
+            ]
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "wrapper": "MXF",
+          "start_tc": "%s_start_tc%"
+        },
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-171055-710-01b868bd1064"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-171139-902-827b5757754b"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-182156-499-7e24c6a8e397"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-1439-2993-1cbe-fa444cdc5631"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1641-3798-00d8-77f1956b0519"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1644-5294-0f33-dfd8dcdfd334"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1647-5972-5b60-d145d566244c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1422-4203-65d9-598018298fca"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1423-2207-94d8-43772c159ab5"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1429-4381-6c6e-9d9998b6f981"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1430-2507-1b21-38300f6b145b"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1430-5486-24a7-df2d8b37190f"
+          }
+        ],
+        "pos_x": 1155.61363417083,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191214-256-0B8A3AD5D20E",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9ac848f5c631"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1335.71590653264,
+        "pos_y": 100.014204494695,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191240-893-9AC848F5C631",
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "bypass": false,
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 1425.76704271354,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191351-858-A853470FD40B",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "YADIF 2xFPS"
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20181109-191414-861-83e74b8d5b6a"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181109-191426-050-d94de68c2dd6"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Bob-deinterlacing if needed",
+        "pos_x": 705.357953266319,
+        "pos_y": 675.340907872685,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191414-861-83E74B8D5B6A",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if frame rate >= 50",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20181109-191455-980-2caf72d54e50"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 795.409089447222,
+        "pos_y": 625.312498883294,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191426-050-D94DE68C2DD6",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "smaller than (<)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "description": "if frame rate < 50",
+        "outbounds": [
+          {
+            "type": "avs_v_fpsconv",
+            "id": "20181109-191444-944-ca7066e64fdb"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 795.409089447222,
+        "pos_y": 725.369316862075,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191444-944-CA7066E64FDB",
+        "type": "avs_v_fpsconv",
+        "execute_on": "success",
+        "name": "Blending",
+        "description": "Blending.",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20181109-191455-980-2caf72d54e50"
+          }
+        ],
+        "properties": {
+          "fps_conv": 50,
+          "motion_comp": false,
+          "keep_fps": false,
+          "motion_comp_quality": "Medium",
+          "fps_custom": "",
+          "blend": true
+        },
+        "bypass": false,
+        "pos_x": 885.460225628125,
+        "pos_y": 700.35511236738,
+        "start_proc": false
+      },
+      {
+        "id": "20181109-191455-980-2CAF72D54E50",
+        "type": "avs_custom",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_imxd10",
+            "id": "20181109-191153-789-5732f4828eb5"
+          }
+        ],
+        "bypass": false,
+        "name": "Limiter Tv Range v2",
+        "description": "Brings luma and chroma in Tv Range 0.7mV 16-235.",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\nImport(\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\ResizeKAR.avsi\")\r\n\r\n\r\nc=Converttoyv16(m_clip)\r\n#resized=ResizeKAR(c, 1920, 1080, \"Spline64Resize\")\r\nresized=c\r\nm_clip=Limiter(resized, min_luma=16, max_luma=235, min_chroma=16, max_chroma=240)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "pos_x": 975.511361809027,
+        "pos_y": 675.340907872685,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165422-158-3969BBADAC60",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "Avisynth_in_SD SPR",
+        "description": "Avisynth_in per i file SD SPORT Node 2",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 150.042613484086,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-171055-710-01b868bd1064",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20181109-191214-256-0b8a3ad5d20e"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "SPORT Node1",
+        "description": "SPORT Node1",
+        "pos_x": 1245.66477035174,
+        "pos_y": 100.014204494695,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-171139-902-827B5757754B",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-171158-772-f9a0334028b4"
+          }
+        ],
+        "bypass": false,
+        "name": "SPORT Node2",
+        "description": "SPORT Node2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1245.66477035174,
+        "pos_y": 150.042613484086,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-171158-772-F9A0334028B4",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9ac848f5c631"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1335.71590653264,
+        "pos_y": 150.042613484086,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-175925-700-6FD233750063",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "Avisynth_in_SD PCE",
+        "description": "Avisynth_in per i file SD PCE Node 1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 300.127840452257,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-182156-499-7E24C6A8E397",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-182213-186-a69c9083ac71"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "pos_x": 1245.66477035174,
+        "pos_y": 300.127840452257,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-182213-186-A69C9083AC71",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9ac848f5c631"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1335.71590653264,
+        "pos_y": 300.127840452257,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200422-1708-5669-9c98-4916b0287314",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_in_SD SPR",
+        "description": "Avisynth_in per i file SD SPORT Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 100.014204494695,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1433-3570-5582-b7ee0d0b0988",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_in_SD PCE",
+        "description": "Avisynth_in per i file SD PCE Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 300.127840452257,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1438-3440-66ba-6ce011e31f6e",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_in_SD TG24",
+        "description": "Avisynth_in per i file SD TG24 Node 1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 500.241476409819,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1439-2993-1cbe-fa444cdc5631",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200514-1440-0447-6670-fa8d8b65d249"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "TG24 Node 1",
+        "description": "TG24 Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 1245.66477035174,
+        "pos_y": 500.241476409819,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200514-1440-0447-6670-fa8d8b65d249",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_SD",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "pos_x": 1335.71590653264,
+        "pos_y": 500.241476409819,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1646-1813-2959-abfc0238640e",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_in_SD TG24",
+        "description": "Avisynth_in per i file SD TG24 Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 500.241476409819,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1638-1360-35ef-12dc8d90424e",
+        "name": "Avisynth_in_SD PCE",
+        "description": "Avisynth_in per i file SD PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 350.156249441647,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1640-2302-2556-9b21e22d237c",
+        "name": "Avisynth_in_SD PCE",
+        "description": "Avisynth_in per i file SD PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 350.156249441647,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1641-3798-00d8-77f1956b0519",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1642-2983-096a-4670028e8a45"
+          }
+        ],
+        "pos_x": 1245.66477035174,
+        "pos_y": 350.156249441647,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1642-2983-096a-4670028e8a45",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "pos_x": 1335.71590653264,
+        "pos_y": 350.156249441647,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1642-5818-6b9a-2123d488fc9f",
+        "name": "Avisynth_in_SD PCE",
+        "description": "Avisynth_in per i file SD PCE Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 400.184658431038,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1643-4166-4c13-970e512aded8",
+        "name": "Avisynth_in_SD PCE",
+        "description": "Avisynth_in per i file SD PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 400.184658431038,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1644-5294-0f33-dfd8dcdfd334",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1647-4078-067b-976022e2e66c"
+          }
+        ],
+        "pos_x": 1245.66477035174,
+        "pos_y": 400.184658431038,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1645-1402-1846-505b0a388e65",
+        "name": "Avisynth_in_SD PCE",
+        "description": "Avisynth_in per i file SD PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 450.213067420428,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1645-5878-4b78-c9be2b617023",
+        "name": "Avisynth_in_SD PCE",
+        "description": "Avisynth_in per i file SD PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 450.213067420428,
+        "start_proc": true
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1647-4078-067b-976022e2e66c",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "pos_x": 1335.71590653264,
+        "pos_y": 400.184658431038,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1647-5972-5b60-d145d566244c",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1648-2746-48ad-20376be09e37"
+          }
+        ],
+        "pos_x": 1245.66477035174,
+        "pos_y": 450.213067420428,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1648-2746-48ad-20376be09e37",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "pos_x": 1335.71590653264,
+        "pos_y": 450.213067420428,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1416-4536-8998-2ec06581d98f",
+        "name": "Avisynth_in_SD SPR",
+        "description": "Avisynth_in per i file SD SPORT Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 200.071022473476,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1417-4039-8aaf-4f3de150daf4",
+        "name": "Avisynth_in_SD SPR",
+        "description": "Avisynth_in per i file SD SPORT Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 250.099431462866,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200716-1418-3289-5057-3a7981550996",
+        "name": "Avisynth_in_SD SPR",
+        "description": "Avisynth_in per i file SD SPORT Node 2 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 150.042613484086,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200716-1419-2104-99e7-7439d7191955",
+        "name": "Avisynth_in_SD SPR",
+        "description": "Avisynth_in per i file SD SPORT Node 3 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 200.071022473476,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200716-1420-0964-9973-aaf0bd0e7211",
+        "name": "Avisynth_in_SD SPR",
+        "description": "Avisynth_in per i file SD SPORT Node 4 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 250.099431462866,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1422-4203-65d9-598018298fca",
+        "name": "SPORT Node3",
+        "description": "SPORT Node3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1424-0615-705d-225addb8e65a"
+          }
+        ],
+        "pos_x": 1245.66477035174,
+        "pos_y": 200.071022473476,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1423-2207-94d8-43772c159ab5",
+        "name": "SPORT Node4",
+        "description": "SPORT Node4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1424-2481-032b-ff1842ef6c5b"
+          }
+        ],
+        "pos_x": 1245.66477035174,
+        "pos_y": 250.099431462866,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1424-0615-705d-225addb8e65a",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "pos_x": 1335.71590653264,
+        "pos_y": 200.071022473476,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1424-2481-032b-ff1842ef6c5b",
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 1335.71590653264,
+        "pos_y": 250.099431462866,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1424-5220-2edc-79c2329612db",
+        "name": "Avisynth_in_SD TG24",
+        "description": "Avisynth_in per i file SD TG24 Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 550.269885399209,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1425-4041-5961-82d52546ab0d",
+        "name": "Avisynth_in_SD TG24",
+        "description": "Avisynth_in per i file SD TG24 Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 600.298294388599,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1426-2788-7594-c5292563fd76",
+        "name": "Avisynth_in_SD TG24",
+        "description": "Avisynth_in per i file SD TG24 Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 650.32670337799,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1427-1591-08d9-8fb4dde141be",
+        "name": "Avisynth_in_SD TG24",
+        "description": "Avisynth_in per i file SD TG24 Node 2 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 550.269885399209,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1427-5697-7b7b-73eff96ff62b",
+        "name": "Avisynth_in_SD TG24",
+        "description": "Avisynth_in per i file SD TG24 Node 3 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 600.298294388599,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1428-4036-102a-87e82e07edcf",
+        "name": "Avisynth_in_SD TG24",
+        "description": "Avisynth_in per i file SD TG24 Node 4 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\Avisynth_in_SD",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1556-3906-61d1-e311339cbf1d"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 650.32670337799,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1429-4381-6c6e-9d9998b6f981",
+        "name": "TG24 Node 2",
+        "description": "TG24 Node 2",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1431-2328-7576-0e27fa4c2de2"
+          }
+        ],
+        "pos_x": 1245.66477035174,
+        "pos_y": 550.269885399209,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1430-2507-1b21-38300f6b145b",
+        "name": "TG24 Node 3",
+        "description": "TG24 Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1431-4905-88c0-9443ea3582de"
+          }
+        ],
+        "pos_x": 1245.66477035174,
+        "pos_y": 600.298294388599,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1430-5486-24a7-df2d8b37190f",
+        "name": "TG24 Node 4",
+        "description": "TG24 Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_SD",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\Avisynth_in_SD",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1432-1194-3e95-24897756c80b"
+          }
+        ],
+        "pos_x": 1245.66477035174,
+        "pos_y": 650.32670337799,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1431-2328-7576-0e27fa4c2de2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\Avisynth_in_SD",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "pos_x": 1335.71590653264,
+        "pos_y": 550.269885399209,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1431-4905-88c0-9443ea3582de",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\Avisynth_in_SD",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "pos_x": 1335.71590653264,
+        "pos_y": 600.298294388599,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1432-1194-3e95-24897756c80b",
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\Avisynth_in_SD",
+          "suffix": "",
+          "prefix": "_SD",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20181109-191240-893-9AC848F5C631"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 1335.71590653264,
+        "pos_y": 650.32670337799,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "success",
+        "name": "Audio Channel Count",
+        "description": "Audio Channel Count",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_my_audio_channels",
+              "data": "%i_a_channels%",
+              "type": "string"
+            }
+          ]
+        },
+        "id": "20200803-1556-3906-61d1-e311339cbf1d",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20181109-184736-293-C7947C55F769"
+          }
+        ],
+        "pos_x": 255.102272361805,
+        "pos_y": 400.184658431038,
+        "start_proc": false
+      },
+      {
+        "id": "20200903-1759-1891-5c71-3f6911cd1af3",
+        "type": "cmd_run",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 75,
+        "execute_on": "error",
+        "name": "Metadata File",
+        "description": "Metadata File catcher",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "command": "%comspec% \/C \"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true,
+          "stdout_var_name": "None",
+          "set_timeout": 120,
+          "error_timeout": 1
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-171055-710-01b868bd1064"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-171139-902-827B5757754B"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1422-4203-65d9-598018298fca"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1423-2207-94d8-43772c159ab5"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-182156-499-7E24C6A8E397"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1641-3798-00d8-77f1956b0519"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1644-5294-0f33-dfd8dcdfd334"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1647-5972-5b60-d145d566244c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-1439-2993-1cbe-fa444cdc5631"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1429-4381-6c6e-9d9998b6f981"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1430-2507-1b21-38300f6b145b"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1430-5486-24a7-df2d8b37190f"
+          }
+        ]
+      }
+    ]
+  },
+  "user_variables": {
+    "variables": [
+      {
+        "name": "s_my_audio_channels",
+        "type": "string",
+        "data": "Number of audio channel of the original file before indexing"
+      }
+    ]
+  }
+}

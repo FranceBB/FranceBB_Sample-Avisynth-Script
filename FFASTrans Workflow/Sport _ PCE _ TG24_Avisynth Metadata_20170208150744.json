@@ -1,0 +1,2198 @@
+﻿{
+  "workflow": {
+    "wf_name": "Avisynth Metadata",
+    "wf_folder": "Disabled",
+    "wf_id": "20170208150744",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 5,
+      "priority": "4 (very high)",
+      "timeout_level": 3
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 1,
+      "work_age": 1,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPMCS004"
+      ],
+      "include": false
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "C:\\Users\\dmerra\\Desktop\\beta\\Processors\\.cache\\wfs\\20170208150744\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": true,
+      "protected": true,
+      "password": "CA68709BB2556610"
+    },
+    "updated": "2020-06-30T11:36:58.447-01.00",
+    "updated_by": "amodioa@MIBCPMCS004",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20180621-164414-413-1e3492dc66fe",
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180621-164841-756-b0997880f2db"
+          }
+        ],
+        "name": "VENDITE_in_clean",
+        "description": "Vendite_in_clean",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Vendite\\Vendite_in_Clean",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20180621-164841-756-b0997880f2db",
+        "bypass": false,
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180621-172325-429-3bd7193df5ff"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-164855-041-c05db96ff0c7",
+        "bypass": false,
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180621-165924-662-638622a36a06"
+          }
+        ],
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 2500,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "fastdecode",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1920,
+            "height": 1080,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fit and keep aspect"
+          },
+          "wrapper": "MP4",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "pos_x": 525.255680904514,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-165421-293-62ff717f732a",
+        "bypass": false,
+        "type": "avs_v_tc",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180621-170228-449-669eb7ebebd1"
+          }
+        ],
+        "properties": {
+          "start_tc": "00:00:00:00",
+          "tc_variable": "",
+          "tc_size": "Medium",
+          "force_tc": "None",
+          "use_tc_start": true,
+          "position": 5,
+          "bg_opacity": 100,
+          "fg_opacity": 257
+        },
+        "name": "Timecode",
+        "description": "Overlay timecode on the video",
+        "pos_x": 345.153408542708,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-165924-662-638622a36a06",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN",
+        "description": "FULL HD CLEAN",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170228-449-669EB7EBEBD1",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180621-170241-828-2f23f60f02e9"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 2500,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "fastdecode",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1920,
+            "height": 1080,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fit and keep aspect"
+          },
+          "wrapper": "MP4",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "pos_x": 525.255680904514,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170241-828-2F23F60F02E9",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN + TC",
+        "description": "FULL HD CLEAN + TC",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170358-282-7a3b4e68371e",
+        "bypass": false,
+        "type": "avs_v_watermark",
+        "execute_on": "success",
+        "properties": {
+          "image_file": "D:\\encoder\\encoder\\Processors\\avs_plugins\\Loghi\\SKY_TG24_SD_color.png",
+          "opacity": 257,
+          "in": 0,
+          "out": 0,
+          "size_percent": 100,
+          "x_start": 0,
+          "y_start": 0,
+          "resize": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180621-170505-677-1aaa6085fa3b"
+          }
+        ],
+        "name": "Logo",
+        "description": "Overlay logo on the video",
+        "pos_x": 345.153408542708,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170505-677-1AAA6085FA3B",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180621-170513-700-9f4406dbed3b"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 2500,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "fastdecode",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1920,
+            "height": 1080,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fit and keep aspect"
+          },
+          "wrapper": "MP4",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "pos_x": 525.255680904514,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170513-700-9F4406DBED3B",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN + LOGO",
+        "description": "FULL HD CLEAN + LOGO",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170819-118-C23A3E0403E6",
+        "type": "avs_v_tc",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_watermark",
+            "id": "20180621-170830-637-ec2bffe054e9"
+          }
+        ],
+        "properties": {
+          "start_tc": "00:00:00:00",
+          "tc_variable": "",
+          "tc_size": "Medium",
+          "force_tc": "None",
+          "use_tc_start": true,
+          "position": 5,
+          "bg_opacity": 100,
+          "fg_opacity": 257
+        },
+        "bypass": false,
+        "name": "Timecode",
+        "description": "Overlay timecode on the video",
+        "pos_x": 345.153408542708,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170830-637-EC2BFFE054E9",
+        "type": "avs_v_watermark",
+        "execute_on": "success",
+        "properties": {
+          "image_file": "D:\\encoder\\encoder\\Processors\\avs_plugins\\Loghi\\SKY_TG24_SD_color.png",
+          "opacity": 257,
+          "in": 0,
+          "out": 0,
+          "size_percent": 100,
+          "x_start": 0,
+          "y_start": 0,
+          "resize": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180621-170841-560-3711b24ba618"
+          }
+        ],
+        "bypass": false,
+        "name": "Logo",
+        "description": "Overlay logo on the video",
+        "pos_x": 435.204544723611,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170841-560-3711B24BA618",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180621-170848-377-199e3569b3e3"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 2500,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "fastdecode",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1920,
+            "height": 1080,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fit and keep aspect"
+          },
+          "wrapper": "MP4",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "pos_x": 525.255680904514,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-170848-377-199E3569B3E3",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN + LOGO + TC",
+        "description": "FULL HD CLEAN + LOGO + TC",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-171016-759-AD32AB2DA457",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180621-171410-863-3642bfc82548"
+          }
+        ],
+        "name": "AVS clean + logo",
+        "description": "Avisynth in clean + logo",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Clean_Logo",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 475.227271915123,
+        "start_proc": true
+      },
+      {
+        "id": "20180621-171410-863-3642BFC82548",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190730-190257-931-634c37352dae"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-171430-872-A43603EA5F2D",
+        "type": "avs_v_watermark",
+        "execute_on": "success",
+        "properties": {
+          "image_file": "D:\\encoder\\encoder\\Processors\\avs_plugins\\Loghi\\SKY_TG24_SD_color.png",
+          "opacity": 257,
+          "in": 0,
+          "out": 0,
+          "size_percent": 100,
+          "x_start": 0,
+          "y_start": 0,
+          "resize": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20180621-171515-643-ec404b20b46d"
+          }
+        ],
+        "bypass": false,
+        "name": "Logo",
+        "description": "Overlay logo on the video",
+        "pos_x": 435.204544723611,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-171453-338-2B48D50FBEA6",
+        "type": "avs_v_watermark",
+        "execute_on": "success",
+        "properties": {
+          "image_file": "D:\\encoder\\encoder\\Processors\\avs_plugins\\Loghi\\SKY_TG24_SD_color.png",
+          "opacity": 257,
+          "in": 0,
+          "out": 0,
+          "size_percent": 100,
+          "x_start": 0,
+          "y_start": 0,
+          "resize": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20180621-171609-022-3adaef3f80e9"
+          }
+        ],
+        "bypass": false,
+        "name": "Logo",
+        "description": "Overlay logo on the video",
+        "pos_x": 435.204544723611,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-171500-611-171D525C8CE1",
+        "type": "avs_v_tc",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_watermark",
+            "id": "20180621-171453-338-2b48d50fbea6"
+          }
+        ],
+        "properties": {
+          "start_tc": "00:00:00:00",
+          "tc_variable": "",
+          "tc_size": "Medium",
+          "force_tc": "None",
+          "use_tc_start": true,
+          "position": 5,
+          "bg_opacity": 100,
+          "fg_opacity": 257
+        },
+        "bypass": false,
+        "name": "Timecode",
+        "description": "Overlay timecode on the video",
+        "pos_x": 345.153408542708,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-171515-643-ec404b20b46d",
+        "bypass": false,
+        "type": "enc_av_xdcamhd",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180621-171635-815-7a4936b8f10c"
+          }
+        ],
+        "properties": {
+          "wrapper": "MXF",
+          "video": {
+            "format": "1920×1080i50",
+            "resizing": "Fit and keep aspect",
+            "interlacing": "Analyze",
+            "type": "50 Mbit (422)"
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "audio": {
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitdepth": 24,
+            "streams": [
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  1
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  2
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  3
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  4
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  5
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  6
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  7
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  8
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x262",
+        "description": "Encoding in MPEG-2",
+        "pos_x": 525.255680904514,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-171609-022-3ADAEF3F80E9",
+        "type": "enc_av_xdcamhd",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180621-171834-982-d2b1c0be3252"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "wrapper": "MXF",
+          "video": {
+            "format": "1920×1080i50",
+            "resizing": "Fit and keep aspect",
+            "interlacing": "Analyze",
+            "type": "50 Mbit (422)"
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "audio": {
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitdepth": 24,
+            "streams": [
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  1
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  2
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  3
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  4
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  5
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  6
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  7
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": "",
+                "bitdepth": 24,
+                "mapping": [
+                  8
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x262",
+        "description": "Encoding in MPEG-2",
+        "pos_x": 525.255680904514,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-171635-815-7A4936B8F10C",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN + LOGO",
+        "description": "FULL HD MPEG2 CLEAN + LOGO",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-171834-982-D2B1C0BE3252",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "FULL HD MPEG2 CLEAN + LOGO + TC",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "name": "CLEAN + LOGO + TC",
+        "pos_x": 615.306817085416,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "id": "20180621-172325-429-3bd7193df5ff",
+        "bypass": false,
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Blend"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180621-164855-041-c05db96ff0c7"
+          }
+        ],
+        "name": "Deinterlacing",
+        "description": "Deinterlacing if needed",
+        "pos_x": 255.102272361805,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-093822-075-9A20550EBBED",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180630-094509-919-0582858aaed9"
+          }
+        ],
+        "name": "VENDITE_in_clean_tc",
+        "description": "Vendite_in_clean_tc",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Vendite\\Vendite_in_Clean_TC",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 125.02840898939,
+        "start_proc": true
+      },
+      {
+        "id": "20180630-093923-626-DEA1CFB843CA",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180630-094513-619-7f8c8f04f107"
+          }
+        ],
+        "name": "VENDITE_in_clean_logo",
+        "description": "Vendite_in_clean_logo",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Vendite\\Vendite_in_Clean_Logo",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "id": "20180630-094029-280-748EA0CA512E",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180630-094516-435-661d271b213a"
+          }
+        ],
+        "name": "VENDITE_in_clean_logo_tc",
+        "description": "Vendite_in_clean_logo_tc",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Vendite\\Vendite_Clean_Logo_TC",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 225.085226968171,
+        "start_proc": true
+      },
+      {
+        "id": "20180630-094509-919-0582858AAED9",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180630-094521-514-4d900b1a1bb5"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-094513-619-7F8C8F04F107",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180630-094524-302-8290647178da"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-094516-435-661D271B213A",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180630-094527-675-90933105f933"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-094521-514-4D900B1A1BB5",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Blend"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_tc",
+            "id": "20180621-165421-293-62ff717f732a"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Deinterlacing if needed",
+        "pos_x": 255.102272361805,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-094524-302-8290647178DA",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Blend"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_watermark",
+            "id": "20180621-170358-282-7a3b4e68371e"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Deinterlacing if needed",
+        "pos_x": 255.102272361805,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-094527-675-90933105F933",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Blend"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_tc",
+            "id": "20180621-170819-118-c23a3e0403e6"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Deinterlacing if needed",
+        "pos_x": 255.102272361805,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-095120-670-AB4AD68DA466",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180630-095320-722-39cafeceffac"
+          }
+        ],
+        "name": "AVS clean + logo + tc",
+        "description": "Avisynth in clean + logo + tc",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Clean_Logo_TC",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 525.255680904514,
+        "start_proc": true
+      },
+      {
+        "id": "20180630-095320-722-39CAFECEFFAC",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190730-190312-108-aceb0aac9fc5"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-095945-767-7DDCF5C8A51A",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180630-100432-334-8f80273d626e"
+          }
+        ],
+        "name": "Browse_in_clean",
+        "description": "Browse_in_clean",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Browse\\Browse_Copy_in_Clean",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "id": "20180630-100033-005-73E724B0D13C",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180630-100437-009-6999f01ef8f0"
+          }
+        ],
+        "name": "Browse_in_clean_tc",
+        "description": "Browse_in_clean_tc",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Browse\\Browse_Copy_in_Clean_TC",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "id": "20180630-100236-678-198C645632EA",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180630-100440-012-8c368fcfd5fe"
+          }
+        ],
+        "name": "Browse_in_clean_logo",
+        "description": "Browse_in_clean_logo",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Browse\\Browse_Copy_Clean_Logo",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 375.170453936342,
+        "start_proc": true
+      },
+      {
+        "id": "20180630-100342-662-FE17CDA2250C",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20180630-100444-215-75547b5f4eb2"
+          }
+        ],
+        "name": "Browse_in_clean_logo_tc",
+        "description": "Browse_in_clean_logo_tc",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Browse\\Browse_Copy_Clean_Logo_TC",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "pos_x": 75,
+        "pos_y": 425.198862925733,
+        "start_proc": true
+      },
+      {
+        "id": "20180630-100432-334-8F80273D626E",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180630-100456-525-de82ce56f072"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100437-009-6999F01EF8F0",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180630-100500-346-028f8bea8c68"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100440-012-8C368FCFD5FE",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180630-100503-605-287e620bc5dd"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100444-215-75547B5F4EB2",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180630-100506-367-722931816cd6"
+          }
+        ],
+        "properties": {
+          "audio": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "bypass": false,
+        "description": "Indexing",
+        "name": "Avisynth x64 Indexing",
+        "pos_x": 165.051136180903,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100456-525-DE82CE56F072",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Blend"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180630-101323-927-57fef6eb22df"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Deinterlacing if needed",
+        "pos_x": 255.102272361805,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100500-346-028F8BEA8C68",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Blend"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_tc",
+            "id": "20180630-100514-238-2baf6f81bb37"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Deinterlacing if needed",
+        "pos_x": 255.102272361805,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100503-605-287E620BC5DD",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Blend"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_watermark",
+            "id": "20180630-100520-366-1119ae9e281d"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Deinterlacing if needed",
+        "pos_x": 255.102272361805,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100506-367-722931816CD6",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Blend"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_tc",
+            "id": "20180630-100526-143-81fa49e5810b"
+          }
+        ],
+        "bypass": false,
+        "description": "Deinterlacing if needed",
+        "name": "Deinterlacing",
+        "pos_x": 255.102272361805,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100514-238-2BAF6F81BB37",
+        "type": "avs_v_tc",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180630-100615-983-8993119f1eef"
+          }
+        ],
+        "properties": {
+          "start_tc": "00:00:00:00",
+          "tc_variable": "",
+          "tc_size": "Medium",
+          "force_tc": "None",
+          "use_tc_start": true,
+          "position": 5,
+          "bg_opacity": 100,
+          "fg_opacity": 257
+        },
+        "bypass": false,
+        "name": "Timecode",
+        "description": "Overlay timecode on the video",
+        "pos_x": 345.153408542708,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100520-366-1119AE9E281D",
+        "type": "avs_v_watermark",
+        "execute_on": "success",
+        "name": "Logo",
+        "description": "Imprimo il logo",
+        "properties": {
+          "image_file": "D:\\encoder\\encoder\\Processors\\avs_plugins\\Loghi\\SKY_TG24_SD_color.png",
+          "opacity": 257,
+          "in": 0,
+          "out": 0,
+          "size_percent": 100,
+          "x_start": 0,
+          "y_start": 0,
+          "resize": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180630-100722-791-44971bd9de08"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 345.153408542708,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100526-143-81FA49E5810B",
+        "type": "avs_v_tc",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_watermark",
+            "id": "20180630-100530-647-21ed985eccc5"
+          }
+        ],
+        "properties": {
+          "start_tc": "00:00:00:00",
+          "tc_variable": "",
+          "tc_size": "Medium",
+          "force_tc": "None",
+          "use_tc_start": true,
+          "position": 5,
+          "bg_opacity": 100,
+          "fg_opacity": 257
+        },
+        "bypass": false,
+        "name": "Timecode",
+        "description": "Overlay timecode on the video",
+        "pos_x": 345.153408542708,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100530-647-21ED985ECCC5",
+        "type": "avs_v_watermark",
+        "execute_on": "success",
+        "properties": {
+          "image_file": "D:\\encoder\\encoder\\Processors\\avs_plugins\\Loghi\\SKY_TG24_SD_color.png",
+          "opacity": 257,
+          "in": 0,
+          "out": 0,
+          "size_percent": 100,
+          "x_start": 0,
+          "y_start": 0,
+          "resize": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180630-100726-459-b6852e23f4ce"
+          }
+        ],
+        "bypass": false,
+        "name": "Logo",
+        "description": "Overlay logo on the video",
+        "pos_x": 435.204544723611,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100615-983-8993119F1EEF",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180630-101043-366-6782d95756a2"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 2500,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "fastdecode",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1024,
+            "height": 576,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fit and keep aspect"
+          },
+          "wrapper": "MP4",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "pos_x": 525.255680904514,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100722-791-44971BD9DE08",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180630-101111-360-1f13f85c019e"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 2500,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "fastdecode",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1024,
+            "height": 576,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fit and keep aspect"
+          },
+          "wrapper": "MP4",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "pos_x": 525.255680904514,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100726-459-B6852E23F4CE",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180630-101244-740-28590bc5d150"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 2500,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "fastdecode",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1024,
+            "height": 576,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fit and keep aspect"
+          },
+          "wrapper": "MP4",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "pos_x": 525.255680904514,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-100743-935-3B80420299A5",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN",
+        "description": "SD CLEAN",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-101043-366-6782D95756A2",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN + TC",
+        "description": "SD CLEAN + TC",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-101111-360-1F13F85C019E",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN + LOGO",
+        "description": "SD CLEAN + LOGO",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-101244-740-28590BC5D150",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "name": "CLEAN + LOGO + TC",
+        "description": "SD CLEAN + LOGO + TC",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190730-192917-718-ba53a824597c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_export_media\\OUTPUT_AvisynthServer1_Browse_Vendite_e_Clean",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 615.306817085416,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20180630-101323-927-57FEF6EB22DF",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180630-100743-935-3b80420299a5"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 2500,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "fastdecode",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1024,
+            "height": 576,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fit and keep aspect"
+          },
+          "wrapper": "MP4",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "pos_x": 525.255680904514,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "id": "20190730-190257-931-634C37352DAE",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "YADIF 2xFPS"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_watermark",
+            "id": "20180621-171430-872-a43603ea5f2d"
+          }
+        ],
+        "bypass": false,
+        "description": "Bob-deinterlacing",
+        "name": "Deinterlacing",
+        "pos_x": 255.102272361805,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "id": "20190730-190312-108-ACEB0AAC9FC5",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "YADIF 2xFPS"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_tc",
+            "id": "20180621-171500-611-171d525c8ce1"
+          }
+        ],
+        "bypass": false,
+        "description": "Bob-deinterlacing if needed",
+        "name": "Deinterlacing",
+        "pos_x": 255.102272361805,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "id": "20190730-192917-718-BA53A824597C",
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "bypass": false,
+        "description": "Automatic Cache Cleanup",
+        "name": "Cache Cleanup",
+        "pos_x": 705.357953266319,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      }
+    ]
+  }
+}

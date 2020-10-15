@@ -1,0 +1,3175 @@
+﻿{
+  "workflow": {
+    "wf_name": "x264",
+    "wf_id": "20190711175220",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "description": "Transcoder basato su Avisynth, x262 ed FFMpeg realizzato da Francesco Bucciantini, Steinar Apalnes ed una community Open Source",
+    "general": {
+      "sleep": 5,
+      "priority": "2 (normal)",
+      "timeout_level": 3
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 1,
+      "work_age": 1,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "C:\\Users\\dmerra\\Desktop\\beta\\Processors\\.cache\\wfs\\20190711175220\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": true,
+      "protected": true,
+      "password": "CE79659EB75F7B1C566E50FA"
+    },
+    "updated": "2020-09-10T14:58:09.267-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20180406-234536-028-8DAE2C5C4FBE",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once"
+        },
+        "name": "x264_in",
+        "description": "x264 in SPORT Node 1",
+        "pos_x": 795,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20180406-234614-125-dd7767dbca64",
+        "bypass": false,
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 3000,
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "none",
+            "qspeed": "medium",
+            "interlacing": "Autodetect",
+            "field_order": "Progressive",
+            "width": 1920,
+            "height": 1080,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fill and keep aspect"
+          },
+          "wrapper": "MP4",
+          "start_tc": "%s_start_tc%",
+          "custom_x264opts": "",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 44100,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 44100,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-184119-654-6816c20ac9af"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-184508-213-fc6c2dc7b2ff"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2010-1991-08d4-27854052a0e8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2021-4382-7840-0e012be30469"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2026-1089-956c-488f730170c6"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2029-0091-3418-0211a86918d6"
+          }
+        ],
+        "pos_x": 975,
+        "pos_y": 275,
+        "start_proc": false
+      },
+      {
+        "id": "20180406-234740-997-41D0E1C974DD",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Export media\\GENERIC\\OUTPUT",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "description": "SPORT Generic Output",
+        "name": "SPORT Generic Output",
+        "pos_x": 1245,
+        "pos_y": 575,
+        "start_proc": false
+      },
+      {
+        "id": "20180810-005553-840-9b4c7da869f6",
+        "bypass": false,
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 1335,
+        "pos_y": 600,
+        "start_proc": false
+      },
+      {
+        "id": "20181113-143557-885-27fd4d31014a",
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy SPORT Node 1",
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20181113-143641-476-5465f00a3dc0",
+        "bypass": false,
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "Duration",
+        "description": "Duration",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myvariableduration",
+              "data": "%f_duration%"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143733-966-0752caa4a439"
+          }
+        ],
+        "pos_x": 255,
+        "pos_y": 575,
+        "start_proc": false
+      },
+      {
+        "id": "20181113-143733-966-0752caa4a439",
+        "bypass": false,
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "File Size 2GB",
+        "description": "Fixed File Size",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myfixedfilesize",
+              "data": 10000000
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143922-818-eac090cf446d"
+          }
+        ],
+        "pos_x": 345,
+        "pos_y": 575,
+        "start_proc": false
+      },
+      {
+        "id": "20181113-143922-818-eac090cf446d",
+        "bypass": false,
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "Bitrate",
+        "description": "Bitrate",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myvariablebitrate",
+              "data": "%s_myfixedfilesize%\/%s_yvariableduration%"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20181113-144044-506-6fac01ae36c8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20181113-144058-968-ec5d60b5055a"
+          }
+        ],
+        "pos_x": 435,
+        "pos_y": 575,
+        "start_proc": false
+      },
+      {
+        "id": "20181113-144044-506-6fac01ae36c8",
+        "name": "",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "bitrate > 2500",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-144204-365-0e497dbc904a"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_myvariablebitrate%",
+              "operator": "larger than (>)",
+              "expression_2": 2500,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 525,
+        "pos_y": 500,
+        "start_proc": false
+      },
+      {
+        "id": "20181113-144058-968-EC5D60B5055A",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "bitrate <= 2500",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-144308-168-ad1b420b9c42"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_myvariablebitrate%",
+              "operator": "smaller than or equal to (<=)",
+              "expression_2": 2500,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 525,
+        "pos_y": 600,
+        "start_proc": false
+      },
+      {
+        "id": "20181113-144204-365-0e497dbc904a",
+        "bypass": false,
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "Final Bitrate",
+        "description": "Final Bitrate",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myfinalbitrate",
+              "data": 2500
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20181113-144339-985-536ea408c19e"
+          }
+        ],
+        "pos_x": 615,
+        "pos_y": 525,
+        "start_proc": false
+      },
+      {
+        "id": "20181113-144308-168-AD1B420B9C42",
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "Final Bitrate",
+        "description": "Final Bitrate",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20181113-144339-985-536ea408c19e"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myfinalbitrate",
+              "data": "%s_myvariablebitrate%"
+            }
+          ]
+        },
+        "pos_x": 615,
+        "pos_y": 575,
+        "start_proc": false
+      },
+      {
+        "id": "20181113-144339-985-536EA408C19E",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": "%s_myfinalbitrate%",
+            "restrict": true,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "none",
+            "qspeed": "medium",
+            "interlacing": "Autodetect",
+            "field_order": "Progressive",
+            "width": 1920,
+            "height": 1080,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fill and keep aspect"
+          },
+          "wrapper": "MP4",
+          "start_tc": "%s_start_tc%",
+          "audio": {
+            "bitrate": 192,
+            "samplerate": 44100,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 44100,
+                "bitrate": 192,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-184119-654-6816c20ac9af"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-184508-213-fc6c2dc7b2ff"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2010-1991-08d4-27854052a0e8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2021-4382-7840-0e012be30469"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2026-1089-956c-488f730170c6"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2029-0091-3418-0211a86918d6"
+          }
+        ],
+        "pos_x": 705,
+        "pos_y": 550,
+        "start_proc": false
+      },
+      {
+        "id": "20190306-155457-733-57843540EE70",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74f6beab6f55"
+          }
+        ],
+        "bypass": false,
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne SPORT Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 435,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20190306-155725-089-74F6BEAB6F55",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": 25000,
+            "restrict": false,
+            "level": 4.1,
+            "profile": "high422",
+            "tuning": "none",
+            "qspeed": "medium",
+            "interlacing": "Analyze",
+            "field_order": "Progressive",
+            "width": 1920,
+            "height": 1080,
+            "framerate": 50,
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fill and keep aspect"
+          },
+          "wrapper": "MP4",
+          "start_tc": "%s_start_tc%",
+          "custom_x264opts": "",
+          "audio": {
+            "bitrate": 384,
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 384,
+                "bitdepth": 16,
+                "mapping": null
+              }
+            ],
+            "layout": "sourcemultich"
+          }
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-184119-654-6816c20ac9af"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-184508-213-fc6c2dc7b2ff"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2010-1991-08d4-27854052a0e8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2021-4382-7840-0e012be30469"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2026-1089-956c-488f730170c6"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2029-0091-3418-0211a86918d6"
+          }
+        ],
+        "pos_x": 615,
+        "pos_y": 275,
+        "start_proc": false
+      },
+      {
+        "id": "20190306-162446-753-871A72493CFE",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15d5b34e4d25"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp SPORT Node 1",
+        "pos_x": 75,
+        "pos_y": 700,
+        "start_proc": true
+      },
+      {
+        "id": "20190306-163752-204-15D5B34E4D25",
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "Duration",
+        "description": "Duration",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myvariableduration",
+              "data": "%f_duration%"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163802-650-2df2e4935caf"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 255,
+        "pos_y": 700,
+        "start_proc": false
+      },
+      {
+        "id": "20190306-163802-650-2DF2E4935CAF",
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "File Size WhatsApp",
+        "description": "Fixed File Size WhatsApp",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163821-324-c5c3ec037e5c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myfixedfilesize",
+              "data": 200000,
+              "type": "string"
+            }
+          ]
+        },
+        "pos_x": 345,
+        "pos_y": 700,
+        "start_proc": false,
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        }
+      },
+      {
+        "id": "20190306-163821-324-C5C3EC037E5C",
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "Bitrate",
+        "description": "Bitrate",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20190306-163949-154-043088041125"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190306-164007-132-dacbeb8a9c9b"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myvariablebitrate",
+              "data": "%s_myfixedfilesize%\/%s_yvariableduration%"
+            }
+          ]
+        },
+        "pos_x": 434.795455276389,
+        "pos_y": 700.35511236738,
+        "start_proc": false
+      },
+      {
+        "id": "20190306-163949-154-043088041125",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "bitrate > 2500",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-164016-169-226701ea53d6"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_myvariablebitrate%",
+              "operator": "larger than (>)",
+              "expression_2": 2500,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 650,
+        "start_proc": false
+      },
+      {
+        "id": "20190306-164007-132-DACBEB8A9C9B",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "bitrate <= 2500",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-164023-776-b9495d884b06"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_myvariablebitrate%",
+              "operator": "smaller than or equal to (<=)",
+              "expression_2": 2500,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 525,
+        "pos_y": 750,
+        "start_proc": false
+      },
+      {
+        "id": "20190306-164016-169-226701EA53D6",
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "Final Bitrate",
+        "description": "Final Bitrate",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myfinalbitrate",
+              "data": 2500
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-164035-366-d09a08ede787"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 615,
+        "pos_y": 675,
+        "start_proc": false
+      },
+      {
+        "id": "20190306-164023-776-B9495D884B06",
+        "type": "op_populate",
+        "execute_on": "success",
+        "name": "Final Bitrate",
+        "description": "Final Bitrate",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-164035-366-d09a08ede787"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "variables": [
+            {
+              "name": "s_myfinalbitrate",
+              "data": "%s_myvariablebitrate%"
+            }
+          ]
+        },
+        "pos_x": 615,
+        "pos_y": 725,
+        "start_proc": false
+      },
+      {
+        "id": "20190306-164035-366-D09A08EDE787",
+        "type": "enc_av_mp4",
+        "execute_on": "success",
+        "name": "x264",
+        "description": "Encoding in H.264",
+        "bypass": false,
+        "properties": {
+          "faststart": true,
+          "video": {
+            "bitrate": "%s_myfinalbitrate%",
+            "restrict": true,
+            "level": 4.1,
+            "profile": "main",
+            "tuning": "none",
+            "qspeed": "medium",
+            "interlacing": "Autodetect",
+            "field_order": "Progressive",
+            "width": 640,
+            "height": 360,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "16:9",
+            "resizing": "Fill and keep aspect"
+          },
+          "wrapper": "MP4",
+          "start_tc": "%s_start_tc%",
+          "custom_x264opts": "",
+          "audio": {
+            "bitrate": 64,
+            "samplerate": 44100,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "aac",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 44100,
+                "bitrate": 64,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-184119-654-6816c20ac9af"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-184508-213-fc6c2dc7b2ff"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2010-1991-08d4-27854052a0e8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2021-4382-7840-0e012be30469"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2026-1089-956c-488f730170c6"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-2029-0091-3418-0211a86918d6"
+          }
+        ],
+        "pos_x": 705,
+        "pos_y": 700,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165918-706-3B930DFC3BD5",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy SPORT Node 2",
+        "pos_x": 75,
+        "pos_y": 125,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-165931-387-C062B15C1905",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15d5b34e4d25"
+          }
+        ],
+        "bypass": false,
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp SPORT Node 2",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 75,
+        "pos_y": 750,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-165944-225-A1E8483B54A4",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74f6beab6f55"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne SPORT Node 2",
+        "pos_x": 435,
+        "pos_y": 125,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-165959-719-D9E9B93CE9E1",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once"
+        },
+        "name": "x264_in",
+        "description": "x264 in SPORT Node 2",
+        "pos_x": 795,
+        "pos_y": 125,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-180549-803-6C96221D302F",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy PCE Node 1",
+        "pos_x": 75,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-180606-429-51F4FBFDE716",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15d5b34e4d25"
+          }
+        ],
+        "bypass": false,
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp PCE Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 75,
+        "pos_y": 800,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-180657-333-E27CA8F600F4",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74f6beab6f55"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_limit": "None",
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne PCE Node 1",
+        "pos_x": 435,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-180720-383-4DB8A925B62B",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "bypass": false,
+        "name": "x264_in",
+        "description": "x264 in PCE Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 795,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-184119-654-6816c20ac9af",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180406-234740-997-41d0e1c974dd"
+          }
+        ],
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x264_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\Node1\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": 0
+            }
+          ]
+        },
+        "pos_x": 1155,
+        "pos_y": 500,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-184508-213-FC6C2DC7B2FF",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-184707-050-0cf6d8195406"
+          }
+        ],
+        "bypass": false,
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in",
+              "decide": 0
+            }
+          ]
+        },
+        "pos_x": 1155,
+        "pos_y": 625,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-184707-050-0CF6D8195406",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\PCE-Export\\GENERIC\\OUTPUT",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "name": "PCE Generic Output",
+        "description": "PCE Generic Output",
+        "pos_x": 1245,
+        "pos_y": 625,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1728-2490-036f-002ebbeb1264",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy SPORT Node 1 Van000",
+        "pos_x": 165,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1729-4972-1e6f-5dc00767386b",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15D5B34E4D25"
+          }
+        ],
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp SPORT Node 1 Van000",
+        "pos_x": 165,
+        "pos_y": 700,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "id": "20200520-2010-1991-08d4-27854052a0e8",
+        "description": "SPORT Node 2",
+        "name": "SPORT Node 2",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20180406-234740-997-41D0E1C974DD"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x264_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": 0
+            }
+          ]
+        },
+        "pos_x": 1155,
+        "pos_y": 550,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2016-5791-4c19-db808298c9b1",
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2018-1914-1116-8f44db72935d",
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy PCE Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2021-4382-7840-0e012be30469",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-184707-050-0CF6D8195406"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in",
+              "decide": 0
+            }
+          ]
+        },
+        "pos_x": 1155,
+        "pos_y": 675,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2022-2909-7eb4-cbda5e8ec355",
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2024-1973-6b12-32e5fdd419d2",
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2025-2098-70a6-3c6b8a10e4c7",
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2026-1089-956c-488f730170c6",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-184707-050-0CF6D8195406"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in",
+              "decide": 0
+            }
+          ]
+        },
+        "pos_x": 1155,
+        "pos_y": 725,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2027-2892-8c88-bc519f176d1a",
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2028-1283-10d3-5f3da82742d4",
+        "name": "x264_in_Proxy",
+        "description": "x264 in Proxy PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x264_in_Proxy",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20181113-143641-476-5465f00a3dc0"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2029-0091-3418-0211a86918d6",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-184707-050-0CF6D8195406"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x264_in_Proxy",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x264_in_Whatsapp",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x264_in_Archivio_Esterne",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in",
+              "decide": 0
+            }
+          ]
+        },
+        "pos_x": 1155,
+        "pos_y": 775,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2030-2697-44b7-a7a735e4de7e",
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp PCE Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15D5B34E4D25"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 800,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2032-0344-9df9-8d6efa9c33f0",
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15D5B34E4D25"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 850,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2033-0151-446b-9dc87fa9d3c8",
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 850,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2033-5140-3dfb-9db1f17b8e62",
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15D5B34E4D25"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 900,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2034-3374-9317-cae972c50cc9",
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15D5B34E4D25"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 900,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2035-2453-678a-0e0565054b7a",
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15D5B34E4D25"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 950,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2036-0920-6908-9fddb85b48c9",
+        "name": "x264_in_Whatsapp",
+        "description": "x264 in Whatsapp PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x264_in_Whatsapp",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20190306-163752-204-15D5B34E4D25"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 950,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2039-4689-5dcf-f06f66126591",
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74F6BEAB6F55"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2040-2753-4136-efe4c283b56a",
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74F6BEAB6F55"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2041-1174-3ac6-3f2097928152",
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74F6BEAB6F55"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2047-2479-9b9f-c40ac4633e75",
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne PCE Node 1 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74F6BEAB6F55"
+          }
+        ],
+        "pos_x": 525,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2049-4057-176f-e8cf58bd55bc",
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74F6BEAB6F55"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 525,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2050-3030-0c50-9e319c6d55b9",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74F6BEAB6F55"
+          }
+        ],
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 525,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2051-0993-641c-da3da44a9b65",
+        "name": "x264_in_Archivio_Esterne",
+        "description": "x264 in Archivio Produzioni Esterne PCE Node 4 Van000",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20190306-155725-089-74F6BEAB6F55"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x264_in_Archivio_Esterne",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 525,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2119-0816-1b62-21b7a16f3dad",
+        "name": "x264_in",
+        "description": "x264 in PCE Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "pos_x": 795,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2119-5085-4e79-216105489f8e",
+        "name": "x264_in",
+        "description": "x264 in PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 795,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2120-3474-79fd-5f891420fa5f",
+        "name": "x264_in",
+        "description": "x264 in PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 795,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2122-2248-0c4d-71ac60ae2b8f",
+        "description": "x264 in PCE Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "x264_in",
+        "pos_x": 885,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2123-1779-832f-36e12afebccb",
+        "description": "x264 in PCE Node 2 Van000",
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "name": "x264_in",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 885,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2125-4010-6db8-2f5cd68ec6d8",
+        "name": "x264_in",
+        "description": "x264 in PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 885,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-2126-4720-7b4f-b6bfd0001c5f",
+        "name": "x264_in",
+        "description": "x264 in PCE Node 4 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x264_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": false,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20180406-234614-125-dd7767dbca64"
+          }
+        ],
+        "pos_x": 885,
+        "pos_y": 325,
+        "start_proc": true
+      }
+    ]
+  },
+  "user_variables": {
+    "variables": [
+      {
+        "name": "s_myfinalbitrate",
+        "type": "string",
+        "data": "my final bitrate"
+      },
+      {
+        "name": "s_myfixedfilesize",
+        "type": "string",
+        "data": "Unknown"
+      },
+      {
+        "name": "s_myvariablebitrate",
+        "type": "string",
+        "data": "Unknown"
+      },
+      {
+        "name": "s_myvariableduration",
+        "type": "string",
+        "data": "Unknown"
+      }
+    ]
+  }
+}

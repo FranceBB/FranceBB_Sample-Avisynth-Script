@@ -1,0 +1,3572 @@
+﻿{
+  "workflow": {
+    "wf_name": "Avisynth_in_P2",
+    "wf_id": "20190711174000",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 5,
+      "priority": "2 (normal)",
+      "timeout_level": 10
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 1,
+      "work_age": 1,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "C:\\Users\\dmerra\\Desktop\\beta\\Processors\\.cache\\wfs\\20190711174000\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": true,
+      "protected": true,
+      "password": "CE79659EB75F7B1C566E50FA"
+    },
+    "updated": "2020-09-03T17:58:51.167-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 42.8814934194775
+    },
+    "nodes": [
+      {
+        "id": "20170208-150859-290-044E9EC8E471",
+        "bypass": false,
+        "type": "enc_av_xdcamhd",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "video": {
+            "format": "1920×1080i50",
+            "resizing": "Fill and keep aspect",
+            "interlacing": "Analyze",
+            "type": "50 Mbit (422)",
+            "processing": "Full transcoding"
+          },
+          "audio": {
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitdepth": 24,
+            "samplerate": 48000,
+            "bitrate": null,
+            "codec": "pcm_s24le",
+            "layout": "default",
+            "streams": [
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  1
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  2
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  3
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  4
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  5
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  6
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  7
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  8
+                ]
+              }
+            ]
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "wrapper": "MXF",
+          "start_tc": "%s_start_tc%"
+        },
+        "execute_on": "any",
+        "name": "x262 (XDCAM50)",
+        "description": "Encoding: x262 video codec + LAV PCM audio codec + ffmpeg wrapper (muxer). XDCAM50",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-170845-177-6edb2052d8a8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-170957-365-7f5602841459"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-181819-672-85eee0fa29bf"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-1425-0959-5c73-48dd53c9c750"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1532-2267-3f43-ccc725f3e4df"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1536-1115-9ce5-cf7cf3a716af"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1539-0511-19c1-775013ea572f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1335-5788-9083-3961e2514083"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1336-4908-1327-365fca2c471c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1407-4802-7471-57cb49bf579c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1410-2565-99ac-a7d2ac5ce4c9"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1411-3541-10cf-bc3afda2ff3d"
+          }
+        ],
+        "pos_x": 846.866881550595,
+        "pos_y": 503.814934194775,
+        "start_proc": false
+      },
+      {
+        "id": "20170208-151013-452-316F559DBA2D",
+        "bypass": false,
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20180910-175437-919-6d48ce366666"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175627-699-6f2fb5d1db12"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175646-412-3978be774614"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175703-145-75340cd33f61"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175721-865-7009538799dd"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175758-718-d55861c14e35"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175812-718-dfd026dfa3f1"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175838-873-329255d15146"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175906-529-0c1b73589a6d"
+          },
+          {
+            "type": "cmd_run",
+            "id": "20200903-1757-4063-6222-011a1c287f51"
+          }
+        ],
+        "name": "Avisynth x64 Indexing",
+        "description": "Indexing",
+        "properties": {
+          "audio": {
+            "use": true,
+            "channels": 32,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "format": "YUV 4:2:2 8bit",
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 267.966720387649,
+        "pos_y": 485.947645269993,
+        "start_proc": false
+      },
+      {
+        "id": "20171114-174817-518-944CE550E0DD",
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 975.511361809028,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20180124-184046-463-cc8aabd25f45",
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "description": "P2 Master Clip SPORT Node 1",
+        "name": " P2 Master SPR Node1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20180225-171230-520-1CF1B799461C",
+        "type": "mon_p2",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "bypass": false,
+        "description": "P2 Clip Separate SPORT Node 1",
+        "name": " P2 Clip SPR Node1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 557.416800969122,
+        "start_proc": true
+      },
+      {
+        "id": "20180327-223423-701-3060431E97D0",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Kernel 2xFPS"
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20180329-173937-871-a4f7180e33d6"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180426-113800-800-ccf61005e598"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Bob-deinterlacing if needed",
+        "pos_x": 525.255680904514,
+        "pos_y": 485.947645269993,
+        "start_proc": false
+      },
+      {
+        "id": "20180329-173937-871-a4f7180e33d6",
+        "name": "",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "smaller than (<)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "description": "if frame rate < 50",
+        "outbounds": [
+          {
+            "type": "avs_v_fpsconv",
+            "id": "20180329-174450-766-47b3f3b5de9b"
+          }
+        ],
+        "pos_x": 589.57792103373,
+        "pos_y": 450.213067420428,
+        "start_proc": false
+      },
+      {
+        "id": "20180329-174450-766-47b3f3b5de9b",
+        "bypass": false,
+        "type": "avs_v_fpsconv",
+        "execute_on": "success",
+        "name": "Blending",
+        "description": "Blending.",
+        "properties": {
+          "fps_conv": 50,
+          "motion_comp": false,
+          "keep_fps": false,
+          "motion_comp_quality": "Medium",
+          "fps_custom": "",
+          "blend": true
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180701-081456-730-68c5351dabf5"
+          }
+        ],
+        "pos_x": 653.900161162946,
+        "pos_y": 485.947645269993,
+        "start_proc": false
+      },
+      {
+        "id": "20180426-113800-800-CCF61005E598",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if frame rate >= 50",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180701-081456-730-68c5351dabf5"
+          }
+        ],
+        "pos_x": 589.57792103373,
+        "pos_y": 521.682223119557,
+        "start_proc": false
+      },
+      {
+        "id": "20180701-081456-730-68c5351dabf5",
+        "bypass": false,
+        "type": "avs_custom",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044e9ec8e471"
+          }
+        ],
+        "name": "Limiter Tv Range v2",
+        "description": "Brings luma and chroma in Tv Range 0.7mV 16-235.",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\nImport(\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\ResizeKAR.avsi\")\r\n\r\n\r\nc=Converttoyv16(m_clip)\r\n#resized=ResizeKAR(c, 1920, 1080, \"Spline64Resize\")\r\nresized=c\r\nm_clip=Limiter(resized, min_luma=16, max_luma=235, min_chroma=16, max_chroma=240)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "pos_x": 782.544641421379,
+        "pos_y": 503.814934194775,
+        "start_proc": false
+      },
+      {
+        "id": "20180810-005553-840-9b4c7da869f6",
+        "bypass": false,
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 1039.83360193824,
+        "pos_y": 503.814934194775,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175437-919-6d48ce366666",
+        "name": "",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 0",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431e97d0"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "smaller than or equal to (<=)",
+              "expression_2": 0,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 343.009333871734,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175627-699-6F2FB5D1DB12",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 1",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180019-976-6b94d948b31c"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 1,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 378.743911721299,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175646-412-3978BE774614",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 2",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180137-248-bc38105a5c6a"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 2,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 414.478489570864,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175703-145-75340CD33F61",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 3",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180210-066-77f284226c56"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 3,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 450.213067420428,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175721-865-7009538799DD",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 4",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180244-245-d9dd14510c23"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 4,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 485.947645269993,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175758-718-D55861C14E35",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 5",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180316-225-29e8ba198767"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 5,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 521.682223119557,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175812-718-DFD026DFA3F1",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 6",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180401-828-94f3d832a769"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 6,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 557.416800969122,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175838-873-329255D15146",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 7",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180437-086-6b121520b53d"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 7,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 593.151378818686,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175906-529-0C1B73589A6D",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels >= 8",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180910-180715-507-dc0f7fbfc53f"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 8,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 628.885956668251,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180019-976-6b94d948b31c",
+        "name": "",
+        "bypass": false,
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 1->2 1->3 1->4 1->5 1->6 1->7 1->8",
+        "properties": {
+          "mapping": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180910-180715-507-dc0f7fbfc53f"
+          }
+        ],
+        "pos_x": 396.611200646081,
+        "pos_y": 378.743911721299,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180137-248-BC38105A5C6A",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 1->3 2->4 1->5 2->6 1->7 2->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180910-180715-507-dc0f7fbfc53f"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 396.611200646081,
+        "pos_y": 414.478489570864,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180210-066-77F284226C56",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 1->4 2->5 3->6 1->7 2->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            1,
+            2,
+            3,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180910-180715-507-dc0f7fbfc53f"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 396.611200646081,
+        "pos_y": 450.213067420428,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180244-245-D9DD14510C23",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 4->4 1->5 2->6 3->7 4->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            1,
+            2,
+            3,
+            4,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180910-180715-507-dc0f7fbfc53f"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 396.611200646081,
+        "pos_y": 485.947645269993,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180316-225-29E8BA198767",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 4->4 5->5 1->6 2->7 3->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            1,
+            2,
+            3,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180910-180715-507-dc0f7fbfc53f"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 396.611200646081,
+        "pos_y": 521.682223119557,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180401-828-94F3D832A769",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 4->4 5->5 6->6 1->7 2->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180910-180715-507-dc0f7fbfc53f"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 396.611200646081,
+        "pos_y": 557.416800969122,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180437-086-6B121520B53D",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 4->4 5->5 6->6 7->7 1->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180910-180715-507-dc0f7fbfc53f"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 396.611200646081,
+        "pos_y": 593.151378818686,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180715-507-dc0f7fbfc53f",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "bypass": false,
+        "type": "avs_custom",
+        "execute_on": "success",
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\n\r\nr=ResampleAudio(m_clip, 48000)\r\nn=Normalize(r, 0.22)\r\nm_clip=ConvertAudioTo24bit(n)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431e97d0"
+          }
+        ],
+        "name": "Loudness Correction",
+        "description": "Loudness Correction at -24LUFS",
+        "pos_x": 460.933440775298,
+        "pos_y": 485.947645269993,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165344-444-BD68CB3862EA",
+        "type": "mon_p2",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "bypass": false,
+        "description": "P2 Master Clip SPORT Node 2",
+        "name": " P2 Master SPR Node2",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 110.734577849565,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-165358-585-B6EF651A9B6C",
+        "type": "mon_p2",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "bypass": false,
+        "description": "P2 Clip Separate SPORT Node 2",
+        "name": " P2 Clip SPR Node2",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 593.151378818686,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-170845-177-6edb2052d8a8",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20171114-174817-518-944ce550e0dd"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\P2_in_MASTERCLIP",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 911.189121679811,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-170957-365-7F5602841459",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-171021-774-22a3a65d5d81"
+          }
+        ],
+        "bypass": false,
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\P2_in_MASTERCLIP",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 911.189121679811,
+        "pos_y": 110.734577849565,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-171021-774-22A3A65D5D81",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 975.511361809028,
+        "pos_y": 110.734577849565,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-175828-741-B1BAC898D8D7",
+        "type": "mon_p2",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "bypass": false,
+        "name": " P2 Clip PCE Node1",
+        "description": "P2 Clip Separate PCE Node 1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 700.35511236738,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-181819-672-85EEE0FA29BF",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-182054-000-8c180511434e"
+          }
+        ],
+        "bypass": false,
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\P2_in_ClipSeparate",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 911.189121679811,
+        "pos_y": 217.938311398258,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-182006-599-B574D1C1DB34",
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "name": " P2 Master PCE Node1",
+        "description": "P2 Master Clip PCE Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 217.938311398258,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-182054-000-8C180511434E",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 975.511361809028,
+        "pos_y": 217.938311398258,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200422-1705-2672-478d-899129ba134e",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "name": " P2 Master SPR Node1",
+        "description": "P2 Master Clip SPORT Node 1 Van000\r\n",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1705-5522-7e25-a19c69bb01cc",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": " P2 Clip SPR Node1",
+        "description": "P2 Clip Separate SPORT Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 557.416800969122,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1423-1698-0bef-e9be61356f9b",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "description": " P2 Master Clip TG24 Node 1",
+        "name": " P2 Master TG24 Node1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 360.876622796517,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1425-0959-5c73-48dd53c9c750",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200514-1426-0864-5d0d-30d7153f2501"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\P2_in_ClipSeparate",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "TG24 Node 1",
+        "description": "TG24 Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 911.189121679811,
+        "pos_y": 360.876622796517,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "id": "20200514-1426-0864-5d0d-30d7153f2501",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 975.511361809028,
+        "pos_y": 360.876622796517,
+        "start_proc": false
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1427-4506-163b-48bb4496c20d",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "name": "P2 Clip TG24 Node 1",
+        "description": "P2 Clip Separate TG24 Node 1 Van000",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 843.293423765639,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200518-1527-3342-2fc4-66b1f730d5e4",
+        "name": " P2 Master PCE Node1",
+        "description": "P2 Master Clip PCE Node 1 Van000\r\n",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 217.938311398258,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1529-3062-925f-6a549fbf7f19",
+        "name": " P2 Master PCE Node2",
+        "description": "P2 Master Clip PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 253.672889247823,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "id": "20200518-1530-0935-5b56-e92168b8c99f",
+        "name": " P2 Master PCE Node2",
+        "description": "P2 Master Clip PCE Node 2 Van000\r\n",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 253.672889247823,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1532-2267-3f43-ccc725f3e4df",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1533-0405-4e30-5070cd264f47"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\P2_in_ClipSeparate",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 911.189121679811,
+        "pos_y": 253.672889247823,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1533-0405-4e30-5070cd264f47",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 975.511361809028,
+        "pos_y": 253.672889247823,
+        "start_proc": false
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1534-0341-55e8-5a1ff591d386",
+        "name": " P2 Master PCE Node3",
+        "description": "P2 Master Clip PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 289.407467097388,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200518-1535-1666-8557-43f712b0100b",
+        "name": " P2 Master PCE Node3",
+        "description": "P2 Master Clip PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 289.407467097388,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1536-1115-9ce5-cf7cf3a716af",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1536-5872-8bd5-2df95c241d00"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\P2_in_ClipSeparate",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 911.189121679811,
+        "pos_y": 289.407467097388,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1536-5872-8bd5-2df95c241d00",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 975.511361809028,
+        "pos_y": 289.407467097388,
+        "start_proc": false
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1537-2626-306b-bd8769861d86",
+        "name": " P2 Master PCE Node4",
+        "description": "P2 Master Clip PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200518-1538-0548-0330-f375dac0a532",
+        "name": " P2 Master PCE Node4",
+        "description": "P2 Master Clip PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1539-0511-19c1-775013ea572f",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1539-1888-34f7-c41e7acf0735"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\P2_in_ClipSeparate",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 911.189121679811,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1539-1888-34f7-c41e7acf0735",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 975.511361809028,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1540-3234-666e-ea327ba89a4b",
+        "name": " P2 Clip PCE Node1",
+        "description": "P2 Clip Separate PCE Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 700.35511236738,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1543-2132-693e-86d19fc6495d",
+        "name": " P2 Clip PCE Node2",
+        "description": "P2 Clip Separate PCE Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 736.089690216945,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1544-2361-4534-f3c867e71d78",
+        "name": " P2 Clip PCE Node2",
+        "description": "P2 Clip Separate PCE Node 2 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 736.089690216945,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1545-5013-5fcd-ce3fbd2e087b",
+        "name": " P2 Clip PCE Node3",
+        "description": "P2 Clip Separate PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 771.824268066509,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1546-3869-1427-a1ad923d7609",
+        "name": " P2 Clip PCE Node3",
+        "description": "P2 Clip Separate PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 771.824268066509,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1548-4726-73f6-e6ec9cd0e002",
+        "name": " P2 Clip PCE Node4",
+        "description": "P2 Clip Separate PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 807.558845916074,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1549-2721-90e0-0b0814811da2",
+        "name": " P2 Clip PCE Node4",
+        "description": "P2 Clip Separate PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 807.558845916074,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1551-1416-5bd2-8d1be42bf178",
+        "name": " P2 Clip TG24 Node1",
+        "description": "P2 Clip Separate TG24 Node 1",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 843.293423765639,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200518-1553-0972-237e-833334f626a9",
+        "name": " P2 Master TG24 Node1",
+        "description": "P2 Master Clip TG24 Node 1 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 360.876622796517,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1328-3193-924f-e2549a311dc9",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "name": " P2 Master SPR Node3",
+        "description": "P2 Master Clip SPORT Node 3",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 146.469155699129,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1329-5470-51c5-fc01b13d3a69",
+        "name": " P2 Master SPR Node4",
+        "description": "P2 Master Clip SPORT Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 182.203733548694,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200716-1330-5141-97bf-6d3f60085a4c",
+        "name": " P2 Master SPR Node2",
+        "description": "P2 Master Clip SPORT Node 2 Van000\r\n",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 110.734577849565,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200716-1331-4640-8c87-8491fcbc711e",
+        "name": " P2 Master SPR Node3",
+        "description": "P2 Master Clip SPORT Node 3 Van000\r\n",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 146.469155699129,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200716-1332-3619-2a4d-d364911f43f7",
+        "name": " P2 Master SPR Node4",
+        "description": "P2 Master Clip SPORT Node 4 Van000\r\n",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 182.203733548694,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1335-5788-9083-3961e2514083",
+        "name": "SPORT Node 3",
+        "description": "SPORT Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\P2_in_MASTERCLIP",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1342-2030-1e31-18546c2ed6af"
+          }
+        ],
+        "pos_x": 911.189121679811,
+        "pos_y": 146.469155699129,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1336-4908-1327-365fca2c471c",
+        "name": "SPORT Node 4",
+        "description": "SPORT Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\P2_in_MASTERCLIP",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1342-5025-420b-cbe8ce56952b"
+          }
+        ],
+        "pos_x": 911.189121679811,
+        "pos_y": 182.203733548694,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1342-2030-1e31-18546c2ed6af",
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 975.511361809028,
+        "pos_y": 146.469155699129,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1342-5025-420b-cbe8ce56952b",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 975.511361809028,
+        "pos_y": 182.203733548694,
+        "start_proc": false
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1347-2023-3eba-86827d21dbfc",
+        "name": " P2 Clip SPR Node3",
+        "description": "P2 Clip Separate SPORT Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 628.885956668251,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1348-1126-15e5-6f361044eafe",
+        "name": " P2 Clip SPR Node4",
+        "description": "P2 Clip Separate SPORT Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 664.620534517816,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1349-1117-75e7-01e7d8553986",
+        "name": " P2 Clip SPR Node2",
+        "description": "P2 Clip Separate SPORT Node 2 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 593.151378818686,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1349-5597-2d8b-f00c3c7cfc11",
+        "name": " P2 Clip SPR Node3",
+        "description": "P2 Clip Separate SPORT Node 3 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 628.885956668251,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1350-4749-9c00-52e8f8f420c1",
+        "name": " P2 Clip SPR Node4",
+        "description": "P2 Clip Separate SPORT Node 4 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 664.620534517816,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1352-2733-764d-9586ce7cc98d",
+        "name": " P2 Master TG24 Node2",
+        "description": " P2 Master Clip TG24 Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 396.611200646081,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1353-2563-25b9-7f9e20fb462a",
+        "name": " P2 Master TG24 Node3",
+        "description": " P2 Master Clip TG24 Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 432.345778495646,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1354-1927-8f2c-584e0a39f463",
+        "name": " P2 Master TG24 Node4",
+        "description": " P2 Master Clip TG24 Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 468.08035634521,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200716-1355-1337-1f02-e8a50814018b",
+        "name": " P2 Master TG24 Node2",
+        "description": "P2 Master Clip TG24 Node 2 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 396.611200646081,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "id": "20200716-1356-0504-5758-5168a968b119",
+        "name": " P2 Master TG24 Node3",
+        "description": "P2 Master Clip TG24 Node 3 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 432.345778495646,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_p2",
+        "execute_on": "success",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\P2_in_MASTERCLIP",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": true
+        },
+        "id": "20200716-1356-5828-1868-354c8913d9dc",
+        "name": " P2 Master TG24 Node4",
+        "description": "P2 Master Clip TG24 Node 4 Van000",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 468.08035634521,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1402-0625-556f-c0ba01007263",
+        "name": " P2 Clip TG24 Node2",
+        "description": "P2 Clip Separate TG24 Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 879.028001615203,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1403-0184-297c-8b3b6ef97d45",
+        "name": " P2 Clip TG24 Node3",
+        "description": "P2 Clip Separate TG24 Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 914.762579464768,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1404-0619-03ae-93917c069fde",
+        "name": " P2 Clip TG24 Node4",
+        "description": "P2 Clip Separate TG24 Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 950.497157314332,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1404-5560-78c6-43954bf61880",
+        "name": "P2 Clip TG24 Node 2",
+        "description": "P2 Clip Separate TG24 Node 2 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 879.028001615203,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1405-5263-723c-27bda4592a2c",
+        "name": "P2 Clip TG24 Node 3",
+        "description": "P2 Clip Separate TG24 Node 3 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 914.762579464768,
+        "start_proc": true
+      },
+      {
+        "type": "mon_p2",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1406-4387-83ef-40c95ee4d129",
+        "name": "P2 Clip TG24 Node 4",
+        "description": "P2 Clip Separate TG24 Node 4 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\P2_in_ClipSeparate",
+          "create_folder": true,
+          "muxer": "mxf",
+          "combine_clips": false
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1548-4759-6054-45a378ab1cb0"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 950.497157314332,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1407-4802-7471-57cb49bf579c",
+        "name": "TG24 Node 2",
+        "description": "TG24 Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\P2_in_ClipSeparate",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1409-5277-5cb2-027d58e23985"
+          }
+        ],
+        "pos_x": 911.189121679811,
+        "pos_y": 396.611200646081,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "id": "20200716-1409-5277-5cb2-027d58e23985",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 975.511361809028,
+        "pos_y": 396.611200646081,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1410-2565-99ac-a7d2ac5ce4c9",
+        "name": "TG24 Node 3",
+        "description": "TG24 Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\P2_in_ClipSeparate",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1411-0784-2029-ce0f619a1f7f"
+          }
+        ],
+        "pos_x": 911.189121679811,
+        "pos_y": 432.345778495646,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "id": "20200716-1411-0784-2029-ce0f619a1f7f",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 975.511361809028,
+        "pos_y": 432.345778495646,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1411-3541-10cf-bc3afda2ff3d",
+        "name": "TG24 Node 4",
+        "description": "TG24 Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\P2_in_MASTERCLIP",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\P2_in_ClipSeparate",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\P2_in_ClipSeparate",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1412-2519-5ee9-6f1620b46216"
+          }
+        ],
+        "pos_x": 911.189121679811,
+        "pos_y": 468.08035634521,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "id": "20200716-1412-2519-5ee9-6f1620b46216",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 975.511361809028,
+        "pos_y": 468.08035634521,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "success",
+        "name": "Audio Channel Count",
+        "description": "Audio Channel Count",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_my_audio_channels",
+              "data": "%i_a_channels%",
+              "type": "string"
+            }
+          ]
+        },
+        "id": "20200803-1548-4759-6054-45a378ab1cb0",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20170208-151013-452-316F559DBA2D"
+          }
+        ],
+        "pos_x": 203.644480258433,
+        "pos_y": 485.947645269993,
+        "start_proc": false
+      },
+      {
+        "id": "20200903-1757-4063-6222-011a1c287f51",
+        "type": "cmd_run",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 332.288960516865,
+        "pos_y": 164.336444623911,
+        "execute_on": "error",
+        "name": "Metadata File",
+        "description": "Metadata File catcher",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "command": "%comspec% \/C \"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true,
+          "stdout_var_name": "None",
+          "set_timeout": 120,
+          "error_timeout": 1
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-170845-177-6edb2052d8a8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-170957-365-7F5602841459"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1335-5788-9083-3961e2514083"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1336-4908-1327-365fca2c471c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-181819-672-85EEE0FA29BF"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1532-2267-3f43-ccc725f3e4df"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1536-1115-9ce5-cf7cf3a716af"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1539-0511-19c1-775013ea572f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-1425-0959-5c73-48dd53c9c750"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1407-4802-7471-57cb49bf579c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1410-2565-99ac-a7d2ac5ce4c9"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1411-3541-10cf-bc3afda2ff3d"
+          }
+        ]
+      }
+    ]
+  },
+  "user_variables": {
+    "variables": [
+      {
+        "name": "s_my_audio_channels",
+        "type": "string",
+        "data": "Number of audio channel of the original file before indexing"
+      }
+    ]
+  }
+}

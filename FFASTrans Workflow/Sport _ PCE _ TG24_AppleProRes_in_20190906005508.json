@@ -1,0 +1,1971 @@
+﻿{
+  "workflow": {
+    "wf_name": "AppleProRes_in",
+    "wf_id": "20190906005508",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 5,
+      "priority": "2 (normal)",
+      "timeout_level": 10
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 5,
+      "work_age": 5,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "D:\\encoder\\encoder\\Processors\\.cache\\wfs\\20190906005508\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": false,
+      "protected": false,
+      "password": ""
+    },
+    "updated": "2020-09-03T17:44:43.402-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20190906-004014-893-7E21D713BA9E",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20190906-004043-938-FBDE0B5CCB52",
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "bypass": false,
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 525.255680904514,
+        "pos_y": 625.312498883294,
+        "start_proc": false
+      },
+      {
+        "id": "20190906-005556-964-a09eb2c769dc",
+        "preset": {
+          "name": "AppleProRes",
+          "id": "20200120-1039-03a3-65ea-56f7e383a3ac"
+        },
+        "bypass": false,
+        "type": "enc_av_customff",
+        "execute_on": "success",
+        "name": "Apple ProRes",
+        "description": "Apple ProRes Encoding",
+        "properties": null,
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-162658-462-93046dc84a2c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-163020-778-10eafdc14094"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-180942-190-56f85d43337e"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200508-1434-2886-7fb5-c729ed9e345c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1436-2946-3eca-0a3c24abd688"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1439-3963-19a9-c19e715e757f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1442-2427-9701-030a4f0b68cf"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1407-1595-1374-6235f6202937"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1409-5665-4cc0-b0241bd91f7b"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1412-0362-403b-3c499c13caed"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1214-1077-6912-9f200eea9a07"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1215-1089-2ccd-67b543020d62"
+          }
+        ],
+        "pos_x": 255.102272361805,
+        "pos_y": 625.312498883294,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-160759-161-BA9C9FE2258E",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "AppleProRes_in SPR",
+        "description": "AppleProRes in SPORT Node 1",
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-162658-462-93046dc84a2c",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20190906-004014-893-7e21d713ba9e"
+          }
+        ],
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-163020-778-10EAFDC14094",
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-163128-563-e88ae908a728"
+          }
+        ],
+        "bypass": false,
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-163128-563-E88AE908A728",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-163412-055-7AF05EBA1BC7",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "AppleProRes_in SPR",
+        "description": "AppleProRes in SPORT Node 2",
+        "pos_x": 75,
+        "pos_y": 125.02840898939,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-175322-647-E69512023310",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "AppleProRes_in PCE",
+        "description": "AppleProRes in PCE Node 1",
+        "pos_x": 75,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-180942-190-56F85D43337E",
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-181020-265-a2407e82c92d"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "pos_x": 345.153408542708,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-181020-265-A2407E82C92D",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1545-3129-1d72-51aafc8a690f",
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "description": "AppleProRes in SPORT Node 1 Van000",
+        "name": "AppleProRes_in SPR",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1433-2428-4953-9d9dab0c3423",
+        "description": "AppleProRes in TG24 Node 1 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "name": "AppleProRes_in TG24",
+        "pos_x": 165.051136180903,
+        "pos_y": 475.227271915123,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200508-1434-2886-7fb5-c729ed9e345c",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200508-1435-3014-692d-a8cb8162b7a7"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "TG24 Node 1",
+        "description": "TG24 Node 1",
+        "pos_x": 345.153408542708,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200508-1435-3014-692d-a8cb8162b7a7",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1437-0334-8e15-e3de438e1234",
+        "description": "AppleProRes in TG24 Node 1",
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "AppleProRes_in TG24",
+        "pos_x": 75,
+        "pos_y": 475.227271915123,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200515-1426-2102-2e0e-c91d3edf97dc",
+        "description": "AppleProRes in PCE Node 1 Van000",
+        "name": "AppleProRes_in PCE",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1434-5372-4282-d102cc917a83",
+        "name": "AppleProRes_in PCE",
+        "description": "AppleProRes in PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1436-2946-3eca-0a3c24abd688",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1437-0646-916d-7055ace3e163"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1437-0646-916d-7055ace3e163",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1437-4179-60fc-01823cf369d4",
+        "name": "AppleProRes_in PCE",
+        "description": "AppleProRes in PCE Node 2 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1439-0027-5770-90bce0e40119",
+        "name": "AppleProRes_in PCE",
+        "description": "AppleProRes in PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 375.170453936342,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1439-3963-19a9-c19e715e757f",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1440-0626-9715-0bfc02aae078"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1440-0626-9715-0bfc02aae078",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1440-3102-2cd5-5b822c933428",
+        "name": "AppleProRes_in PCE",
+        "description": "AppleProRes in PCE Node 3 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 375.170453936342,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1441-2532-4efa-bdbe64b19594",
+        "name": "AppleProRes_in PCE",
+        "description": "AppleProRes in PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 425.198862925733,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1442-2427-9701-030a4f0b68cf",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1442-4093-82ea-745342c5ad27"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1442-4093-82ea-745342c5ad27",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1443-2412-58d1-04747b625e89",
+        "name": "AppleProRes_in PCE",
+        "description": "AppleProRes in PCE Node 4 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 425.198862925733,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1405-4755-2dc1-a8bcd209a660",
+        "name": "AppleProRes_in TG24",
+        "description": "AppleProRes in TG24 Node 2",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 525.255680904514,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1406-2579-9446-c468073b08c0",
+        "name": "AppleProRes_in TG24",
+        "description": "AppleProRes in TG24 Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 525.255680904514,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200521-1407-1595-1374-6235f6202937",
+        "name": "TG24 Node 2",
+        "description": "TG24 Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200521-1408-0809-6a50-8680b417c310"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200521-1408-0809-6a50-8680b417c310",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 525.255680904514,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1408-3339-401b-158917e20568",
+        "name": "AppleProRes_in TG24",
+        "description": "AppleProRes in TG24 Node 3",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 575.284089893904,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1409-0929-5631-455a6df568c7",
+        "name": "AppleProRes_in TG24",
+        "description": "AppleProRes in TG24 Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 575.284089893904,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200521-1409-5665-4cc0-b0241bd91f7b",
+        "name": "TG24 Node 3",
+        "description": "TG24 Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200521-1410-2634-4845-0fa9febfeebf"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200521-1410-2634-4845-0fa9febfeebf",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1410-4571-1bc0-c1f9b7238c09",
+        "name": "AppleProRes_in TG24",
+        "description": "AppleProRes in TG24 Node 4",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 625.312498883294,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1411-1717-0be5-cbc663cd4fae",
+        "name": "AppleProRes_in TG24",
+        "description": "AppleProRes in TG24 Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 625.312498883294,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200521-1412-0362-403b-3c499c13caed",
+        "name": "TG24 Node 4",
+        "description": "TG24 Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200521-1412-3786-8929-cfb6b87b1f2a"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 625.312498883294,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200521-1412-3786-8929-cfb6b87b1f2a",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 625.312498883294,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1207-4134-5142-ece37130f15e",
+        "name": "AppleProRes_in SPR",
+        "description": "AppleProRes in SPORT Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1208-3425-460b-454d5ef64768",
+        "name": "AppleProRes_in SPR",
+        "description": "AppleProRes in SPORT Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 225.085226968171,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1209-2551-8393-dd0a5a2ab821",
+        "name": "AppleProRes_in SPR",
+        "description": "AppleProRes in SPORT Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 125.02840898939,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1212-1131-0395-63b9d3dc3ee5",
+        "name": "AppleProRes_in SPR",
+        "description": "AppleProRes in SPORT Node 3 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1212-5495-68b1-b97735093386",
+        "name": "AppleProRes_in SPR",
+        "description": "AppleProRes in SPORT Node 4 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\AppleProRes_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_customff",
+            "id": "20190906-005556-964-a09eb2c769dc"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 225.085226968171,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200716-1214-1077-6912-9f200eea9a07",
+        "name": "SPORT Node 3",
+        "description": "SPORT Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1214-4298-283f-ed4a0d4569ae"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1214-4298-283f-ed4a0d4569ae",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200716-1215-1089-2ccd-67b543020d62",
+        "name": "SPORT Node 4",
+        "description": "SPORT Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\AppleProRes_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\AppleProRes_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1215-4176-4b6a-aca05cdf62d4"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1215-4176-4b6a-aca05cdf62d4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      }
+    ]
+  },
+  "presets": [
+    {
+      "properties": {
+        "audio": {
+          "codec": "libmp3lame",
+          "bitrate": 128
+        },
+        "video": {
+          "codec": "mpeg4",
+          "bitrate": 1500
+        },
+        "ff_options": "-c:v prores_ks -c:a pcm_s24le -ac %i_a_channels% -pix_fmt %s_pixel_format% -s %i_width%:%i_height% -r %f_frame_rate% -af loudnorm=I=-24:LRA=1 -ar 48000 -color_range %s_color_range% -color_primaries %s_color_prim% -color_trc %s_color_trans% -colorspace %s_color_space%",
+        "extension": ".mov"
+      },
+      "type": "enc_av_customff",
+      "id": "20200120-1039-03a3-65ea-56f7e383a3ac",
+      "name": "AppleProRes"
+    }
+  ]
+}

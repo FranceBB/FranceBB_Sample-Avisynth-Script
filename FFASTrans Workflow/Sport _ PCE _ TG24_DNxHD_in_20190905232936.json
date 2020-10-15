@@ -1,0 +1,1140 @@
+﻿{
+  "workflow": {
+    "wf_name": "DNxHD_in",
+    "wf_id": "20190905232936",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 30,
+      "priority": "2 (normal)",
+      "timeout_level": 3
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 5,
+      "work_age": 5,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "D:\\encoder\\encoder\\Processors\\.cache\\wfs\\20190905232936\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": false,
+      "protected": false,
+      "password": ""
+    },
+    "updated": "2020-09-03T17:52:38.417-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20190906-003818-494-A82CD56ABE01",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "DNxHD_in SPORT",
+        "description": "DNxHD in SPORT Node 1",
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20190906-003911-908-971899c6f135",
+        "name": "",
+        "bypass": false,
+        "type": "enc_av_dnxhd",
+        "execute_on": "success",
+        "description": "DNxHD 185 Mbit\/s 10bit Encoding",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "video": {
+            "format": "1080i50",
+            "type": "185 (10 bit)",
+            "interlacing": "Analyze",
+            "resizing": "Fit and keep aspect",
+            "processing": "Full transcoding"
+          },
+          "audio": {
+            "bitdepth": 24,
+            "codec": "pcm_s24le",
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitrate": null,
+            "layout": "source"
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "wrapper": "MXF",
+          "start_tc": "%s_start_tc%"
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-173543-999-19e9baa0e6f4"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-173634-136-f7ef5d84b4d2"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-182917-508-4229c57c461d"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-1934-5359-144e-e7fc9c41659e"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1743-3410-0875-07bed03f3d22"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1745-5371-5db7-aa5f9ecfcbd5"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1748-4430-9994-8075821fa00d"
+          }
+        ],
+        "pos_x": 255.102272361805,
+        "pos_y": 400.184658431038,
+        "start_proc": false
+      },
+      {
+        "id": "20190906-004014-893-7E21D713BA9E",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20190906-004043-938-FBDE0B5CCB52",
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "bypass": false,
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 525.255680904514,
+        "pos_y": 450.213067420428,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165730-700-6E674EA94FD5",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "DNxHD_in SPORT",
+        "description": "DNxHD in SPORT Node 2",
+        "pos_x": 75,
+        "pos_y": 125.02840898939,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-173543-999-19e9baa0e6f4",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20190906-004014-893-7e21d713ba9e"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\DNxHD_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\DNxHD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "pos_x": 345.153408542708,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-173634-136-F7EF5D84B4D2",
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-173646-308-e99230479b29"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\DNxHD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "pos_x": 345.153408542708,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-173646-308-E99230479B29",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-180338-468-2885E21B3573",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "DNxHD_in PCE",
+        "description": "DNxHD in PCE Node 1",
+        "pos_x": 75,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-182917-508-4229C57C461D",
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-182944-573-a5fdc6284709"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\DNxHD_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\DNxHD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "pos_x": 345.153408542708,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-182944-573-A5FDC6284709",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1719-4060-4bdc-cb87d4f4ad2a",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "name": "DNxHD_in SPORT",
+        "description": "DNxHD in SPORT Node 1 Van000",
+        "pos_x": 165.051136180903,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1932-1025-1bb2-69d026093b17",
+        "name": "DNxHD_in TG24",
+        "description": "DNxHD in TG24 Node 1",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 375.170453936342,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200514-1934-5359-144e-e7fc9c41659e",
+        "name": "Node 1 TG24",
+        "description": "Node 1 TG24",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200514-1935-4889-7a93-58ff0ff34072"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\DNxHD_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\DNxHD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200514-1935-4889-7a93-58ff0ff34072",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1938-0357-4f1f-697e579131d5",
+        "name": "DNxHD_in PCE",
+        "description": "DNxHD in PCE Node 1 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1939-5290-0f81-94b866c13ad8",
+        "name": "DNxHD_in TG24",
+        "description": "DNxHD in TG24 Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 375.170453936342,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1741-3828-1675-011b6bdd8a92",
+        "name": "DNxHD_in PCE",
+        "description": "DNxHD in PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 225.085226968171,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1742-2420-1909-a1c1088fb76f",
+        "name": "DNxHD_in PCE",
+        "description": "DNxHD in PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 225.085226968171,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1743-3410-0875-07bed03f3d22",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\DNxHD_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\DNxHD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1744-0542-2a93-a64d7c6a73ec"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1744-0542-2a93-a64d7c6a73ec",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1744-3577-596d-27b3948733ab",
+        "name": "DNxHD_in PCE",
+        "description": "DNxHD in PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1745-1685-7c4b-7662b5d4da19",
+        "name": "DNxHD_in PCE",
+        "description": "DNxHD in PCE Node 3 Van000",
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1745-5371-5db7-aa5f9ecfcbd5",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\DNxHD_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\DNxHD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1746-2569-06bb-6db7ae464778"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1746-2569-06bb-6db7ae464778",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1747-1432-71c5-2b68060e9097",
+        "name": "DNxHD_in PCE",
+        "description": "DNxHD in PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1747-4822-58a6-b0d5a41bfa84",
+        "name": "DNxHD_in PCE",
+        "description": "DNxHD in PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\DNxHD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dnxhd",
+            "id": "20190906-003911-908-971899c6f135"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200518-1748-4430-9994-8075821fa00d",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\DNxHD_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\DNxHD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1749-2052-8a77-4cf1ccb3220a"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1749-2052-8a77-4cf1ccb3220a",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      }
+    ]
+  }
+}

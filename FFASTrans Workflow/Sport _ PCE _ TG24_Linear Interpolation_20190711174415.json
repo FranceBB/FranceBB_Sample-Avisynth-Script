@@ -1,0 +1,1459 @@
+﻿{
+  "workflow": {
+    "wf_id": "20190711174415",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "wf_name": "Linear Interpolation",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 5,
+      "priority": "2 (normal)",
+      "timeout_level": 3
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 1,
+      "work_age": 1,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "C:\\Users\\dmerra\\Desktop\\beta\\Processors\\.cache\\wfs\\20190711174415\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": true,
+      "protected": true,
+      "password": "CE79659EB75F7B1C566E50FA"
+    },
+    "updated": "2020-09-28T17:12:16.600-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20170208-150859-290-044E9EC8E471",
+        "bypass": false,
+        "type": "enc_av_xdcamhd",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "video": {
+            "format": "1920×1080i50",
+            "resizing": "Fill and keep aspect",
+            "interlacing": "Analyze",
+            "type": "50 Mbit (422)",
+            "processing": "Full transcoding"
+          },
+          "audio": {
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitdepth": 24,
+            "samplerate": 48000,
+            "bitrate": null,
+            "codec": "pcm_s24le",
+            "layout": "default",
+            "streams": [
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  1
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  2
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  3
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  4
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  5
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  6
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  7
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  8
+                ]
+              }
+            ]
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "wrapper": "MXF",
+          "start_tc": "%s_start_tc%"
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-173853-912-eeae05127410"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-173925-482-6848fd0d1cdc"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-183105-035-b18aa36cd4ea"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-2011-3145-5fd2-6f0cf265f0cf"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1803-0347-7600-6ab6b278295a"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1805-2247-0a26-12d992c1c57f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1810-4346-9122-b13bbcc7bcc8"
+          }
+        ],
+        "execute_on": "success",
+        "name": "x262 (XDCAM50)",
+        "description": "Encoding: x262 video codec + LAV PCM audio codec + ffmpeg wrapper (muxer). XDCAM50",
+        "pos_x": 705,
+        "pos_y": 376,
+        "start_proc": false
+      },
+      {
+        "id": "20171114-174817-518-944CE550E0DD",
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 885,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20171204-170142-750-536EF5BA47E1",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900efe8"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Repair_in SPORT",
+        "description": "Repair in SPORT Node 1",
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20171204-170231-125-04052900EFE8",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180124-190445-066-a585fe181e19"
+          },
+          {
+            "type": "cmd_run",
+            "id": "20200903-1800-4744-584e-5d8fc7ae6f4c"
+          }
+        ],
+        "bypass": false,
+        "name": "Avisynth x64 Indexing",
+        "description": "Indexing",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "audio": {
+            "use": true,
+            "channels": 32,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "format": "YUV 4:2:2 8bit",
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "pos_x": 255,
+        "pos_y": 376,
+        "start_proc": false
+      },
+      {
+        "id": "20180124-190445-066-a585fe181e19",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Kernel 2xFPS"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_resize",
+            "id": "20180205-220516-501-44b241ac66cc"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Bob-deinterlacing if needed",
+        "pos_x": 345,
+        "pos_y": 376,
+        "start_proc": false
+      },
+      {
+        "id": "20180205-220516-501-44B241AC66CC",
+        "name": "",
+        "type": "avs_v_resize",
+        "execute_on": "success",
+        "description": "Resize via Spline64",
+        "outbounds": [
+          {
+            "type": "avs_v_fpsconv",
+            "id": "20180205-220550-988-125f227c988f"
+          }
+        ],
+        "properties": {
+          "quality": "NNEDI3",
+          "size": "FHD 1080 (1920×1080)",
+          "width": 1920,
+          "height": 1080,
+          "video": {
+            "interlacing": "Analyze",
+            "width": 1920,
+            "height": 1080
+          }
+        },
+        "bypass": false,
+        "pos_x": 435,
+        "pos_y": 376,
+        "start_proc": false,
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        }
+      },
+      {
+        "id": "20180205-220550-988-125f227c988f",
+        "bypass": false,
+        "type": "avs_v_fpsconv",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180701-081456-730-68c5351dabf5"
+          }
+        ],
+        "description": "Linear interpolation to 50p with MVTools",
+        "properties": {
+          "fps_conv": 50,
+          "motion_comp": true,
+          "keep_fps": false,
+          "motion_comp_quality": "Slow",
+          "fps_custom": "",
+          "blend": false,
+          "set_fps_speed": false
+        },
+        "name": "Linear Interpolation",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 525,
+        "pos_y": 376,
+        "start_proc": false
+      },
+      {
+        "id": "20180701-081456-730-68c5351dabf5",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "bypass": false,
+        "type": "avs_custom",
+        "execute_on": "success",
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\n\r\nc=Converttoyv16(m_clip)\r\n#resized=ResizeKAR(c, 1920, 1080, \"Spline64Resize\")\r\nresized=c\r\nm_clip=Limiter(resized, min_luma=16, max_luma=235, min_chroma=16, max_chroma=240)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true,
+          "verify": 4
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044e9ec8e471"
+          }
+        ],
+        "name": "Limiter Tv Range v2",
+        "description": "Brings luma and chroma in Tv Range 0.7mV 16-235.",
+        "pos_x": 615,
+        "pos_y": 376,
+        "start_proc": false
+      },
+      {
+        "id": "20180810-005553-840-9b4c7da869f6",
+        "bypass": false,
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 975,
+        "pos_y": 426,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165755-814-0A58D8F39B97",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900efe8"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Repair_in SPORT",
+        "description": "Repair in SPORT Node 2",
+        "pos_x": 75,
+        "pos_y": 126,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-173853-912-eeae05127410",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20171114-174817-518-944ce550e0dd"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Repair_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Repair_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "pos_x": 795,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-173925-482-6848FD0D1CDC",
+        "type": "op_cond",
+        "execute_on": "success",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Repair_in",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-173931-988-3a4da71a201c"
+          }
+        ],
+        "bypass": false,
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "pos_x": 795,
+        "pos_y": 126,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-173931-988-3A4DA71A201C",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 885,
+        "pos_y": 126,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-180416-462-E7947C15C42B",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900efe8"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Repair_in PCE",
+        "description": "Repair in PCE Node 1",
+        "pos_x": 75,
+        "pos_y": 176,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-183105-035-B18AA36CD4EA",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-183133-702-8360fa3f2544"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Repair_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Repair_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "pos_x": 795,
+        "pos_y": 176,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-183133-702-8360FA3F2544",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 885,
+        "pos_y": 176,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1722-0962-0372-f1b713c01451",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "name": "Repair_in SPORT",
+        "description": "Repair in SPORT Node 1 Van000",
+        "pos_x": 165,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-2010-2027-8f22-3a60f24c81b7",
+        "name": "Repair_in TG24",
+        "description": "Repair in TG24 Node 1",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 401,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-2011-3145-5fd2-6f0cf265f0cf",
+        "name": "Node 1 TG24",
+        "description": "Node 1 TG24",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200514-2012-0130-5183-598c6a848572"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Repair_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Repair_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 795,
+        "pos_y": 576,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200514-2012-0130-5183-598c6a848572",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 885,
+        "pos_y": 576,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-2014-0768-4874-109fbf9f7ce3",
+        "name": "Repair_in PCE",
+        "description": "Repair in PCE Node 1 Van000",
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 176,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-2016-1250-5238-879d7e8412fa",
+        "name": "Repair_in TG24",
+        "description": "Repair in TG24 Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 165,
+        "pos_y": 401,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1801-2687-5228-4f86ff3d992b",
+        "name": "Repair_in PCE",
+        "description": "Repair in PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 226,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1802-1001-6d9b-925008b9be51",
+        "name": "Repair_in PCE",
+        "description": "Repair in PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 226,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1803-0347-7600-6ab6b278295a",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Repair_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Repair_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1803-3485-5bd0-bdb593e1c160"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 795,
+        "pos_y": 226,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1803-3485-5bd0-bdb593e1c160",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 885,
+        "pos_y": 226,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1804-0663-00d0-c64b7a332d64",
+        "name": "Repair_in PCE",
+        "description": "Repair in PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 276,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1804-4392-6be9-da73f9d1f866",
+        "name": "Repair_in PCE",
+        "description": "Repair in PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 276,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1805-2247-0a26-12d992c1c57f",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Repair_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Repair_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1805-5201-19ce-8ee58ffd052a"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 795,
+        "pos_y": 276,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1805-5201-19ce-8ee58ffd052a",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 885,
+        "pos_y": 276,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1810-4346-9122-b13bbcc7bcc8",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Repair_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Repair_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1813-0876-49ec-27675760fdf7"
+          }
+        ],
+        "pos_x": 795,
+        "pos_y": 326,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1810-5686-1a4d-df22e28c0462",
+        "name": "Repair_in PCE",
+        "description": "Repair in PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 326,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1811-3544-40e4-2ad4cd27e475",
+        "name": "Repair_in PCE",
+        "description": "Repair in PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\MIBCTVAN000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Repair_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20171204-170231-125-04052900EFE8"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165,
+        "pos_y": 326,
+        "start_proc": true
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1813-0876-49ec-27675760fdf7",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 885,
+        "pos_y": 326,
+        "start_proc": false
+      },
+      {
+        "id": "20200903-1800-4744-584e-5d8fc7ae6f4c",
+        "type": "cmd_run",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 345,
+        "pos_y": 151,
+        "execute_on": "error",
+        "name": "Metadata File",
+        "description": "Metadata File catcher",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "command": "%comspec% \/C \"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true,
+          "stdout_var_name": "None",
+          "set_timeout": 120,
+          "error_timeout": 1
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-173853-912-eeae05127410"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-173925-482-6848FD0D1CDC"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-183105-035-B18AA36CD4EA"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1803-0347-7600-6ab6b278295a"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1805-2247-0a26-12d992c1c57f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1810-4346-9122-b13bbcc7bcc8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-2011-3145-5fd2-6f0cf265f0cf"
+          }
+        ]
+      }
+    ]
+  }
+}

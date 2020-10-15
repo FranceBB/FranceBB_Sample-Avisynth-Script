@@ -1,0 +1,3905 @@
+﻿{
+  "workflow": {
+    "wf_id": "20190505063814",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "wf_name": "LinearTransformations 1",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 30,
+      "priority": "2 (normal)",
+      "timeout_level": 3
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 5,
+      "work_age": 5,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "C:\\encoder\\encoder\\Processors\\.cache\\wfs\\20190505063814\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": true,
+      "protected": true,
+      "password": "CE79659EB75F7B1C566E50FA"
+    },
+    "updated": "2020-09-03T18:03:25.324-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20190505-063900-677-5E62DB6CE940",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 SPORT Node 1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20190505-063936-847-2DC9CD14B991",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20190505-064021-593-a1c53605abce"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064042-285-e2b9e0bd8c49"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064055-980-845e60734c08"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064110-937-dfb75ef1542a"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064129-669-f4646a70fd58"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064144-869-4265d67b4261"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064159-478-0ec193f3d1eb"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064227-335-b4ab04cc9861"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064239-702-bee030ebb367"
+          },
+          {
+            "type": "cmd_run",
+            "id": "20200903-1802-0925-4ae3-f50d437ccdbe"
+          }
+        ],
+        "bypass": false,
+        "name": "Avisynth x64 Indexing",
+        "description": "Indexing",
+        "properties": {
+          "audio": {
+            "use": true,
+            "channels": 32,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "format": "YUV 4:4:4 16bit",
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345,
+        "pos_y": 400,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064021-593-A1C53605ABCE",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 8 ch",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 8,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 200,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064042-285-E2B9E0BD8C49",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 7 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-064328-959-57a68d17b41f"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 7,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 250,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064055-980-845E60734C08",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 6 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-064345-239-1d3c1b86b034"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 6,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 300,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064110-937-DFB75EF1542A",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 5 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-064359-958-34b4876fd259"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 5,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 350,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064129-669-F4646A70FD58",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 4 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-064420-910-3812c7471157"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 4,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 400,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064144-869-4265D67B4261",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 3 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-064437-537-b85d942383f2"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 3,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 450,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064159-478-0EC193F3D1EB",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 2 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-064454-556-2ac303831fc3"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 2,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 500,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064227-335-B4AB04CC9861",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 1 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-064510-418-bbb406a3f3de"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 1,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 550,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064239-702-BEE030EBB367",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 0 ch",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 0,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 600,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064328-959-57A68D17B41F",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 7->7, 1->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 250,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064345-239-1D3C1B86B034",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 300,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064359-958-34B4876FD259",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 1->6, 2->7, 3->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            1,
+            2,
+            3,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 350,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064420-910-3812C7471157",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 1->5, 2->6, 3->7, 4->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            1,
+            2,
+            3,
+            4,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 400,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064437-537-B85D942383F2",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 1->4, 2->5, 3->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            1,
+            2,
+            3,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 450,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064454-556-2AC303831FC3",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 1->3, 2->4, 1->5, 2->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 500,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064510-418-BBB406A3F3DE",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 1->2, 1->3, 1->4, 1->5, 1->6, 1->7, 1->8.",
+        "properties": {
+          "mapping": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-064543-973-5e52b3c2d736"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 550,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064543-973-5E52B3C2D736",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "YADIF 2xFPS"
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20190505-064630-177-8ea80036ac08"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-064715-665-ea6070cadc90"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Bob-deinterlacing if needed",
+        "pos_x": 705,
+        "pos_y": 400,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064630-177-8EA80036AC08",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if frame rate >= 50",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20190505-064751-233-8aa22f83c407"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 795,
+        "pos_y": 350,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064715-665-EA6070CADC90",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "smaller than (<)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "description": "if frame rate < 50",
+        "outbounds": [
+          {
+            "type": "avs_v_fpsconv",
+            "id": "20190505-064733-770-1e36de9472b6"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 795,
+        "pos_y": 425,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064733-770-1E36DE9472B6",
+        "type": "avs_v_fpsconv",
+        "execute_on": "success",
+        "name": "Blending",
+        "description": "Blending.",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20190505-064751-233-8aa22f83c407"
+          }
+        ],
+        "properties": {
+          "fps_conv": 50,
+          "motion_comp": false,
+          "keep_fps": false,
+          "motion_comp_quality": "Medium",
+          "fps_custom": "",
+          "blend": true
+        },
+        "bypass": false,
+        "pos_x": 885,
+        "pos_y": 400,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064751-233-8AA22F83C407",
+        "type": "avs_custom",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20190505-064939-845-036615c685c6"
+          }
+        ],
+        "bypass": false,
+        "name": "Color Curve",
+        "description": "LUT conversion from S-Log3 to Linear BT709.",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\nLoadPlugin(\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\LUTs\\vscube.dll\")\r\nmypath=\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\LUTs\\Slog3_Avisynth.cube\"\r\n\r\nc=ConverttoYUV444(m_clip)\r\nhbd=ConvertBits(c, bits=16)\r\nplrgb=ConvertToPlanarRGB(hbd)\r\nlineartransformation=Cube(plrgb, mypath)\r\nm_clip=ConvertBits(lineartransformation, bits=8, dither=1)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "pos_x": 975,
+        "pos_y": 400,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-064939-845-036615C685C6",
+        "type": "avs_custom",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20190505-065103-106-9b76c7ba6139"
+          }
+        ],
+        "bypass": false,
+        "name": "Limiter Tv Range v2",
+        "description": "Brings luma and chroma in Tv Range 0.7mV 16-235.",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\nImport(\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\ResizeKAR.avsi\")\r\n\r\n\r\nc=Converttoyv16(m_clip)\r\n#resized=ResizeKAR(c, 1920, 1080, \"Spline64Resize\")\r\nresized=c\r\nm_clip=Limiter(resized, min_luma=16, max_luma=235, min_chroma=16, max_chroma=240)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "pos_x": 1065,
+        "pos_y": 575,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-065033-712-5AB0757526DC",
+        "type": "enc_av_xdcamhd",
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "video": {
+            "format": "1920×1080i50",
+            "resizing": "Fit and keep aspect",
+            "interlacing": "Analyze",
+            "type": "50 Mbit (422)",
+            "processing": "Full transcoding"
+          },
+          "audio": {
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitdepth": 24,
+            "samplerate": 48000,
+            "bitrate": null,
+            "codec": "pcm_s24le",
+            "layout": "default",
+            "streams": [
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  1
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  2
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  3
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  4
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  5
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  6
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  7
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  8
+                ]
+              }
+            ]
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "wrapper": "MXF",
+          "start_tc": "%s_start_tc%"
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-171517-854-dbfed96e5222"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-171620-937-4840c5cc3d48"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-182447-542-0ca434c8373e"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-1702-1100-0096-0851f2f2e773"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1541-3661-5927-dbde4f9b30f9"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1546-3265-1799-7403c5aebd2f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1550-0075-8e22-2417014ab2c8"
+          }
+        ],
+        "execute_on": "success",
+        "name": "x262 (XDCAM50)",
+        "description": "Encoding: x262 video codec + LAV PCM audio codec + ffmpeg wrapper (muxer). XDCAM50",
+        "pos_x": 1245,
+        "pos_y": 575,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-065103-106-9B76C7BA6139",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "type": "avs_custom",
+        "execute_on": "success",
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\n\r\nr=ResampleAudio(m_clip, 48000)\r\nn=Normalize(r, 0.22)\r\nm_clip=ConvertAudioTo24bit(n)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20190505-065033-712-5ab0757526dc"
+          }
+        ],
+        "bypass": false,
+        "name": "Loudness Correction",
+        "description": "Loudness Correction at -24LUFS.",
+        "pos_x": 1155,
+        "pos_y": 575,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-065127-615-AA1068708637",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190505-065144-219-b9da40aa32c7"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1425,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-065144-219-B9DA40AA32C7",
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "bypass": false,
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 1515,
+        "pos_y": 625,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071556-044-E7CDEC3D0C12",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 SPORT Node 1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 675,
+        "start_proc": true
+      },
+      {
+        "id": "20190505-071632-242-B5374A777BE2",
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20190505-071646-685-af2f3615621c"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-071656-461-7794c2cac1ef"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-071702-776-e8f745be765b"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-071712-275-8fc4f699a948"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-071721-847-cfef5a1f4dcc"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-071800-859-a8fefab84f22"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-071811-119-9539f2330414"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-071821-823-2a2b166cf909"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-071827-120-fb35bfbfd970"
+          },
+          {
+            "type": "cmd_run",
+            "id": "20200903-1802-0925-4ae3-f50d437ccdbe"
+          }
+        ],
+        "bypass": false,
+        "name": "Avisynth x64 Indexing",
+        "description": "Indexing",
+        "properties": {
+          "audio": {
+            "use": true,
+            "channels": 32,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "format": "YUV 4:4:4 16bit",
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345,
+        "pos_y": 875,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071646-685-AF2F3615621C",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 8 ch",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 8,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 675,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071656-461-7794C2CAC1EF",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 7 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-071859-103-2a79d4c9ba9e"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 7,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 725,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071702-776-E8F745BE765B",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 6 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-071905-629-1341581e2ef8"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 6,
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435,
+        "pos_y": 775,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071712-275-8FC4F699A948",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 5 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-071911-926-f7d0da7a9b13"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 5,
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435,
+        "pos_y": 825,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071721-847-CFEF5A1F4DCC",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 4 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-071918-738-5b83ff7bcc18"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 4,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 875,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071800-859-A8FEFAB84F22",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 3 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-071928-403-68a1a2f46297"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 3,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 925,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071811-119-9539F2330414",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 2 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-071940-066-e823c6c19d82"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 2,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 975,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071821-823-2A2B166CF909",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 1 ch",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20190505-072045-712-91baeaabf825"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 1,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435,
+        "pos_y": 1025,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071827-120-FB35BFBFD970",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if audio channels = 0 ch",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 0,
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435,
+        "pos_y": 1075,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071859-103-2A79D4C9BA9E",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 7->7, 1->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 725,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071905-629-1341581E2EF8",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 6->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 775,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071911-926-F7D0DA7A9B13",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 5->5, 1->6, 2->7, 3->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            1,
+            2,
+            3,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 825,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071918-738-5B83FF7BCC18",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 4->4, 1->5, 2->6, 3->7, 4->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            1,
+            2,
+            3,
+            4,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 875,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071928-403-68A1A2F46297",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 1->4, 2->5, 3->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            1,
+            2,
+            3,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 925,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-071940-066-E823C6C19D82",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 2->2, 3->3, 1->4, 2->5, 3->6, 1->7, 2->8.",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            1,
+            2,
+            3,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 975,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-072045-712-91BAEAABF825",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1, 1->2, 1->3, 1->4, 1->5, 1->6, 1->7, 1->8.",
+        "properties": {
+          "mapping": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20190505-072115-518-4875666f4399"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 525,
+        "pos_y": 1025,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-072115-518-4875666F4399",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "YADIF 2xFPS"
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20190505-072202-581-464206f8a891"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190505-072211-028-891182b36071"
+          }
+        ],
+        "bypass": false,
+        "name": "Deinterlacing",
+        "description": "Bob-deinterlacing if needed",
+        "pos_x": 705,
+        "pos_y": 875,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-072202-581-464206F8A891",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "smaller than (<)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "description": "if frame rate < 50",
+        "outbounds": [
+          {
+            "type": "avs_v_fpsconv",
+            "id": "20190505-072221-148-1283763c144d"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 795,
+        "pos_y": 925,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-072211-028-891182B36071",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "if frame rate >= 50",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 50,
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20190505-072229-186-de8e1ac09db5"
+          }
+        ],
+        "bypass": false,
+        "pos_x": 795,
+        "pos_y": 825,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-072221-148-1283763C144D",
+        "type": "avs_v_fpsconv",
+        "execute_on": "success",
+        "name": "Blending",
+        "description": "Blending.",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20190505-072229-186-de8e1ac09db5"
+          }
+        ],
+        "properties": {
+          "fps_conv": 50,
+          "motion_comp": false,
+          "keep_fps": false,
+          "motion_comp_quality": "Medium",
+          "fps_custom": "",
+          "blend": true
+        },
+        "bypass": false,
+        "pos_x": 885,
+        "pos_y": 900,
+        "start_proc": false
+      },
+      {
+        "id": "20190505-072229-186-DE8E1AC09DB5",
+        "type": "avs_custom",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20190505-064939-845-036615c685c6"
+          }
+        ],
+        "bypass": false,
+        "name": "Color Curve",
+        "description": "LUT conversion from C-Log3 to Linear BT709.",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\nLoadPlugin(\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\LUTs\\vscube.dll\")\r\nmypath=\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\LUTs\\C-Log3_to_BT709.cube\"\r\n\r\nc=ConverttoYUV444(m_clip)\r\nhbd=ConvertBits(c, bits=16)\r\nplrgb=ConvertToPlanarRGB(hbd)\r\nlineartransformation=Cube(plrgb, mypath)\r\nm_clip=ConvertBits(lineartransformation, bits=8, dither=1)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "pos_x": 975,
+        "pos_y": 875,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165516-625-D7F6D55559CE",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 SPORT Node 2",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 125,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-165530-975-DAD54AC78C45",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 SPORT Node 2",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 725,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-171517-854-dbfed96e5222",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20190505-065127-615-aa1068708637"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Clog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Clog3",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "pos_x": 1335,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-171620-937-4840C5CC3D48",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-171644-039-d72238994258"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Clog3",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "pos_x": 1335,
+        "pos_y": 125,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-171644-039-D72238994258",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190505-065144-219-b9da40aa32c7"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1425,
+        "pos_y": 125,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-180026-659-9154903138D1",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 PCE Node 1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-180051-584-44C1E18B9BAE",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 PCE Node 1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 775,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-182447-542-0CA434C8373E",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-182530-851-88ed6678bdbc"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Clog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_Clog3",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "pos_x": 1335,
+        "pos_y": 175,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-182530-851-88ED6678BDBC",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190505-065144-219-b9da40aa32c7"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1425,
+        "pos_y": 175,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1712-1605-1d3e-dc0777ff0a1b",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 SPORT Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1714-5148-635f-54f4cf585a8a",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 SPORT Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 675,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1700-3115-86e2-e99bd111bf34",
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 TG24 Node 1",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 450,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1702-1100-0096-0851f2f2e773",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200514-1703-1494-9cd8-ba27a304beb4"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Clog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Clog3",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "TG24 Node 1",
+        "description": "TG24 Node 1",
+        "pos_x": 1335,
+        "pos_y": 525,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200514-1703-1494-9cd8-ba27a304beb4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190505-065144-219-B9DA40AA32C7"
+          }
+        ],
+        "pos_x": 1425,
+        "pos_y": 525,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1707-2860-0bb5-9583a324b7ee",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 TG24",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 1050,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1710-5791-65a8-441340037ffd",
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 PCE Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 175,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1713-0061-1976-4bc09eea9c18",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 PCE Node 1 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 775,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1715-0907-8038-b909c194a209",
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 TG24 Node 1 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 450,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-1716-5781-181f-5b505566f145",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 TG24 Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 1050,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1538-2168-22c0-52b7ce56b034",
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1541-3661-5927-dbde4f9b30f9",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200520-1544-0441-7bb7-f9d4952d6cc1"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_Clog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_Clog3",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1335,
+        "pos_y": 225,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1542-4882-966e-ba04744cc003",
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 225,
+        "start_proc": true
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200520-1544-0441-7bb7-f9d4952d6cc1",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190505-065144-219-B9DA40AA32C7"
+          }
+        ],
+        "pos_x": 1425,
+        "pos_y": 225,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1544-4619-384f-4ba63c6c38f5",
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1545-4192-4bce-5b08b96f59dd",
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 275,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1546-3265-1799-7403c5aebd2f",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200520-1547-3337-3853-7a4973baed5f"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_Clog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_Clog3",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1335,
+        "pos_y": 275,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200520-1547-3337-3853-7a4973baed5f",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190505-065144-219-B9DA40AA32C7"
+          }
+        ],
+        "pos_x": 1425,
+        "pos_y": 275,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1548-1311-3d24-9fef732697c0",
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1549-0262-0f26-015e173351b7",
+        "name": "Avisynth_in_Slog3",
+        "description": "Avisynth in Slog3 PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_Slog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1601-2429-77ef-61c0124f9db1"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 325,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1550-0075-8e22-2417014ab2c8",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200520-1550-5145-5b81-5caf04059127"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_Slog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_Clog3",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_Clog3",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1335,
+        "pos_y": 325,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200520-1550-5145-5b81-5caf04059127",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190505-065144-219-B9DA40AA32C7"
+          }
+        ],
+        "pos_x": 1425,
+        "pos_y": 325,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1552-5297-56b7-4eaba818540d",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 825,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1553-4266-9a14-a53c611d1156",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 825,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1555-3375-25ba-1f25b3d7475b",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 875,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1556-2102-76bb-c877804d7634",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 875,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1557-5173-1032-a4c7f7a7ae85",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 925,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1558-3498-06f3-c7cdb9de6ca1",
+        "name": "Avisynth_in_CLog3",
+        "description": "Avisynth in CLog3 PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_Clog3",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1621-2012-8abe-65cb55b1f022"
+          }
+        ],
+        "pos_x": 165,
+        "pos_y": 925,
+        "start_proc": true
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "success",
+        "name": "Audio Channel Count",
+        "description": "Audio Channel Count",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_my_audio_channels",
+              "data": "%i_a_channels%",
+              "type": "string"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "id": "20200803-1601-2429-77ef-61c0124f9db1",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20190505-063936-847-2DC9CD14B991"
+          }
+        ],
+        "pos_x": 255,
+        "pos_y": 400,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "success",
+        "name": "Audio Channel Count",
+        "description": "Audio Channel Count",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_my_audio_channels",
+              "data": "%i_a_channels%",
+              "type": "string"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "id": "20200803-1621-2012-8abe-65cb55b1f022",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20190505-071632-242-B5374A777BE2"
+          }
+        ],
+        "pos_x": 255,
+        "pos_y": 875,
+        "start_proc": false
+      },
+      {
+        "id": "20200903-1802-0925-4ae3-f50d437ccdbe",
+        "type": "cmd_run",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 705.357953266319,
+        "pos_y": 625.312498883295,
+        "execute_on": "error",
+        "name": "Metadata File",
+        "description": "Metadata File catcher",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "command": "%comspec% \/C \"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true,
+          "stdout_var_name": "None",
+          "set_timeout": 120,
+          "error_timeout": 1
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-171517-854-dbfed96e5222"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-171620-937-4840C5CC3D48"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-182447-542-0CA434C8373E"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1541-3661-5927-dbde4f9b30f9"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1546-3265-1799-7403c5aebd2f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1550-0075-8e22-2417014ab2c8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-1702-1100-0096-0851f2f2e773"
+          }
+        ]
+      }
+    ]
+  },
+  "user_variables": {
+    "variables": [
+      {
+        "name": "s_my_audio_channels",
+        "type": "string",
+        "data": "Number of audio channel of the original file before indexing"
+      }
+    ]
+  }
+}

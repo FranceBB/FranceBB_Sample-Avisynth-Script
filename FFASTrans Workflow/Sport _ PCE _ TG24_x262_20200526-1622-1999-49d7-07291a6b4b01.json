@@ -1,0 +1,1699 @@
+﻿{
+  "workflow": {
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "wf_id": "20200526-1622-1999-49d7-07291a6b4b01",
+    "created": "2020-05-26T16:22:19.994-01.00",
+    "wf_name": "x262",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 5,
+      "priority": "2 (normal)",
+      "timeout_level": 10
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 1,
+      "work_age": 1,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "C:\\Users\\dmerra\\Desktop\\beta\\Processors\\.cache\\wfs\\20190711172519\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": true,
+      "protected": false,
+      "password": ""
+    },
+    "updated": "2020-09-17T09:31:46.187-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20170208-150804-623-C75ED1710060",
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044e9ec8e471"
+          }
+        ],
+        "description": "x262 in SPORT Node 1",
+        "name": "X262_in SPORT Node 1",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20170208-150859-290-044E9EC8E471",
+        "bypass": false,
+        "type": "enc_av_xdcamhd",
+        "execute_on": "success",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "video": {
+            "format": "1920×1080i50",
+            "resizing": "Fill and keep aspect",
+            "interlacing": "Analyze",
+            "type": "50 Mbit (422)",
+            "processing": "Full transcoding"
+          },
+          "audio": {
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitdepth": 24,
+            "samplerate": 48000,
+            "bitrate": null,
+            "codec": "pcm_s24le",
+            "layout": "default",
+            "streams": [
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  1
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  2
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  3
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  4
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  5
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  6
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  7
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  8
+                ]
+              }
+            ]
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "wrapper": "MXF",
+          "start_tc": "%s_start_tc%"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200526-1626-2298-4fa9-fce5bb8ef742"
+          },
+          {
+            "type": "op_populate",
+            "id": "20200527-1419-2582-30ee-7f104db9223c"
+          },
+          {
+            "type": "op_populate",
+            "id": "20200527-1429-1688-9634-5a02789fc971"
+          },
+          {
+            "type": "op_populate",
+            "id": "20200527-1443-0656-9afc-041e4c2ccd12"
+          },
+          {
+            "type": "op_populate",
+            "id": "20200527-1449-5982-2b8c-5b40ee241bb1"
+          },
+          {
+            "type": "op_populate",
+            "id": "20200527-1459-3318-24a9-0b328364d8cf"
+          },
+          {
+            "type": "op_populate",
+            "id": "20200527-1505-1373-1401-16934e3f269b"
+          }
+        ],
+        "name": "x262 (XDCAM50)",
+        "description": "Encoding: x262 video codec + LAV PCM audio codec + ffmpeg wrapper (muxer). XDCAM50",
+        "pos_x": 255.102272361805,
+        "pos_y": 500.241476409819,
+        "start_proc": false
+      },
+      {
+        "id": "20171114-174817-518-944CE550E0DD",
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1\\%s_recursed_path%",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "pos_x": 525.255680904514,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20180810-005553-840-9b4c7da869f6",
+        "bypass": false,
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 705.357953266319,
+        "pos_y": 500.241476409819,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165844-398-A19CBF4D9A9C",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044e9ec8e471"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "description": "x262 in SPORT Node 2",
+        "name": "X262_in SPORT Node2",
+        "pos_x": 75,
+        "pos_y": 125.02840898939,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-174200-521-71bfbe358dc4",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20171114-174817-518-944ce550e0dd"
+          }
+        ],
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_sport_node1_x262_in_mediaingest_recurse%",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_sport_node1_x262_in_van000_recurse%",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-174231-514-B37503F69165",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-174237-381-9b1beb918715"
+          }
+        ],
+        "bypass": false,
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_sport_node2_x262_in_mediaingest_recurse%",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_sport_node2_x262_in_van000_recurse%",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-174237-381-9B1BEB918715",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2\\%s_recursed_path%",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 525.255680904514,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-180510-070-AAFF72486905",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044e9ec8e471"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "description": "x262 in PCE Node 1",
+        "name": "X262_in PCE Node 1",
+        "pos_x": 75,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-183309-046-56774532A1A5",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-183317-059-5f8f168213bb"
+          }
+        ],
+        "bypass": false,
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_pce_node1_x262_in_mediaingest_recurse%",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_pce_node1_x262_in_van000_recurse%",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-183317-059-5F8F168213BB",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1\\%s_recursed_path%",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 525.255680904514,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20200214-154108-611-AA4FABA67491",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "description": "x262 in Node1 TG24",
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044e9ec8e471"
+          }
+        ],
+        "name": "X262_in Node1 TG24",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "pos_x": 75,
+        "pos_y": 375.170453936342,
+        "start_proc": true
+      },
+      {
+        "id": "20200214-155720-424-742B33B8B878",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200214-155736-547-b090b361ed2f"
+          }
+        ],
+        "bypass": false,
+        "name": "TG24 Node 1",
+        "description": "TG24 Node 1",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_tg24_node1_x262_in_mediaingest_recurse%",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_tg24_node1_x262_in_van000_recurse%",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "id": "20200214-155736-547-B090B361ED2F",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1\\%s_recursed_path%",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 525.255680904514,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200422-1725-2206-4d52-d8392f9a6811",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "description": "x262 in SPORT Node 1 Van000",
+        "name": "X262_in SPORT Node 1",
+        "pos_x": 165.051136180903,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200514-2214-2506-0cf2-2de6b7684616",
+        "description": "x262 in PCE Node 1 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "name": "X262_in PCE Node1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200514-2216-0242-1548-59c9f5f8d07d",
+        "name": "X262_in TG24",
+        "description": "x262 in TG24 Node 1 Van000",
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 375.170453936342,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1414-2562-57a2-61ec44a67ddb",
+        "name": "X262_in PCE Node 2",
+        "description": "x262 in PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 225.085226968171,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1423-0946-8f41-932b94f42bce",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1424-0238-834f-3bc43a1be233"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_pce_node2_x262_in_mediaingest_recurse%",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_pce_node2_x262_in_van000_recurse%",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1424-0238-834f-3bc43a1be233",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2\\%s_recursed_path%",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 525.255680904514,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200518-1425-5615-8773-339b4899d015",
+        "name": "X262_in PCE Node2",
+        "description": "x262 in PCE Node 2 Van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 225.085226968171,
+        "start_proc": true,
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ]
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1427-4773-93c8-879bcbdb504c",
+        "name": "X262_in PCE Node 3",
+        "description": "x262 in PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1428-2561-30ca-1e714625f75f",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1429-0585-41de-877ce236b6a3"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_pce_node3_x262_in_mediaingest_recurse%",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_pce_node3_x262_in_van000_recurse%",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1429-0585-41de-877ce236b6a3",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3\\%s_recursed_path%",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 525.255680904514,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200518-1429-4320-4465-6fd7f73bb2b9",
+        "name": "X262_in PCE Node3",
+        "description": "x262 in PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1430-4628-2e0c-c8c8ff8cb192",
+        "name": "X262_in PCE Node 4",
+        "description": "x262 in PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "id": "20200518-1431-2993-01e9-2791c5c54ff5",
+        "name": "X262_in PCE Node4",
+        "description": "x262 in PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x262_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1432-1954-4b52-ee023889d089",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1432-5566-178f-8101c3628893"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_pce_node4_x262_in_mediaingest_recurse%",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "%s_pce_node4_x262_in_van000_recurse%",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 435.204544723611,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1432-5566-178f-8101c3628893",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4\\%s_recursed_path%",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 525.255680904514,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "any",
+        "id": "20200526-1626-2298-4fa9-fce5bb8ef742",
+        "name": "Tree SPORT Node 1",
+        "description": "Tree SPORT Node 1",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_sport_node1_x262_in_mediaingest",
+              "data": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_sport_node1_x262_in_van000",
+              "data": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_sport_node1_x262_in_mediaingest_recurse",
+              "data": "%s_sport_node1_x262_in_mediaingest%%s_recursed_path%",
+              "type": "string"
+            },
+            {
+              "name": "s_sport_node1_x262_in_van000_recurse",
+              "data": "%s_sport_node1_x262_in_van000%%s_recursed_path%",
+              "type": "string"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-174200-521-71bfbe358dc4"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "any",
+        "id": "20200527-1419-2582-30ee-7f104db9223c",
+        "name": "Tree SPORT Node 2",
+        "description": "Tree SPORT Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "variables": [
+            {
+              "name": "s_sport_node2_x262_in_mediaingest",
+              "data": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_sport_node2_x262_in_van000",
+              "data": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_sport_node2_x262_in_mediaingest_recurse",
+              "data": "%s_sport_node2_x262_in_mediaingest%%s_recursed_path%",
+              "type": "string"
+            },
+            {
+              "name": "s_sport_node2_x262_in_van000_recurse",
+              "data": "%s_sport_node2_x262_in_van000%%s_recursed_path%",
+              "type": "string"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-174231-514-B37503F69165"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "any",
+        "id": "20200527-1429-1688-9634-5a02789fc971",
+        "name": "Tree PCE Node 1",
+        "description": "Tree PCE Node 1",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_pce_node1_x262_in_mediaingest",
+              "data": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node1_x262_in_van000",
+              "data": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node1_x262_in_mediaingest_recurse",
+              "data": "%s_pce_node1_x262_in_mediaingest%%s_recursed_path%",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node1_x262_in_van000_recurse",
+              "data": "%s_pce_node1_x262_in_van000%%s_recursed_path%",
+              "type": "string"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-183309-046-56774532A1A5"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "any",
+        "id": "20200527-1443-0656-9afc-041e4c2ccd12",
+        "name": "Tree PCE Node 2",
+        "description": "Tree PCE Node 2",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_pce_node2_x262_in_mediaingest",
+              "data": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node2_x262_in_van000",
+              "data": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node2_x262_in_mediaingest_recurse",
+              "data": "%s_pce_node2_x262_in_mediaingest%%s_recursed_path%",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node2_x262_in_van000_recurse",
+              "data": "%s_pce_node2_x262_in_van000%%s_recursed_path%",
+              "type": "string"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200518-1423-0946-8f41-932b94f42bce"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "any",
+        "id": "20200527-1449-5982-2b8c-5b40ee241bb1",
+        "name": "Tree PCE Node 3",
+        "description": "Tree PCE Node 3",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_pce_node3_x262_in_mediaingest",
+              "data": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node3_x262_in_van000",
+              "data": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node3_x262_in_mediaingest_recurse",
+              "data": "%s_pce_node3_x262_in_mediaingest%%s_recursed_path%",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node3_x262_in_van000_recurse",
+              "data": "%s_pce_node3_x262_in_van000%%s_recursed_path%",
+              "type": "string"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200518-1428-2561-30ca-1e714625f75f"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "any",
+        "id": "20200527-1459-3318-24a9-0b328364d8cf",
+        "name": "Tree PCE Node 4",
+        "description": "Tree PCE Node 4",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_pce_node4_x262_in_mediaingest",
+              "data": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node4_x262_in_van000",
+              "data": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node4_x262_in_mediaingest_recurse",
+              "data": "%s_pce_node4_x262_in_mediaingest%%s_recursed_path%",
+              "type": "string"
+            },
+            {
+              "name": "s_pce_node4_x262_in_van000_recurse",
+              "data": "%s_pce_node4_x262_in_van000%%s_recursed_path%",
+              "type": "string"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200518-1432-1954-4b52-ee023889d089"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "any",
+        "id": "20200527-1505-1373-1401-16934e3f269b",
+        "name": "Tree TG24 Node 1",
+        "description": "Tree TG24 Node 1",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_tg24_node1_x262_in_mediaingest",
+              "data": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_tg24_node1_x262_in_van000",
+              "data": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\x262_in",
+              "type": "string"
+            },
+            {
+              "name": "s_tg24_node1_x262_in_mediaingest_recurse",
+              "data": "%s_tg24_node1_x262_in_mediaingest%%s_recursed_path%",
+              "type": "string"
+            },
+            {
+              "name": "s_tg24_node1_x262_in_van000_recurse",
+              "data": "%s_tg24_node1_x262_in_van000%%s_recursed_path%",
+              "type": "string"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200214-155720-424-742B33B8B878"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 375.170453936342,
+        "start_proc": false
+      }
+    ]
+  },
+  "user_variables": {
+    "variables": [
+      {
+        "name": "s_sport_node1_x262_in_mediaingest",
+        "type": "string",
+        "data": "SPORT Node 1 x262 in Media Ingest"
+      },
+      {
+        "name": "s_sport_node1_x262_in_van000",
+        "type": "string",
+        "data": "SPORT Node 1 x262 in Van000"
+      },
+      {
+        "name": "s_sport_node1_x262_in_mediaingest_recurse",
+        "type": "string",
+        "data": "SPORT Node 1 x262 in Media Ingest Recurse"
+      },
+      {
+        "name": "s_sport_node1_x262_in_van000_recurse",
+        "type": "string",
+        "data": "SPORT Node 1 x262 in Van000 Recurse"
+      },
+      {
+        "name": "s_sport_node2_x262_in_mediaingest",
+        "type": "string",
+        "data": "SPORT Node 2 x262 in Media Ingest"
+      },
+      {
+        "name": "s_sport_node2_x262_in_mediaingest_recurse",
+        "type": "string",
+        "data": "SPORT Node 2 x262 in Media Ingest Recurse"
+      },
+      {
+        "name": "s_sport_node2_x262_in_van000",
+        "type": "string",
+        "data": "SPORT Node 2 x262 in Van000"
+      },
+      {
+        "name": "s_sport_node2_x262_in_van000_recurse",
+        "type": "string",
+        "data": "SPORT Node 2 x262 in Van000 Recurse"
+      },
+      {
+        "name": "s_pce_node1_x262_in_mediaingest",
+        "type": "string",
+        "data": "PCE Node 1 x262 in Media Ingest"
+      },
+      {
+        "name": "s_pce_node1_x262_in_mediaingest_recurse",
+        "type": "string",
+        "data": "PCE Node 1 x262 in Media Ingest Recurse"
+      },
+      {
+        "name": "s_pce_node1_x262_in_van000",
+        "type": "string",
+        "data": "PCE Node 1 x262 in Van000"
+      },
+      {
+        "name": "s_pce_node1_x262_in_van000_recurse",
+        "type": "string",
+        "data": "PCE Node 1 x262 in Van000 Recurse"
+      },
+      {
+        "name": "s_pce_node2_x262_in_mediaingest",
+        "type": "string",
+        "data": "PCE Node 2 x262 in Media Ingest"
+      },
+      {
+        "name": "s_pce_node2_x262_in_mediaingest_recurse",
+        "type": "string",
+        "data": "PCE Node 2 x262 in Media Ingest Recurse"
+      },
+      {
+        "name": "s_pce_node2_x262_in_van000",
+        "type": "string",
+        "data": "PCE Node 2 x262 in Van000"
+      },
+      {
+        "name": "s_pce_node2_x262_in_van000_recurse",
+        "type": "string",
+        "data": "PCE Node 2 x262 in Van000 Recurse"
+      },
+      {
+        "name": "s_pce_node3_x262_in_mediaingest",
+        "type": "string",
+        "data": "PCE Node 3 x262 in Media Ingest"
+      },
+      {
+        "name": "s_pce_node3_x262_in_mediaingest_recurse",
+        "type": "string",
+        "data": "PCE Node 3 x262 in Media Ingest Recurse"
+      },
+      {
+        "name": "s_pce_node3_x262_in_van000",
+        "type": "string",
+        "data": "PCE Node 3 x262 in Van000"
+      },
+      {
+        "name": "s_pce_node3_x262_in_van000_recurse",
+        "type": "string",
+        "data": "PCE Node 3 x262 in Van000 Recurse"
+      },
+      {
+        "name": "s_pce_node4_x262_in_mediaingest",
+        "type": "string",
+        "data": "PCE Node 4 x262 in Media Ingest"
+      },
+      {
+        "name": "s_pce_node4_x262_in_mediaingest_recurse",
+        "type": "string",
+        "data": "PCE Node 4 x262 in Media Ingest Recurse"
+      },
+      {
+        "name": "s_pce_node4_x262_in_van000",
+        "type": "string",
+        "data": "PCE Node 4 x262 in Van000"
+      },
+      {
+        "name": "s_pce_node4_x262_in_van000_recurse",
+        "type": "string",
+        "data": "PCE Node 4 x262 in Van000 Recurse"
+      },
+      {
+        "name": "s_tg24_node1_x262_in_mediaingest",
+        "type": "string",
+        "data": "TG24 Node 1 x262 in Media Ingest"
+      },
+      {
+        "name": "s_tg24_node1_x262_in_mediaingest_recurse",
+        "type": "string",
+        "data": "TG24 Node 1 x262 in Media Ingest Recurse"
+      },
+      {
+        "name": "s_tg24_node1_x262_in_van000",
+        "type": "string",
+        "data": "TG24 Node 1 x262 in Van000"
+      },
+      {
+        "name": "s_tg24_node1_x262_in_van000_recurse",
+        "type": "string",
+        "data": "TG24 Node 1 x262 in Van000 Recurse"
+      }
+    ]
+  }
+}

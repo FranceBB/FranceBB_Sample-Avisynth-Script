@@ -1,0 +1,1182 @@
+﻿{
+  "workflow": {
+    "wf_name": "x262_DVD_in",
+    "wf_id": "20190906004936",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 30,
+      "priority": "2 (normal)",
+      "timeout_level": 3
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 5,
+      "work_age": 5,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "D:\\encoder\\encoder\\Processors\\.cache\\wfs\\20190906004936\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": false,
+      "protected": false,
+      "password": ""
+    },
+    "updated": "2020-09-03T17:55:04.419-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 60.0340907872685
+    },
+    "nodes": [
+      {
+        "id": "20190906-003818-494-A82CD56ABE01",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "x262_DVD_in SPORT",
+        "description": "x262 DVD in SPORT Node 1",
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20190906-004014-893-7E21D713BA9E",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20190906-004043-938-FBDE0B5CCB52",
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "bypass": false,
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 525.255680904514,
+        "pos_y": 475.227271915123,
+        "start_proc": false
+      },
+      {
+        "id": "20190906-004948-208-533aa788e877",
+        "bypass": false,
+        "type": "enc_av_dvd",
+        "execute_on": "success",
+        "name": "DVD PAL",
+        "description": "Encoding in MPEG-2 DVD PAL",
+        "properties": {
+          "transwrap": false,
+          "wrapper": "ISO",
+          "video": {
+            "bitrate": 3000,
+            "type": "PAL",
+            "dar": "16:9",
+            "field_order": "Upper",
+            "interlacing": "Analyze",
+            "active_width": false,
+            "resizing": "Fit and keep aspect"
+          },
+          "audio": {
+            "type": "AC3",
+            "samplerate": 48000,
+            "bitrate": 320,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "codec": "ac3",
+            "streams": [
+              {
+                "codec": "ac3",
+                "samplerate": 48000,
+                "bitrate": 320,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ],
+            "layout": "default"
+          }
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-174329-286-d9cb42d6f623"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-174403-170-0c3492e26f9f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-183935-372-8f896334db20"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200514-2222-2212-1fad-08b8df39cdf5"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1939-1588-0820-ee0005440551"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1940-1641-33e0-b9ff7965d2db"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200520-1941-1426-0d64-178753c7020e"
+          }
+        ],
+        "pos_x": 255.102272361805,
+        "pos_y": 425.198862925733,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165901-577-1DD28C92DA17",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "x262_DVD_in SPORT",
+        "description": "x262 DVD in SPORT Node 2",
+        "pos_x": 75,
+        "pos_y": 125.02840898939,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-174329-286-d9cb42d6f623",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20190906-004014-893-7e21d713ba9e"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\x262_DVD_in",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\x262_DVD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "pos_x": 345.153408542708,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-174403-170-0C3492E26F9F",
+        "type": "op_cond",
+        "execute_on": "any",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\x262_DVD_in",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            },
+            {
+              "expression_1": "",
+              "operator": "equal to (=), string",
+              "expression_2": "",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-174410-174-2854a387d30b"
+          }
+        ],
+        "bypass": false,
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "pos_x": 345.153408542708,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-174410-174-2854A387D30B",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 125.02840898939,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-180531-054-EE29EC133030",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "file_limit": "None",
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once"
+        },
+        "bypass": false,
+        "name": "x262_DVD_in PCE",
+        "description": "x262 DVD in PCE Node 1",
+        "pos_x": 75,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-183935-372-8F896334DB20",
+        "type": "op_cond",
+        "execute_on": "any",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-183957-136-009b54673c41"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\x262_DVD_in",
+              "decide": "And"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x262_DVD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-183957-136-009B54673C41",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-fbde0b5ccb52"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 435.204544723611,
+        "pos_y": 175.056817978781,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1726-4967-7ec6-4d1d5865102f",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "name": "x262_DVD_in SPORT",
+        "description": "x262 DVD in SPORT Node 1 Van000",
+        "pos_x": 165.051136180903,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-2219-1627-33f5-33e0be4eb14b",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "x262_DVD_in PCE",
+        "description": "x262 DVD in PCE Node 1 Van000",
+        "pos_x": 165.051136180903,
+        "pos_y": 175.056817978781,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-2221-0739-8144-ac65b79af625",
+        "name": "x262_DVD_in TG24",
+        "description": "x262 DVD in TG24 Node 1",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 575.284089893904,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200514-2222-2212-1fad-08b8df39cdf5",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200514-2223-1225-3d7f-a52b608b5fcb"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\x262_DVD_in",
+              "decide": "And"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\x262_DVD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "TG24 Node 1",
+        "description": "TG24 Node 1",
+        "pos_x": 345.153408542708,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200514-2223-1225-3d7f-a52b608b5fcb",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200514-2224-0515-5c28-adff45d0ff2c",
+        "name": "x262_DVD_in TG24",
+        "description": "x262 DVD in TG24",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCTSDA001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "pos_x": 165.051136180903,
+        "pos_y": 575.284089893904,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1933-4828-4fff-c2deaf397efc",
+        "name": "x262_DVD_in PCE",
+        "description": "x262 DVD in PCE Node 2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 225.085226968171,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1934-2819-89d7-d5ee9516cc80",
+        "name": "x262_DVD_in PCE",
+        "description": "x262 DVD in PCE Node 2 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 225.085226968171,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1935-1466-01c5-84c211254663",
+        "name": "x262_DVD_in PCE",
+        "description": "x262 DVD in PCE Node 3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1935-5769-2a4c-6ca1074d91f5",
+        "name": "x262_DVD_in PCE",
+        "description": "x262 DVD in PCE Node 3 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 275.113635957562,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1936-4582-3de1-a5e61f457d7c",
+        "name": "x262_DVD_in PCE",
+        "description": "x262 DVD in PCE Node 4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 75,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200520-1937-2408-186a-b2766d317f87",
+        "name": "x262_DVD_in PCE",
+        "description": "x262 DVD in PCE Node 4 Van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x262_DVD_in",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_dvd",
+            "id": "20190906-004948-208-533aa788e877"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 165.051136180903,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200520-1939-1588-0820-ee0005440551",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\x262_DVD_in",
+              "decide": "And"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\x262_DVD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200520-1939-5191-01df-5fc30961a897"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200520-1939-5191-01df-5fc30961a897",
+        "name": "Folder",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 225.085226968171,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200520-1940-1641-33e0-b9ff7965d2db",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\x262_DVD_in",
+              "decide": "And"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\x262_DVD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200520-1940-5031-00b8-b73184c6a9a1"
+          }
+        ],
+        "pos_x": 345.153408542708,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "name": "Folder",
+        "id": "20200520-1940-5031-00b8-b73184c6a9a1",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 275.113635957562,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "any",
+        "bypass": false,
+        "id": "20200520-1941-1426-0d64-178753c7020e",
+        "description": "PCE Node 4",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\x262_DVD_in",
+              "decide": "And"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\x262_DVD_in",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200520-1941-4414-3a49-7fca99dd8ccb"
+          }
+        ],
+        "name": "PCE Node 4",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 345.153408542708,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "name": "Folder",
+        "id": "20200520-1941-4414-3a49-7fca99dd8ccb",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20190906-004043-938-FBDE0B5CCB52"
+          }
+        ],
+        "pos_x": 435.204544723611,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      }
+    ]
+  }
+}

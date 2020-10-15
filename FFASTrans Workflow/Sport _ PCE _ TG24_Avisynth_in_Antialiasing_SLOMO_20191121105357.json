@@ -1,0 +1,4376 @@
+﻿{
+  "workflow": {
+    "wf_name": "Avisynth_in_Antialiasing_SLOMO",
+    "wf_id": "20191121105357",
+    "wf_folder": "Sport \/ PCE \/ TG24",
+    "description": "Transcoder based on Avisynth, x262, x264, x265 and FFMpeg, developed by Steinar Apalnes, implemented by Francesco Bucciantini, Livio Aloja and an Open Source Community",
+    "general": {
+      "sleep": 5,
+      "priority": "2 (normal)",
+      "timeout_level": 10
+    },
+    "maintainance": {
+      "keep_all_workdir": false,
+      "keep_failed_workdir": false,
+      "cleanup_time": "04:00",
+      "records_age": 1,
+      "work_age": 1,
+      "run_on_days": 1234567
+    },
+    "farming": {
+      "hosts": [
+        "MIBCPAVS001",
+        "MIBCSAVS001"
+      ],
+      "include": true
+    },
+    "special": {
+      "file_debug": false,
+      "debug_file": "C:\\Users\\dmerra\\Desktop\\beta\\Processors\\.cache\\wfs\\20191121105357\\logs",
+      "log_level": "1 (Basic)",
+      "force_32bit": false,
+      "read_timecode": true,
+      "protected": true,
+      "password": "CE79659EB75F7B1C566E50FA"
+    },
+    "updated": "2020-09-28T17:06:20.402-01.00",
+    "updated_by": "Avisynth@MIBCSAVS001",
+    "variable": {
+      "wf_size": 42.8814934194775
+    },
+    "nodes": [
+      {
+        "id": "20170208-150859-290-044E9EC8E471",
+        "bypass": false,
+        "type": "enc_av_xdcamhd",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "video": {
+            "format": "1920×1080i50",
+            "resizing": "Fill and keep aspect",
+            "interlacing": "Analyze",
+            "type": "50 Mbit (422)",
+            "processing": "Full transcoding"
+          },
+          "audio": {
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "bitdepth": 24,
+            "samplerate": 48000,
+            "bitrate": null,
+            "codec": "pcm_s24le",
+            "layout": "default",
+            "streams": [
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  1
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  2
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  3
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  4
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  5
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  6
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  7
+                ]
+              },
+              {
+                "codec": "pcm_s24le",
+                "samplerate": 48000,
+                "bitrate": null,
+                "bitdepth": 24,
+                "mapping": [
+                  8
+                ]
+              }
+            ]
+          },
+          "avid": {
+            "enable": false,
+            "clipname": "%s_original_name%",
+            "project": "%s_wf_name%",
+            "tape": "%s_original_path~1%"
+          },
+          "wrapper": "MXF",
+          "start_tc": "%s_start_tc%"
+        },
+        "execute_on": "success",
+        "name": "x262 (XDCAM50)",
+        "description": "Encoding: x262 video codec + LAV PCM audio codec + ffmpeg wrapper (muxer). XDCAM50",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-170644-625-188040d77f39"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-170728-121-ffa1f4c10621"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-181709-715-c78eaf53c498"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200508-1523-1798-8c64-ec174b4f625f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1505-3461-1489-285d623c0b9d"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1510-1652-43e5-44d586f7129d"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1515-3693-844c-35b650e72154"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1548-2899-513a-cd96f3918ed3"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1550-1136-9e00-720b9c3542d5"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1551-4400-9824-cb9eebc020fb"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1247-1757-64a7-9cba9a51b6d8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1248-0958-1f69-48f52692334f"
+          }
+        ],
+        "pos_x": 975.511361809027,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20170208-150949-647-E5A07078E418",
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node1\r\nSLOWMOTION",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "id": "20170208-151013-452-316F559DBA2D",
+        "bypass": false,
+        "type": "dec_avmedia",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20180910-175437-919-6d48ce366666"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175627-699-6f2fb5d1db12"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175646-412-3978be774614"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175703-145-75340cd33f61"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175721-865-7009538799dd"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175758-718-d55861c14e35"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175812-718-dfd026dfa3f1"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175838-873-329255d15146"
+          },
+          {
+            "type": "op_cond",
+            "id": "20180910-175906-529-0c1b73589a6d"
+          },
+          {
+            "type": "cmd_run",
+            "id": "20200903-1746-5361-16d5-dcaee3f513a9"
+          }
+        ],
+        "name": "Avisynth x64 Indexing",
+        "description": "Indexing",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "audio": {
+            "use": true,
+            "channels": 32,
+            "method": "Full decode"
+          },
+          "video": {
+            "use": true,
+            "format": "YUV 4:2:2 8bit",
+            "method": "Full decode"
+          },
+          "x64avisynth": true,
+          "force8bit": true
+        },
+        "pos_x": 267.966720387649,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20171114-174817-518-944CE550E0DD",
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1104.15584206746,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20180327-223423-701-3060431E97D0",
+        "type": "avs_v_deinterlace",
+        "execute_on": "success",
+        "properties": {
+          "deinterlace_type": "Kernel 2xFPS"
+        },
+        "name": "Deinterlacing",
+        "description": "Bob-deinterlacing if needed",
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200508-1504-1808-0833-8f7c8e049d05"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200508-1504-5660-5e0c-326f6c54bf5d"
+          }
+        ],
+        "pos_x": 525.255680904514,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20180329-173937-871-a4f7180e33d6",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_v_fpsconv",
+            "id": "20180329-174450-766-47b3f3b5de9b"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "smaller than (<)",
+              "expression_2": 50,
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "larger than (>)",
+              "expression_2": 50,
+              "decide": "And"
+            },
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "smaller than (<)",
+              "expression_2": 70,
+              "decide": "Then"
+            }
+          ]
+        },
+        "description": "if frame rate < 50 || > 50 && < 70",
+        "name": "Conditional",
+        "pos_x": 782.544641421379,
+        "pos_y": 539.54951204434,
+        "start_proc": false
+      },
+      {
+        "id": "20180329-174450-766-47b3f3b5de9b",
+        "bypass": false,
+        "type": "avs_v_fpsconv",
+        "execute_on": "success",
+        "name": "Blending",
+        "description": "Blending.",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180701-081456-730-68c5351dabf5"
+          }
+        ],
+        "properties": {
+          "fps_conv": 50,
+          "motion_comp": false,
+          "keep_fps": false,
+          "motion_comp_quality": "Medium",
+          "fps_custom": "",
+          "blend": true
+        },
+        "pos_x": 846.866881550595,
+        "pos_y": 557.416800969122,
+        "start_proc": false
+      },
+      {
+        "id": "20180701-081456-730-68c5351dabf5",
+        "bypass": false,
+        "type": "avs_custom",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "enc_av_xdcamhd",
+            "id": "20170208-150859-290-044E9EC8E471"
+          }
+        ],
+        "name": "Antialiasing & Tv Range",
+        "description": "First it performs anti-aliasing and then it brings everything in Tv Range 0.7mV 16-235.",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\nImport(\"\\\\MIBCSAVS001\\AvisynthServer\\encoder\\encoder\\Processors\\avs_plugins\\maa2.avsi\")\r\n\r\n\r\nc=Converttoyv16(m_clip)\r\nantialiased=(c).Blur(1.25)\r\nm_clip=Limiter(antialiased, min_luma=16, max_luma=235, min_chroma=16, max_chroma=240)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true
+        },
+        "pos_x": 911.189121679811,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20180810-005553-840-9b4c7da869f6",
+        "bypass": false,
+        "type": "cmd_run",
+        "execute_on": "success",
+        "properties": {
+          "command": "%comspec% \/c \"del \/f \/q  \"%s_original_full%\"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true
+        },
+        "name": "Cache Cleanup",
+        "description": "Automatic Cache Cleanup",
+        "pos_x": 1168.47808219668,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175437-919-6d48ce366666",
+        "name": "",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 0",
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431e97d0"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "smaller than or equal to (<=)",
+              "expression_2": 0,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 432.345778495646,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175627-699-6F2FB5D1DB12",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 1",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180019-976-6b94d948b31c"
+          }
+        ],
+        "bypass": false,
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 1,
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 468.08035634521,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175646-412-3978BE774614",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 2",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180137-248-bc38105a5c6a"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 2,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 503.814934194775,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175703-145-75340CD33F61",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 3",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180210-066-77f284226c56"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 3,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 539.54951204434,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175721-865-7009538799DD",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 4",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180244-245-d9dd14510c23"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 4,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175758-718-D55861C14E35",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 5",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180316-225-29e8ba198767"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 5,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 611.018667743469,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175812-718-DFD026DFA3F1",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 6",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180401-828-94f3d832a769"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 6,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 646.753245593033,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175838-873-329255D15146",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels = 7",
+        "outbounds": [
+          {
+            "type": "avs_a_acmapper",
+            "id": "20180910-180437-086-6b121520b53d"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "equal to (=), string",
+              "expression_2": 7,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 682.487823442598,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-175906-529-0C1B73589A6D",
+        "name": "",
+        "type": "op_cond",
+        "execute_on": "success",
+        "description": "Audio Channels >= 8",
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431E97D0"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_my_audio_channels%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 8,
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 332.288960516865,
+        "pos_y": 718.222401292162,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180019-976-6b94d948b31c",
+        "name": "",
+        "bypass": false,
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 1->2 1->3 1->4 1->5 1->6 1->7 1->8",
+        "properties": {
+          "mapping": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431E97D0"
+          }
+        ],
+        "pos_x": 396.611200646081,
+        "pos_y": 468.08035634521,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180137-248-BC38105A5C6A",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 1->3 2->4 1->5 2->6 1->7 2->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431E97D0"
+          }
+        ],
+        "pos_x": 396.611200646081,
+        "pos_y": 503.814934194775,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180210-066-77F284226C56",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 1->4 2->5 3->6 1->7 2->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            1,
+            2,
+            3,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431E97D0"
+          }
+        ],
+        "pos_x": 396.611200646081,
+        "pos_y": 539.54951204434,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180244-245-D9DD14510C23",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 4->4 1->5 2->6 3->7 4->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            1,
+            2,
+            3,
+            4,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431E97D0"
+          }
+        ],
+        "pos_x": 396.611200646081,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180316-225-29E8BA198767",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 4->4 5->5 1->6 2->7 3->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            1,
+            2,
+            3,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431E97D0"
+          }
+        ],
+        "pos_x": 396.611200646081,
+        "pos_y": 611.018667743469,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180401-828-94F3D832A769",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 4->4 5->5 6->6 1->7 2->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            1,
+            2,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431E97D0"
+          }
+        ],
+        "pos_x": 396.611200646081,
+        "pos_y": 646.753245593033,
+        "start_proc": false
+      },
+      {
+        "id": "20180910-180437-086-6B121520B53D",
+        "name": "",
+        "type": "avs_a_acmapper",
+        "execute_on": "success",
+        "description": "1->1 2->2 3->3 4->4 5->5 6->6 7->7 1->8",
+        "properties": {
+          "mapping": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            1,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "muxing": "32 (full)"
+        },
+        "bypass": false,
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20180327-223423-701-3060431E97D0"
+          }
+        ],
+        "pos_x": 396.611200646081,
+        "pos_y": 682.487823442598,
+        "start_proc": false
+      },
+      {
+        "id": "20190711-164404-268-AD85B7ACCD16",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180701-081456-730-68c5351dabf5"
+          }
+        ],
+        "bypass": false,
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "larger than or equal to (>=)",
+              "expression_2": 70,
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%f_frame_rate%",
+              "operator": "equal to (=), string",
+              "expression_2": 50,
+              "decide": "Then"
+            }
+          ]
+        },
+        "description": "if frame rate >= 70 || = 50",
+        "name": "Conditional",
+        "pos_x": 782.544641421379,
+        "pos_y": 593.151378818686,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-165313-391-372F6CCA558F",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 2\r\nSLOWMOTION",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 110.734577849565,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-170644-625-188040d77f39",
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20171114-174817-518-944ce550e0dd"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "SPORT Node 1",
+        "description": "SPORT Node 1",
+        "pos_x": 1039.83360193824,
+        "pos_y": 75,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-170728-121-FFA1F4C10621",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-170743-717-41ad4586925a"
+          }
+        ],
+        "bypass": false,
+        "name": "SPORT Node 2",
+        "description": "SPORT Node 2",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 110.734577849565,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-170743-717-41AD4586925A",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 1104.15584206746,
+        "pos_y": 110.734577849565,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-175757-744-2B9B2F6C8AB5",
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Avisynth_Antialiasing PCE",
+        "description": "Avisynth in Antialiasing PCE Node 1\r\nSLOWMOTION",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 217.938311398258,
+        "start_proc": true
+      },
+      {
+        "id": "20200125-181709-715-C78EAF53C498",
+        "type": "op_cond",
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200125-181742-414-dd821733acfd"
+          }
+        ],
+        "bypass": false,
+        "name": "PCE Node 1",
+        "description": "PCE Node 1",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 217.938311398258,
+        "start_proc": false
+      },
+      {
+        "id": "20200125-181742-414-DD821733ACFD",
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "bypass": false,
+        "pos_x": 1104.15584206746,
+        "pos_y": 217.938311398258,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200422-1703-2530-16cc-2efc5e25e787",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 1 van000\r\nSLOWMOTION",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 75,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1447-4638-679f-5cfa36cae0d2",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 1 van000\r\nSLOWMOTION",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 360.876622796517,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1449-5228-79e5-0ca7c7cf7a83",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 1\r\nSLOWMOTION",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 360.876622796517,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "avs_custom",
+        "execute_on": "success",
+        "id": "20200508-1455-0883-6d66-e67418f5faec",
+        "description": "Slowmotion to 25p",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20180701-081456-730-68c5351dabf5"
+          }
+        ],
+        "name": "Slowmotion",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\n\r\nm_clip=AssumeFPS(m_clip, 25, true)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n",
+          "x64avisynth": true,
+          "verify": 4
+        },
+        "pos_x": 653.900161162946,
+        "pos_y": 646.753245593033,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "success",
+        "id": "20200508-1504-1808-0833-8f7c8e049d05",
+        "description": "Avisynth_in_Antialiasing",
+        "name": "Conditional",
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20180329-173937-871-a4f7180e33d6"
+          },
+          {
+            "type": "op_cond",
+            "id": "20190711-164404-268-AD85B7ACCD16"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 589.57792103373,
+        "pos_y": 503.814934194775,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "success",
+        "id": "20200508-1504-5660-5e0c-326f6c54bf5d",
+        "description": "Avisynth_in_Antialiasing_Slowmo",
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20200508-1455-0883-6d66-e67418f5faec"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Conditional",
+        "pos_x": 589.57792103373,
+        "pos_y": 646.753245593033,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "id": "20200508-1523-1798-8c64-ec174b4f625f",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200508-1525-4499-8d86-51e62035987d"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "name": "TG24 Node 1",
+        "description": "TG24 Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 360.876622796517,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "id": "20200508-1525-4499-8d86-51e62035987d",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node1",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 1104.15584206746,
+        "pos_y": 360.876622796517,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "mon_folder",
+        "execute_on": "success",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node1",
+        "id": "20200508-1531-4864-1af6-30a2ae828801",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 628.885956668251,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1533-4589-0538-d290fb7ea118",
+        "description": "Avisynth in Antialiasing SPORT Node 2",
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Avisynth_Antialiasing SP",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 664.620534517816,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1534-3427-0246-2de64af95bc7",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_Antialiasing PCE",
+        "description": "Avisynth in Antialiasing PCE Node1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 771.824268066509,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1535-1326-095d-b86bc1c02fbd",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 1 van000",
+        "outbounds": [],
+        "pos_x": 139.322240129216,
+        "pos_y": 628.885956668251,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1535-5577-124c-c7aa9b51062b",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "description": "Avisynth in Antialiasing TG24 Node 1 van000",
+        "name": "Avisynth_Antialiasing TG",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 914.762579464768,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200508-1536-3435-972a-ea3e3ecabf4d",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node1\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 1",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 914.762579464768,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1459-4062-4acb-ee5d324f242c",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing PCE Node 1 van000\r\nSLOWMOTION",
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 217.938311398258,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1502-1353-3362-497685a8bb5b",
+        "description": "Avisynth in Antialiasing PCE Node 2\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_Antialiasing PCE",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 253.672889247823,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1505-3461-1489-285d623c0b9d",
+        "name": "PCE Node 2",
+        "description": "PCE Node 2",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1506-4139-68de-504336ab66fa"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 253.672889247823,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1506-4139-68de-504336ab66fa",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 1104.15584206746,
+        "pos_y": 253.672889247823,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1507-1463-753c-ced99f6b66f5",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing PCE Node 2 van000\r\nSLOWMOTION",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 253.672889247823,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1509-1650-70a2-f14efc0c7109",
+        "name": "Avisynth_Antialiasing PCE",
+        "description": "Avisynth in Antialiasing PCE Node 3\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 289.407467097388,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1510-1652-43e5-44d586f7129d",
+        "name": "PCE Node 3",
+        "description": "PCE Node 3",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1510-5398-8bba-c7d733f88aba"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 289.407467097388,
+        "start_proc": false
+      },
+      {
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200518-1510-5398-8bba-c7d733f88aba",
+        "name": "Folder",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1104.15584206746,
+        "pos_y": 289.407467097388,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1511-4378-414a-a2e527599b6b",
+        "description": "Avisynth in Antialiasing PCE Node 3 van000\r\nSLOWMOTION",
+        "name": "Avisynth_Antialiasing SP",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 289.407467097388,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1513-4508-5a39-3cb105e217dc",
+        "name": "Avisynth_Antialiasing PCE",
+        "description": "Avisynth in Antialiasing PCE Node 4\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1514-2630-5a89-d1bdd7fa3bab",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing PCE Node 4 van000\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 325.142044946952,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200518-1515-3693-844c-35b650e72154",
+        "name": "PCE Node 4",
+        "description": "PCE Node 4",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200518-1515-5755-6a37-7caac38d2611"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "name": "Folder",
+        "id": "20200518-1515-5755-6a37-7caac38d2611",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 1104.15584206746,
+        "pos_y": 325.142044946952,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1541-1201-8191-7afa72e2e01e",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 2\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 396.611200646081,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1542-2345-4089-e33e8b81f6c3",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 2 van000\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 396.611200646081,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1543-1917-13d4-0d8644e0c487",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 3\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 432.345778495646,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1545-4597-9f9e-b5ee878c291c",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 3 van000\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 432.345778495646,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1546-3749-139b-ce9d426bc28c",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 4\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 468.08035634521,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1547-2217-7359-2e6fe644e4d2",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 4 van000\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 468.08035634521,
+        "start_proc": true
+      },
+      {
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "id": "20200521-1548-2899-513a-cd96f3918ed3",
+        "name": "TG24 Node 2",
+        "description": "TG24 Node 2",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200521-1549-3743-0e05-5849e22e472b"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 396.611200646081,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "id": "20200521-1549-3743-0e05-5849e22e472b",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node2",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 1104.15584206746,
+        "pos_y": 396.611200646081,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "id": "20200521-1550-1136-9e00-720b9c3542d5",
+        "name": "TG24 Node 3",
+        "description": "TG24 Node 3",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200521-1551-0041-4860-1234c909de0f"
+          }
+        ],
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 432.345778495646,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "id": "20200521-1551-0041-4860-1234c909de0f",
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "pos_x": 1104.15584206746,
+        "pos_y": 432.345778495646,
+        "start_proc": false
+      },
+      {
+        "bypass": false,
+        "type": "op_cond",
+        "execute_on": "success",
+        "id": "20200521-1551-4400-9824-cb9eebc020fb",
+        "name": "TG24 Node 4",
+        "description": "TG24 Node 4",
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200521-1552-4378-35e6-5cc2cdbc2a07"
+          }
+        ],
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 468.08035634521,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "bypass": false,
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "id": "20200521-1552-4378-35e6-5cc2cdbc2a07",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 1104.15584206746,
+        "pos_y": 468.08035634521,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1553-5026-3ad5-beb59cf302fc",
+        "name": "Avisynth_Antialiasing PC",
+        "description": "Avisynth in Antialiasing PCE Node 1 van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node1\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 771.824268066509,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1555-2516-4f1c-ede959bcb848",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 2",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 950.497157314332,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1556-1650-7ba8-7a12e9be383b",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 2 van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 950.497157314332,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1557-1686-759b-175d5550d238",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 3",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 986.231735163897,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1558-0312-50f2-a1abfd9b7370",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 3 van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 986.231735163897,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1559-1136-2db8-4375a57f562a",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 4",
+        "properties": {
+          "folder": "\\\\mibctsda001\\TG24_Media_Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 1021.96631301346,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1600-0311-66f7-a5a4c082da06",
+        "name": "Avisynth_Antialiasing TG",
+        "description": "Avisynth in Antialiasing TG24 Node 4 van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\TG24\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 1021.96631301346,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1611-5424-7d26-1a7ee11ba4ba",
+        "name": "Avisynth_Antialiasing PCE",
+        "description": "Avisynth in Antialiasing PCE Node2",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node2\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 807.558845916074,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1612-4477-3829-65c6572e311f",
+        "name": "Avisynth_Antialiasing PC",
+        "description": "Avisynth in Antialiasing PCE Node 2 van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 807.558845916074,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1614-0026-8022-8131b50eea39",
+        "name": "Avisynth_Antialiasing PCE",
+        "description": "Avisynth in Antialiasing PCE Node3",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 843.293423765639,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1618-0517-0825-3e69f8c76968",
+        "name": "Avisynth_Antialiasing PC",
+        "description": "Avisynth in Antialiasing PCE Node 3 van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 843.293423765639,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1619-4683-117e-75a9d0abfd73",
+        "name": "Avisynth_Antialiasing PCE",
+        "description": "Avisynth in Antialiasing PCE Node4",
+        "properties": {
+          "folder": "\\\\MIBCPVSD001\\Media-Ingest-PCE\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 879.028001615203,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200521-1620-4694-2472-f28bfa829c33",
+        "name": "Avisynth_Antialiasing PC",
+        "description": "Avisynth in Antialiasing PCE Node 4 van000",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\PCE\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 879.028001615203,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1240-0277-6c20-d9eba5796128",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 3\r\nSLOWMOTION",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 146.469155699129,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1241-0609-2037-87fd09f48320",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 4\r\nSLOWMOTION",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 182.203733548694,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1241-5452-9045-0e894e1e4125",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 2 van000\r\nSLOWMOTION",
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 110.734577849565,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1242-3789-1697-4b7093937958",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 3 van000\r\nSLOWMOTION",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 146.469155699129,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1243-1567-007d-276ee94b7a70",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 4 van000\r\nSLOWMOTION",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 182.203733548694,
+        "start_proc": true
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1247-1757-64a7-9cba9a51b6d8",
+        "name": "SPORT Node 3",
+        "description": "SPORT Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1249-1256-3f58-f8a745097635"
+          }
+        ],
+        "pos_x": 1039.83360193824,
+        "pos_y": 146.469155699129,
+        "start_proc": false
+      },
+      {
+        "type": "op_cond",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1248-0958-1f69-48f52692334f",
+        "name": "SPORT Node 4",
+        "description": "SPORT Node 4",
+        "properties": {
+          "dispel": true,
+          "conditionals": [
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing_SLOMO",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing",
+              "decide": "Or"
+            },
+            {
+              "expression_1": "%s_original_path%",
+              "operator": "equal to (=), string",
+              "expression_2": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing",
+              "decide": "Then"
+            }
+          ]
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20200716-1249-5130-7072-ebc7bb918818"
+          }
+        ],
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "pos_x": 1039.83360193824,
+        "pos_y": 182.203733548694,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1249-1256-3f58-f8a745097635",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node3",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 1104.15584206746,
+        "pos_y": 146.469155699129,
+        "start_proc": false
+      },
+      {
+        "name": "",
+        "type": "dest_folder",
+        "execute_on": "success",
+        "description": "Out Delivery",
+        "bypass": false,
+        "id": "20200716-1249-5130-7072-ebc7bb918818",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibcssda001\\Media Ingest\\OUTPUT Avisynth Server 1\\Node4",
+          "suffix": "",
+          "prefix": "",
+          "overwrite": false,
+          "unique": false,
+          "case": "None",
+          "drop_name": false,
+          "drop_ext": false,
+          "move": false
+        },
+        "outbounds": [
+          {
+            "type": "cmd_run",
+            "id": "20180810-005553-840-9b4c7da869f6"
+          }
+        ],
+        "pos_x": 1104.15584206746,
+        "pos_y": 182.203733548694,
+        "start_proc": false
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1321-5117-043e-5354d90ff2cc",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 3",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node3\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 700.35511236738,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1322-3984-2273-fd989ead6d64",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 4",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\MIBCSSDA001\\Media Ingest\\Avisynth_Server1\\Node4\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 75,
+        "pos_y": 736.089690216945,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1323-3133-05d0-5d49d36b0472",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 2 van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node2\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 664.620534517816,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1324-2046-6c19-ac72a5342a18",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 3 van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node3\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 700.35511236738,
+        "start_proc": true
+      },
+      {
+        "type": "mon_folder",
+        "execute_on": "success",
+        "bypass": false,
+        "id": "20200716-1325-0848-31ce-23f08bb5ce11",
+        "name": "Avisynth_Antialiasing SP",
+        "description": "Avisynth in Antialiasing SPORT Node 4 van000",
+        "preset": {
+          "id": null,
+          "name": "(custom)"
+        },
+        "properties": {
+          "folder": "\\\\mibctvan000\\Ingest\\MEDIA\\SPORT\\AvisynthServer1\\Node4\\Avisynth_in_Antialiasing",
+          "accept_files": "*.*",
+          "deny": {
+            "files": "",
+            "folders": "",
+            "attributes": {
+              "read": false,
+              "arch": false,
+              "sys": false,
+              "hidden": false
+            }
+          },
+          "recurse": true,
+          "localize": false,
+          "create_folder": false,
+          "growing_files": true,
+          "forget_missing": true,
+          "file_size_mod": "once",
+          "file_limit": "None"
+        },
+        "outbounds": [
+          {
+            "type": "op_populate",
+            "id": "20200803-1440-3067-438f-2a7e9b3f06f6"
+          }
+        ],
+        "pos_x": 139.322240129216,
+        "pos_y": 736.089690216945,
+        "start_proc": true
+      },
+      {
+        "id": "20200803-1440-3067-438f-2a7e9b3f06f6",
+        "type": "op_populate",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "execute_on": "success",
+        "name": "Audio Channel Count",
+        "description": "Audio Channel Count",
+        "properties": {
+          "variables": [
+            {
+              "name": "s_my_audio_channels",
+              "data": "%i_a_channels%",
+              "type": "string"
+            }
+          ]
+        },
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20170208-151013-452-316F559DBA2D"
+          }
+        ],
+        "pos_x": 203.644480258433,
+        "pos_y": 575.284089893904,
+        "start_proc": false
+      },
+      {
+        "id": "20200903-1746-5361-16d5-dcaee3f513a9",
+        "type": "cmd_run",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 332.288960516865,
+        "pos_y": 217.938311398258,
+        "execute_on": "error",
+        "name": "Metadata File",
+        "description": "Metadata File catcher",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "command": "%comspec% \/C \"\"",
+          "out_source": "",
+          "omit_exit_code": false,
+          "console": false,
+          "show_command": true,
+          "stdout_var_name": "None",
+          "set_timeout": 120,
+          "error_timeout": 1
+        },
+        "outbounds": [
+          {
+            "type": "op_cond",
+            "id": "20200125-170644-625-188040d77f39"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-170728-121-FFA1F4C10621"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1247-1757-64a7-9cba9a51b6d8"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200716-1248-0958-1f69-48f52692334f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200125-181709-715-C78EAF53C498"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1505-3461-1489-285d623c0b9d"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1510-1652-43e5-44d586f7129d"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200518-1515-3693-844c-35b650e72154"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200508-1523-1798-8c64-ec174b4f625f"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1548-2899-513a-cd96f3918ed3"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1550-1136-9e00-720b9c3542d5"
+          },
+          {
+            "type": "op_cond",
+            "id": "20200521-1551-4400-9824-cb9eebc020fb"
+          }
+        ]
+      }
+    ]
+  },
+  "user_variables": {
+    "variables": [
+      {
+        "name": "s_my_audio_channels",
+        "type": "string",
+        "data": "Number of audio channel of the original file before indexing"
+      }
+    ]
+  }
+}

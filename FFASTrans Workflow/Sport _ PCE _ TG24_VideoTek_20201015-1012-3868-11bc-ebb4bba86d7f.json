@@ -1,0 +1,207 @@
+﻿{
+  "workflow": {
+    "wf_id": "20201015-1012-3868-11bc-ebb4bba86d7f",
+    "wf_name": "VideoTek",
+    "wf_folder": "MMA",
+    "description": "",
+    "updated": "2020-10-15T10:42:26.077-01.00",
+    "updated_by": "avisynth@MIBCSAVS001",
+    "created": "2020-10-15T10:12:38.681-01.00",
+    "general": {},
+    "maintainance": {},
+    "special": {},
+    "nodes": [
+      {
+        "id": "20201015-1013-0675-9607-8e6b83317a5b",
+        "type": "mon_folder",
+        "custom_proc_guid": "",
+        "bypass": true,
+        "start_proc": true,
+        "pos_x": 75,
+        "pos_y": 75,
+        "execute_on": "success",
+        "outbounds": [
+          {
+            "type": "dec_avmedia",
+            "id": "20201015-1024-3637-31ae-a74755eee344"
+          }
+        ]
+      },
+      {
+        "id": "20201015-1024-3637-31ae-a74755eee344",
+        "type": "dec_avmedia",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 247.5,
+        "pos_y": 75,
+        "execute_on": "success",
+        "name": "Indexing x64",
+        "description": "Indexing Avisynth x64",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "video": {
+            "use": true,
+            "method": "Full decode",
+            "format": "YUV 4:2:2 8bit"
+          },
+          "audio": {
+            "use": true,
+            "channels": 32,
+            "method": "Full decode",
+            "bitdepth": 24,
+            "codec": "pcm_s24le",
+            "samplerate": 48000
+          },
+          "x64avisynth": true,
+          "force8bit": true,
+          "non_linear": 4
+        },
+        "outbounds": [
+          {
+            "type": "avs_v_deinterlace",
+            "id": "20201015-1030-0195-6fda-690302079d43"
+          }
+        ]
+      },
+      {
+        "id": "20201015-1025-5372-025d-195ac668f7e0",
+        "type": "avs_custom",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 592.5,
+        "pos_y": 75,
+        "execute_on": "success",
+        "name": "VideoTek",
+        "description": "VideoTek Analysis",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "script": "# Variables:\r\n#\r\n# m_clip\t\t= The last returned AviSynth media\r\n#\r\n# Do NOT change any of the following variables!!!\r\n# _ffas_video \t= <original video>\r\n# _ffas_audio\t= <original audio>\r\n# _ffas_height\t= <source height>\r\n# _ffas_width\t= <source width>\r\n# _m_clip_a_channels = <total channels>\r\n# _ffas_work_fdr\t= Working folder for the workflow\r\n#\r\n\r\nm_clip=VideoTek(m_clip)\r\n\r\n# The following MUST be the last line of your script\r\nReturn m_clip\r\n\r\nFunction VideoTek(clip clp) {\r\n    clp\r\n    nChannels=(HasAudio)?AudioChannels:0                        # ssS, HasAudio = audio_samples_per_second!=0\r\n    Assert(IsYV12 || isYV16 || isYV24,\"VideoTek: source must be 8bit planar\")\r\n    Assert(nChannels<9,\"VideoTek: sources with more than 8 audio channels are not supported\")\r\n    CSZ = 480                 # Chroma Size box (W & H)\r\n    A_W = 320                 # Audio Box Width\r\n    A_H = 460                 # Audio Box Height (Audio & Lissajoua)\r\n    L_W = (704+704+6)-700-A_W # Lissajous Width\r\n    SilentStereo=Last.BlankClip(width=1480, height=920,audio_rate=48000,channels=2,sample_type=\"Float\")\r\n    myBlack= (nChannels>0)  ? SilentStereo.AudioDubEx(Last) : SilentStereo.Killaudio\r\n    Stereo = (nChannels>=2) ? Last.GetChannels(1,2) : (nChannels==1) ? MergeChannels(GetChannels(1),GetChannels(1)) : SilentStereo\r\n    StereoClip = Last.BlankClip(width=16,height=16).AudioDub(Stereo)  # Histogram(mode=\"StereoOverlay\") requires 2 channel only clip.\r\n    Picture   = BicubicResize(704, 396)\r\n    luma      = TurnRight.Histogram(mode=\"classic\").TurnLeft.Crop(0,0,0,256).BiCubicResize(704, 396)\r\n    chroma    = Histogram(\"color2\").Crop(clp.Width, 0, 0,256).BilinearResize(CSZ,CSZ)\r\n    Audio     = myBlack.Crop(0,0,A_W,A_H).Histogram(Mode=\"audiolevels\")\r\n    lissajous = StereoClip.Histogram(mode=\"StereoOverlay\").BicubicResize(L_W,A_H)\r\n    MyBlack\r\n    Overlay(Picture,   x=0,                   y=0)\r\n    Overlay(luma,      x=704+6,               y=0)\r\n    Overlay(chroma,    x=(704-chroma.Width)\/2,y=396 + (920-396-chroma.height)\/2)\r\n    Overlay(Audio,     x=704-4,               y=396 + (920-396-audio.height) \/2)\r\n    Overlay(lissajous, x=700+Audio.Width,     y=396 + (920-396-lissajous.height)  \/2)\r\n    return Last\r\n}",
+          "verify": 4,
+          "x64avisynth": true
+        },
+        "outbounds": [
+          {
+            "type": "enc_av_mp4",
+            "id": "20201015-1029-0842-8a05-9929cd1a9e89"
+          }
+        ]
+      },
+      {
+        "id": "20201015-1029-0842-8a05-9929cd1a9e89",
+        "type": "enc_av_mp4",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 765,
+        "pos_y": 75,
+        "execute_on": "success",
+        "name": "x264",
+        "description": "x264 Encoding",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "audio": {
+            "bitrate": 384,
+            "bitdepth": 16,
+            "codec": "aac",
+            "samplerate": 48000,
+            "db_adjust": -23,
+            "loudness_table": "",
+            "loudness_enable": false,
+            "layout": "default",
+            "streams": [
+              {
+                "codec": "aac",
+                "samplerate": 48000,
+                "bitrate": 384,
+                "bitdepth": 16,
+                "mapping": [
+                  1,
+                  2
+                ]
+              }
+            ]
+          },
+          "video": {
+            "bitrate": 3500,
+            "level": 4.1,
+            "profile": "high",
+            "tuning": "none",
+            "qspeed": "medium",
+            "interlacing": "Progressive",
+            "field_order": "Progressive",
+            "width": "%i_width%",
+            "height": "%i_height%",
+            "restrict": true,
+            "framerate": "%f_frame_rate%",
+            "par": "Same as source",
+            "dar": "Auto",
+            "resizing": "Stretch and lose aspect",
+            "colorspace": "BT.709"
+          },
+          "wrapper": "MP4",
+          "start_tc": "%s_start_tc%",
+          "custom_x264opts": "",
+          "faststart": true
+        },
+        "outbounds": [
+          {
+            "type": "dest_folder",
+            "id": "20201015-1032-2382-43c2-0d2ecf4170bf"
+          }
+        ]
+      },
+      {
+        "id": "20201015-1030-0195-6fda-690302079d43",
+        "type": "avs_v_deinterlace",
+        "custom_proc_guid": "",
+        "bypass": false,
+        "start_proc": false,
+        "pos_x": 420,
+        "pos_y": 75,
+        "execute_on": "success",
+        "name": "Deinterlace",
+        "description": "Bob-deinterlace",
+        "preset": {
+          "name": "(custom)",
+          "id": null
+        },
+        "properties": {
+          "deinterlace_type": "BWDIF 2xFPS",
+          "video": {
+            "interlacing": "Autodetect"
+          }
+        },
+        "outbounds": [
+          {
+            "type": "avs_custom",
+            "id": "20201015-1025-5372-025d-195ac668f7e0"
+          }
+        ]
+      },
+      {
+        "id": "20201015-1032-2382-43c2-0d2ecf4170bf",
+        "type": "dest_folder",
+        "custom_proc_guid": "",
+        "bypass": true,
+        "start_proc": false,
+        "pos_x": 937.5,
+        "pos_y": 75,
+        "execute_on": "success"
+      }
+    ],
+    "variable": {
+      "wf_size": 115
+    }
+  }
+}
