@@ -1,6 +1,6 @@
 #8bit, 10bit, 12bit, 14bit, 16bit, 32bit planar
 
-SeeSaw(Sstr=8.8, Spower=5)
+SeeSaw(Sstr=3.0, Spower=8)
 
 #8bit planar only
 
