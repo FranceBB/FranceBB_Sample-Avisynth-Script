@@ -100,6 +100,16 @@ Cube("C:\Programmi\AviSynth+\LUTs\HLG_to_BT709.cube")
 
 Converttoyuv420()
 ____________________________________________________________
+#BT2020 HDR HLG Apple to BT709 SDR 16bit planar
+
+ConvertBits(16)
+
+ConvertToPlanarRGB()
+
+Cube("C:\Programmi\AviSynth+\LUTs\HLG_A_to_LinearBT709.cube")
+
+Converttoyuv420()
+____________________________________________________________
 #BT709 SDR to BT2100 HDR PQ 16bit planar
 
 ConvertBits(16)
