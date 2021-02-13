@@ -1,4 +1,7 @@
 #8bit, 10bit, 12bit, 14bit, 16bit, 32bit planar
+CAS(sharpness=1, y=3, u=3, v=3)
+
+#8bit, 10bit, 12bit, 14bit, 16bit, 32bit planar
 
 SeeSaw(Sstr=3.0, Spower=8)
 
