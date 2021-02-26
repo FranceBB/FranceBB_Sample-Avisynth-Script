@@ -61,9 +61,9 @@ i_height = my_initial_heigth / 2 * 2
 Spline64Resize(clip, i_width, i_height)
 
 _________________________________
-Frosty Border for automatic resize (needs the function above for odd res.)
+Frosty Border for automatic resize
 
-FrostyBorders(848,480, frosty=true)
+FrostyBorders(OutWidth=3840, OutHeight=2160, Frosty=yes, Resizer="Spline64")
 
 _________________________________
 For anime only upscale with neural network (8bit planar only):
