@@ -28,7 +28,7 @@ FFT3DFilter(sigma=3.0, beta=1.0, plane=4, bw=16, bh=16, ow=8, oh=8, bt=3, kratio
 #8bit/10bit/12bit/14bit/16bit planar
 neo_FFT3D(sigma=3.0, bt=3, y=3, u=3, v=3)
 
-#16 bit interleave
+#8bit planar
 hqdn3d(ls=8.0, cs=8.0, lt=6.0, ct=4.5, restart=7)
 
 #8bit planar
