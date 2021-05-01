@@ -55,6 +55,20 @@ ConvertYUVtoXYZ()
 ConvertXYZtoYUV(Color=1, pColor=2)
 
 ____________________________________________________________
+#BT2020 SDR to BT709 SDR 8bit - 10bit - 16bit planar
+
+ConvertYUVtoXYZ(Color=1)
+ConvertXYZtoYUV(pColor=1)
+
+____________________________________________________________
+#BT2020 HLG HDR to BT709 SDR 8bit - 10bit - 16bit planar
+
+ConvertYUVtoXYZ(Color=0, HDRmode=2)
+ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.1)
+
+ConvertXYZtoYUV(pColor=0)
+
+____________________________________________________________
 #BT2100 HDR PQ to BT709 SDR 8bit - 10bit - 16bit planar
 
 ConvertBits(16)
@@ -97,16 +111,6 @@ ConvertBits(16)
 ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\HLG_to_BT709.cube")
-
-Converttoyuv420()
-____________________________________________________________
-#BT2020 HDR HLG Apple to BT709 SDR 16bit planar
-
-ConvertBits(16)
-
-ConvertToPlanarRGB()
-
-Cube("C:\Programmi\AviSynth+\LUTs\HLG_A_to_LinearBT709.cube")
 
 Converttoyuv420()
 ____________________________________________________________
