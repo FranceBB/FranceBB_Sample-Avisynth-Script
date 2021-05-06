@@ -60,6 +60,18 @@ ____________________________________________________________
 ConvertYUVtoXYZ(Color=1)
 ConvertXYZtoYUV(pColor=1)
 
+_____________________________________________________________
+#BT2020 HDR HLG to BT2100 HDR PQ 8bit, 10bit, 16bit planar
+
+ConvertYUVtoLinearRGB(Color=0,HDRMode=1,HLGLw=1500,OOTF=false)
+ConvertLinearRGBtoYUV(Color=0,OOTF=false)
+
+_____________________________________________________________
+#BT2100 HDR PQ to BT2020 HDR HLG to  8bit, 10bit, 16bit planar
+
+ConvertYUVtoLinearRGB(Color=0,OOTF=false)
+ConvertLinearRGBtoYUV(Color=0,HDRMode=1,HLGLw=1200,HLGColor=2,OOTF=false)
+
 ____________________________________________________________
 #BT2020 HLG HDR to BT709 SDR 8bit - 10bit - 16bit planar
 
