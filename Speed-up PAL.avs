@@ -5,7 +5,7 @@ AssumeFPS(25, 1, true)
 SSRC(48000)
 
 
-With Pitch adjustment:
+#With Pitch adjustment:
 
 ResampleAudio(48000)
 AssumeFPS(25, 1, false)
