@@ -2,7 +2,7 @@ DirectShowSource("video.avi", fps=23.976, convertfps=true, seek=true, audio=true
 
 DirectShowSource2("video.avi", fps=29.970, pixel_type="YV12")
 
-FFmpegSource2("video.mp4", fpsnum=24000, fpsden=1001, atrack=-1, seekmode=1, rffmode=0, colorspace="YV12")
+FFmpegSource2("video.mp4", fpsnum=24000, fpsden=1001, atrack=-1)
 
 video=FFVideoSource("video.mkv", fpsnum=24000, fpsden=1001)
 audio=FFAudioSource("audio.dts")
@@ -23,3 +23,6 @@ ImageSource("image.bmp") #images
 
 #FlipHorizontal()
 #FlipVertical()
+
+#For IPCM
+NicLPCMSource("IPCM_Sample_track2.ipcm", 48000, -24, 2)
