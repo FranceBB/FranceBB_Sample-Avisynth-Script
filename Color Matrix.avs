@@ -234,3 +234,15 @@ ConvertToPlanarRGB()
 Cube("C:\Programmi\AviSynth+\LUTs\Z-Log_to_BT709.cube")
 
 Converttoyuv420()
+
+____________________________________________________________
+#Narrow range in Narrow range out LUT
+
+#From 4:2:2 16bit planar Narrow Range to RGB Planar 16bit Narrow Range
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:2020:2020:limited=>rgb:2020:2020:limited", dither_type="none")
+
+#From PQ to HLG with 16bit precision
+Cube("I:\Scambio\WarnerBros\WarnerBros_PQToHLG_MaxCLL_1000.cube", fullrange=true)
+
+#From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
+z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="none")
