@@ -25,10 +25,13 @@ neo_vd(threshold=2, method=2, nsteps=6, percent=85)
 #8bit planar
 FFT3DFilter(sigma=3.0, beta=1.0, plane=4, bw=16, bh=16, ow=8, oh=8, bt=3, kratio=3.0, sharpen=1.0, scutoff=0.3, svr=1.0, smin=4.0, smax=30.0, measure=true, interlaced=false, wintype=0, degrid=1.0, dehalo=1.0, hr=2.0, ht=50.0)
 
+#8bit planar
+Frfun7(lambda=3.0, T=10.0, Tuv=10.0, P=4, TP1=0, R1=3)
+
 #8bit/10bit/12bit/14bit/16bit planar
 neo_FFT3D(sigma=3.0, bt=3, y=3, u=3, v=3)
 
-#8bit planar
+#16 bit interleave
 hqdn3d(ls=8.0, cs=8.0, lt=6.0, ct=4.5, restart=7)
 
 #8bit planar
