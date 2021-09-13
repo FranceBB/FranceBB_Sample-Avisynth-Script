@@ -1,3 +1,7 @@
+#PlanarRGB 16bit only
+MSRCR(sigma=250, lower_thr=0.001, upper_thr=0.001, fulls=true, fulld=true, restore=125.0)
+
+
 autoadjust(scd_threshold=12, temporal_radius=20, use_interp=true, use_dither=true, high_quality=true, high_bitdepth=false, threads_count=0, asm_opt=2, debug_view=false, auto_gain=true, dark_limit=10.0, bright_limit=10.0, gamma_limit=10.0, dark_exclude=0.0, bright_exclude=0.0, gain_mode=0, chroma_process=200, avg_safety=0.25, auto_balance=true, chroma_limit=2.0, balance_str=1.0)
 
 
