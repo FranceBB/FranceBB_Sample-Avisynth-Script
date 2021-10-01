@@ -17,6 +17,10 @@ ConverttoYUY2(interlaced=false, matrix="Rec709")
 ConverttoYV16(interlaced=false, matrix="Rec709")
 ConverttoYV24(interlaced=false, matrix="Rec709")
 -
+Converttoyv12(interlaced=false, matrix="Rec2020")
+ConverttoYUY2(interlaced=false, matrix="Rec2020")
+ConverttoYV16(interlaced=false, matrix="Rec2020")
+ConverttoYV24(interlaced=false, matrix="Rec2020")
 
 ____________________________________________________________
 #HDTV to SDTV or DVD
@@ -246,3 +250,30 @@ Cube("I:\Scambio\WarnerBros\WarnerBros_PQToHLG_MaxCLL_1000.cube", fullrange=true
 
 #From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
 z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="none")
+
+____________________________________________________________
+#Narrow range in Narrow range out LUT v2
+
+#From 4:2:0 16bit planar Narrow Range to RGB Planar 16bit Narrow Range
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="709:709:709:limited=>rgb:709:709:limited", dither_type="none")
+
+#From BT709 to HLG with 16bit precision
+Cube("C:\Program Files (x86)\AviSynth+\LUTs\5b_BT709_HLG_UPCONVERT_DISPLAY_mode-nar_in-nar_out-nar_withcomp.cube", fullrange=true)
+
+#From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
+z_ConvertFormat(pixel_type="YUV420P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="none")
+
+____________________________________________________________
+#From normal 4:2:0 to 4:2:0 Type 2
+
+z_ConvertFormat(chromaloc_op="mpeg2=>top_left")
+
+____________________________________________________________
+#From normal 4:2:0 8bit planar to 4:2:0 Type 2 8bit planar (Internal)
+
+Converttoyv12(matrix="Rec2020", ChromaInPlacement="MPEG2", ChromaOutPlacement="top_left")
+
+____________________________________________________________
+#From normal 4:2:0 to 4:2:0 Type 2 (Internal)
+
+ConverttoYUV420(matrix="Rec2020", ChromaInPlacement="MPEG2", ChromaOutPlacement="top_left")
