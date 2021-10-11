@@ -6,23 +6,124 @@ ConverttoYUY2() #4:2:2 interleaved
 ConverttoYV16() #4:2:2 planar
 ConverttoYV24() #4:4:4
 ConverttoRGB() #RGB
+#8bit only yv12, yv16, yv24
+#8bit, 10bit, 12bit, 14bit, 16bit, 32bit YUV420, YUV422, YUV444
 -
-Converttoyv12(interlaced=false, matrix="Rec601")
-ConverttoYUY2(interlaced=false, matrix="Rec601")
-ConverttoYV16(interlaced=false, matrix="Rec601")
-ConverttoYV24(interlaced=false, matrix="Rec601")
+ConverttoYUV420(interlaced=false, matrix="Rec601")
+ConverttoYUY2(interlaced=false, matrix="Rec601") #8bit only
+ConverttoYUV422(interlaced=false, matrix="Rec601")
+ConverttoYUV444(interlaced=false, matrix="Rec601")
 -
-Converttoyv12(interlaced=false, matrix="Rec709")
-ConverttoYUY2(interlaced=false, matrix="Rec709")
-ConverttoYV16(interlaced=false, matrix="Rec709")
-ConverttoYV24(interlaced=false, matrix="Rec709")
+ConverttoYUV420(interlaced=false, matrix="PC.601")
+ConverttoYUY2(interlaced=false, matrix="PC.601") #8bit only
+ConverttoYUV422(interlaced=false, matrix="PC.601")
+ConverttoYUV444(interlaced=false, matrix="PC.601")
+-
+ConverttoYUV420(interlaced=false, matrix="Rec709")
+ConverttoYUY2(interlaced=false, matrix="Rec709") #8bit only
+ConverttoYUV422(interlaced=false, matrix="Rec709")
+ConverttoYUV444(interlaced=false, matrix="Rec709")
+-
+ConverttoYUV420(interlaced=false, matrix="PC.709")
+ConverttoYUY2(interlaced=false, matrix="PC.709") #8bit only
+ConverttoYUV422(interlaced=false, matrix="PC.709")
+ConverttoYUV444(interlaced=false, matrix="PC.709")
 -
 Converttoyv12(interlaced=false, matrix="Rec2020")
 ConverttoYUY2(interlaced=false, matrix="Rec2020")
 ConverttoYV16(interlaced=false, matrix="Rec2020")
 ConverttoYV24(interlaced=false, matrix="Rec2020")
+-
+Converttoyv12(interlaced=false, matrix="PC.2020")
+ConverttoYUY2(interlaced=false, matrix="PC.2020")
+ConverttoYV16(interlaced=false, matrix="PC.2020")
+ConverttoYV24(interlaced=false, matrix="PC.2020")
 
-____________________________________________________________
+________________________________________________________________________________________________________
+#From normal 4:2:0 to 4:2:0 Type 2
+#with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
+
+z_ConvertFormat(chromaloc_op="mpeg2=>top_left")
+
+________________________________________________________________________________________________________
+#From normal 4:2:0 8bit planar to 4:2:0 Type 2 8bit planar (Internal)
+
+Converttoyv12(matrix="Rec2020", ChromaInPlacement="MPEG2", ChromaOutPlacement="top_left")
+
+________________________________________________________________________________________________________
+#From normal 4:2:0 to 4:2:0 Type 2 (Internal)
+
+ConverttoYUV420(matrix="Rec2020", ChromaInPlacement="MPEG2", ChromaOutPlacement="top_left")
+
+________________________________________________________________________________________________________
+#Matrix Conversion BT601 to BT709 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
+
+z_ConvertFormat(colorspace_op="601=>709", resample_filter_uv="spline64", dither_type="error_diffusion")
+
+________________________________________________________________________________________________________
+#Matrix Conversion BT709 to BT601 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
+
+z_ConvertFormat(colorspace_op="709=>601", resample_filter_uv="spline64", dither_type="error_diffusion")
+
+________________________________________________________________________________________________________
+#Matrix Conversion BT709 to BT2020 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
+z_ConvertFormat(colorspace_op="709:709:709:limited=>2020:2020:2020:limited", dither_type="none")
+
+________________________________________________________________________________________________________
+#Matrix Conversion BT2020 to BT709 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
+z_ConvertFormat(colorspace_op="2020:2020:2020:limited=>709:709:709:limited", dither_type="none")
+
+________________________________________________________________________________________________________
+#Matrix Convertion BT601 to BT709 16bit interleaved 
+
+Matrix(from=601, to=709, rg=1.0, gg=1.0, bg=1.0, a=16, b=235, ao=16, bo=235, bitdepth=16)
+
+________________________________________________________________________________________________________
+#BT709 SDR to BT2020 SDR 8bit - 10bit - 16bit planar
+
+ConvertYUVtoXYZ()
+ConvertXYZtoYUV(Color=1, pColor=2)
+
+________________________________________________________________________________________________________
+#BT2020 SDR to BT709 SDR 8bit - 10bit - 16bit planar
+
+ConvertYUVtoXYZ(Color=1)
+ConvertXYZtoYUV(pColor=1)
+
+________________________________________________________________________________________________________
+#BT2020 HDR HLG to BT2100 HDR PQ 8bit, 10bit, 16bit planar
+
+ConvertYUVtoLinearRGB(Color=0,HDRMode=1,HLGLw=1500,OOTF=false)
+ConvertLinearRGBtoYUV(Color=0,OOTF=false)
+
+________________________________________________________________________________________________________
+#BT2100 HDR PQ to BT2020 HDR HLG to  8bit, 10bit, 16bit planar
+
+ConvertYUVtoLinearRGB(Color=0,OOTF=false)
+ConvertLinearRGBtoYUV(Color=0,HDRMode=1,HLGLw=1200,HLGColor=2,OOTF=false)
+
+________________________________________________________________________________________________________
+#BT2020 HLG HDR to BT709 SDR 8bit - 10bit - 16bit planar
+
+ConvertYUVtoXYZ(Color=0, HDRmode=2)
+ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.1)
+
+ConvertXYZtoYUV(pColor=0)
+
+________________________________________________________________________________________________________
+#BT2100 HDR PQ to BT709 SDR 8bit - 10bit - 16bit planar
+
+ConvertBits(16)
+
+ConvertYUVtoXYZ(Color=0, OutputMode=1, HDRMode=0, fullrange=false)
+
+ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.5, contrast_X=0.9)
+
+ConvertXYZtoYUV(pColor=0)
+
+Converttoyuv420()
+
+________________________________________________________________________________________________________
 #HDTV to SDTV or DVD
 
 BT709ToBT601()
@@ -43,59 +144,9 @@ ColorMatrix(mode="Rec.2020->Rec.709", interlaced=false, threads=0, thrdmthd=0)
 
 ColorMatrix(mode="Rec.709->Rec.2020", interlaced=false, threads=0, thrdmthd=0)
 
-__________________________________________________________
-#Matrix Convertion 16bit interleaved BT601 to BT709
-
-Matrix(from=601, to=709, rg=1.0, gg=1.0, bg=1.0, a=16, b=235, ao=16, bo=235, bitdepth=16)
-
 ___________________________________________________________
 #ConverttoYUY2 8bit multithreading
 AutoYUY2()
-
-____________________________________________________________
-#BT709 SDR to BT2020 SDR 8bit - 10bit - 16bit planar
-
-ConvertYUVtoXYZ()
-ConvertXYZtoYUV(Color=1, pColor=2)
-
-____________________________________________________________
-#BT2020 SDR to BT709 SDR 8bit - 10bit - 16bit planar
-
-ConvertYUVtoXYZ(Color=1)
-ConvertXYZtoYUV(pColor=1)
-
-_____________________________________________________________
-#BT2020 HDR HLG to BT2100 HDR PQ 8bit, 10bit, 16bit planar
-
-ConvertYUVtoLinearRGB(Color=0,HDRMode=1,HLGLw=1500,OOTF=false)
-ConvertLinearRGBtoYUV(Color=0,OOTF=false)
-
-_____________________________________________________________
-#BT2100 HDR PQ to BT2020 HDR HLG to  8bit, 10bit, 16bit planar
-
-ConvertYUVtoLinearRGB(Color=0,OOTF=false)
-ConvertLinearRGBtoYUV(Color=0,HDRMode=1,HLGLw=1200,HLGColor=2,OOTF=false)
-
-____________________________________________________________
-#BT2020 HLG HDR to BT709 SDR 8bit - 10bit - 16bit planar
-
-ConvertYUVtoXYZ(Color=0, HDRmode=2)
-ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.1)
-
-ConvertXYZtoYUV(pColor=0)
-
-____________________________________________________________
-#BT2100 HDR PQ to BT709 SDR 8bit - 10bit - 16bit planar
-
-ConvertBits(16)
-
-ConvertYUVtoXYZ(Color=0, OutputMode=1, HDRMode=0, fullrange=false)
-
-ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.5, contrast_X=0.9)
-
-ConvertXYZtoYUV(pColor=0)
-
-Converttoyuv420()
 
 ____________________________________________________________
 #BT2100 HDR PQ to BT709 SDR 16bit planar
@@ -262,18 +313,3 @@ Cube("C:\Program Files (x86)\AviSynth+\LUTs\5b_BT709_HLG_UPCONVERT_DISPLAY_mode-
 
 #From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
 z_ConvertFormat(pixel_type="YUV420P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="none")
-
-____________________________________________________________
-#From normal 4:2:0 to 4:2:0 Type 2
-
-z_ConvertFormat(chromaloc_op="mpeg2=>top_left")
-
-____________________________________________________________
-#From normal 4:2:0 8bit planar to 4:2:0 Type 2 8bit planar (Internal)
-
-Converttoyv12(matrix="Rec2020", ChromaInPlacement="MPEG2", ChromaOutPlacement="top_left")
-
-____________________________________________________________
-#From normal 4:2:0 to 4:2:0 Type 2 (Internal)
-
-ConverttoYUV420(matrix="Rec2020", ChromaInPlacement="MPEG2", ChromaOutPlacement="top_left")
