@@ -30,12 +30,12 @@ ConverttoYUV422(interlaced=false, matrix="PC.709")
 ConverttoYUV444(interlaced=false, matrix="PC.709")
 -
 Converttoyv12(interlaced=false, matrix="Rec2020")
-ConverttoYUY2(interlaced=false, matrix="Rec2020")
+ConverttoYUY2(interlaced=false, matrix="Rec2020") #8bit only
 ConverttoYV16(interlaced=false, matrix="Rec2020")
 ConverttoYV24(interlaced=false, matrix="Rec2020")
 -
 Converttoyv12(interlaced=false, matrix="PC.2020")
-ConverttoYUY2(interlaced=false, matrix="PC.2020")
+ConverttoYUY2(interlaced=false, matrix="PC.2020") #8bit only
 ConverttoYV16(interlaced=false, matrix="PC.2020")
 ConverttoYV24(interlaced=false, matrix="PC.2020")
 
