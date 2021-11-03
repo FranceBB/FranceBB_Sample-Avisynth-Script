@@ -313,3 +313,10 @@ Cube("C:\Program Files (x86)\AviSynth+\LUTs\5b_BT709_HLG_UPCONVERT_DISPLAY_mode-
 
 #From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
 z_ConvertFormat(pixel_type="YUV420P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="none")
+
+____________________________________________________________
+#Find MaxCLL (nits), will write a txt where the bat runs
+
+ConvertToRGB64(matrix="Rec2020")
+
+MaxCLLFind()
