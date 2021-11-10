@@ -67,12 +67,12 @@ z_ConvertFormat(colorspace_op="709=>601", resample_filter_uv="spline64", dither_
 
 ________________________________________________________________________________________________________
 #Matrix Conversion BT709 to BT2020 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
-z_ConvertFormat(colorspace_op="709:709:709:limited=>2020:2020:2020:limited", dither_type="none")
 
+z_ConvertFormat(colorspace_op="709:709:709:limited=>2020:2020:2020:limited", dither_type="error_diffusion")
 ________________________________________________________________________________________________________
 #Matrix Conversion BT2020 to BT709 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
-z_ConvertFormat(colorspace_op="2020:2020:2020:limited=>709:709:709:limited", dither_type="none")
 
+z_ConvertFormat(colorspace_op="2020:2020:2020:limited=>709:709:709:limited", dither_type="error_diffusion")
 ________________________________________________________________________________________________________
 #Matrix Convertion BT601 to BT709 16bit interleaved 
 
@@ -294,25 +294,25 @@ ____________________________________________________________
 #Narrow range in Narrow range out LUT
 
 #From 4:2:2 16bit planar Narrow Range to RGB Planar 16bit Narrow Range
-z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:2020:2020:limited=>rgb:2020:2020:limited", dither_type="none")
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:2020:2020:limited=>rgb:2020:2020:limited", dither_type="error_diffusion")
 
 #From PQ to HLG with 16bit precision
 Cube("I:\Scambio\WarnerBros\WarnerBros_PQToHLG_MaxCLL_1000.cube", fullrange=true)
 
 #From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
-z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="none")
+z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="error_diffusion")
 
 ____________________________________________________________
 #Narrow range in Narrow range out LUT v2
 
 #From 4:2:0 16bit planar Narrow Range to RGB Planar 16bit Narrow Range
-z_ConvertFormat(pixel_type="RGBP16", colorspace_op="709:709:709:limited=>rgb:709:709:limited", dither_type="none")
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="709:709:709:limited=>rgb:709:709:limited", dither_type="error_diffusion")
 
 #From BT709 to HLG with 16bit precision
 Cube("C:\Program Files (x86)\AviSynth+\LUTs\5b_BT709_HLG_UPCONVERT_DISPLAY_mode-nar_in-nar_out-nar_withcomp.cube", fullrange=true)
 
 #From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
-z_ConvertFormat(pixel_type="YUV420P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="none")
+z_ConvertFormat(pixel_type="YUV420P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="error_diffusion")
 
 ____________________________________________________________
 #Find MaxCLL (nits), will write a txt where the bat runs
