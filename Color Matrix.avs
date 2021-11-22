@@ -294,13 +294,13 @@ ____________________________________________________________
 #Narrow range in Narrow range out LUT
 
 #From 4:2:2 16bit planar Narrow Range to RGB Planar 16bit Narrow Range
-z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:2020:2020:limited=>rgb:2020:2020:limited", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:st2084:2020:limited=>rgb:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
 
 #From PQ to HLG with 16bit precision
-Cube("I:\Scambio\WarnerBros\WarnerBros_PQToHLG_MaxCLL_1000.cube", fullrange=true)
+Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\WarnerBros_PQToHLG_MaxCLL_2508.cube", fullrange=true)
 
-#From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
-z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="error_diffusion")
+#From RGB 16bit planar Narrow Range to YUV422 10bit planar Narrow Range with dithering
+z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:limited=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
 
 ____________________________________________________________
 #Narrow range in Narrow range out LUT v2
@@ -312,7 +312,7 @@ z_ConvertFormat(pixel_type="RGBP16", colorspace_op="709:709:709:limited=>rgb:709
 Cube("C:\Program Files (x86)\AviSynth+\LUTs\5b_BT709_HLG_UPCONVERT_DISPLAY_mode-nar_in-nar_out-nar_withcomp.cube", fullrange=true)
 
 #From RGB 16bit planar Narrow Range to YUV422 16bit planar Narrow Range
-z_ConvertFormat(pixel_type="YUV420P16", colorspace_op="rgb:2020:2020:limited=>2020:2020:2020:limited", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="YUV420P16", colorspace_op="rgb:std-b67:2020:limited=>2020:std-b67:2020:limited", dither_type="error_diffusion")
 
 ____________________________________________________________
 #Find MaxCLL (nits), will write a txt where the bat runs
