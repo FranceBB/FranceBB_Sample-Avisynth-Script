@@ -74,7 +74,7 @@ UHD 4:2:0 yv12 planar to FULL HD 4:4:4 yv24
 ### You need to take care of chroma alignment yourself!! ###
 ### For 4:2:0 MPEG-2 classic top-left src_left=-0.50, src_top=0 ###
 
-Y = ConvertToY8(matrix="Rec709").Spline36Resize(1920, 1080, src_left=-0.50, src_top=0)
+Y = ConvertToY8(matrix="Rec709").SincResize(1920, 1080, src_left=-0.50, src_top=0)
 U = UToY8()
 V = VToY8()
 YToUV(U, V, Y)
@@ -84,7 +84,7 @@ FULL HD 4:2:0 yv12 planar to SD 720x576 4:4:4 yv24
 ### You need to take care of chroma alignment yourself!! ###
 ### For 4:2:0 MPEG-2 classic top-left src_left=-0.50, src_top=0 ###
 
-Y = ConvertToY8(matrix="Rec709").Spline36Resize(960, 540, src_left=-0.50, src_top=0)
+Y = ConvertToY8(matrix="Rec709").SincResize(960, 540, src_left=-0.50, src_top=0)
 U = UToY8()
 V = VToY8()
 YToUV(U, V, Y)
