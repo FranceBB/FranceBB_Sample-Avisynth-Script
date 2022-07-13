@@ -89,3 +89,7 @@ U = UToY8()
 V = VToY8()
 YToUV(U, V, Y)
 Spline64Resize(720, 576)
+
+_________________________________
+#Check if upscale or not
+UpscaleChecker()
