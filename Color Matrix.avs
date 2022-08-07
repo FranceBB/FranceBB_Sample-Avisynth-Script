@@ -56,14 +56,20 @@ ________________________________________________________________________________
 ConverttoYUV420(matrix="Rec2020", ChromaInPlacement="MPEG2", ChromaOutPlacement="top_left")
 
 ________________________________________________________________________________________________________
-#Matrix Conversion BT601 to BT709 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
+#Matrix Conversion BT601 PAL to BT709 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
 
-z_ConvertFormat(colorspace_op="601=>709", resample_filter_uv="spline64", dither_type="error_diffusion")
+#PAL
+z_ConvertFormat(colorspace_op="470bg:601:470bg:limited=>709:709:709:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+#NTSC
+z_ConvertFormat(colorspace_op="470bg:601:170m:limited=>709:709:709:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
 
 ________________________________________________________________________________________________________
 #Matrix Conversion BT709 to BT601 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
 
-z_ConvertFormat(colorspace_op="709=>601", resample_filter_uv="spline64", dither_type="error_diffusion")
+#PAL
+z_ConvertFormat(colorspace_op="709:709:709:limited=>470bg:601:470bg:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+#NTSC
+z_ConvertFormat(colorspace_op="709:709:709:limited=>470bg:601:170m:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
 
 ________________________________________________________________________________________________________
 #Matrix Conversion BT709 to BT2020 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
