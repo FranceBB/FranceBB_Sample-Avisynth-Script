@@ -11,6 +11,7 @@ Spline36ResizeMT(1280, 720)
 Spline64ResizeMT(1280, 720)
 GaussResizeMT(1280, 720)
 SincResizeMT(1280, 720)
+SinPowResizeMT(1280, 720)
 -
 Reverse Upscale:
 DeBilinearResizeMT(1280, 720)
