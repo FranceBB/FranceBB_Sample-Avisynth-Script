@@ -29,7 +29,7 @@ NNEDI3 (Upscale & Downscale using Neural Network)
 
 #8bit, 10bit, 12bit, 14bit, 16bit, 32bit planar
 
-nnedi3_rpow2(cshift="Spline64ResizeMT", rfactor=2, fwidth=1920, fheight=1080, nsize=4, nns=4, qual=1, etype=0, pscrn=2, threads=0, csresize=true, mpeg2=true, threads_rs=0, logicalCores_rs=true, MaxPhysCore_rs=true, SetAffinity_rs=false, opt=3)
+nnedi3_rpow2(cshift="Spline64ResizeMT", rfactor=2, fwidth=1920, fheight=1080, nsize=3, nns=4, qual=1, etype=0, pscrn=2, threads=0, csresize=true, mpeg2=true, threads_rs=0, logicalCores_rs=true, MaxPhysCore_rs=true, SetAffinity_rs=false, opt=3)
 
 #16 bit stacked (Dither Tool) slow
 
