@@ -29,16 +29,34 @@ NNEDI3 (Upscale & Downscale using Neural Network)
 
 #8bit, 10bit, 12bit, 14bit, 16bit, 32bit planar
 
-nnedi3_rpow2(cshift="Spline64ResizeMT", rfactor=2, fwidth=1920, fheight=1080, nsize=3, nns=4, qual=2, etype=0, pscrn=0, csresize=true, mpeg2=true)
+#No prescreener, two models (prone to artifacts)
+nnedi3_rpow2(cshift="Spline64ResizeMT", rfactor=2, fwidth=1920, 
+fheight=1080, nsize=3, nns=4, qual=2, etype=0, pscrn=0, csresize=true, 
+mpeg2=true)
+
+#No prescreener, one model (ok but slow)
+nnedi3_rpow2(cshift="Spline64ResizeMT", rfactor=2, fwidth=1920, 
+fheight=1080, nsize=3, nns=4, qual=1, etype=0, pscrn=0, csresize=true, 
+mpeg2=true)
+
+#normal
+nnedi3_rpow2(cshift="Spline64ResizeMT", rfactor=2, fwidth=1920, 
+fheight=1080, nsize=3, nns=4, qual=1, etype=0, pscrn=2, csresize=true, 
+mpeg2=true)
 
 #16 bit stacked (Dither Tool) slow
 
-nnedi3_resize16(target_width=1920, target_height=1080, mixed=true, thr=1.0, elast=1.5, nns=4, qual=2, etype=0, pscrn=4, tv_range=true, kernel_d="Spline", kernel_u="Spline", taps=6, f_d=1.0, f_u=2.0, sharp=0, lsb_in=true, lsb=true)
+nnedi3_resize16(target_width=1920, target_height=1080, mixed=true, thr=1.0, 
+elast=1.5, nns=4, qual=2, etype=0, pscrn=4, threads=0, tv_range=true, 
+kernel_d="Spline", kernel_u="Spline", taps=6, f_d=1.0, f_u=2.0, sharp=0, 
+lsb_in=true, lsb=true)
 
 ________________________________
 #32bit resize (internal) - output 8bit or 16bit stacked (Dither Tool)
 
-LinearResize(848, 480, kernel="spline64", mode=0, lsb_in=true, lsb_out=true, TVrange=true, matrix="709", matrix_out="709", cplace_in="mpeg2", cplace_out="mpeg2", NoRing=false, interlaced=false)
+LinearResize(848, 480, kernel="spline64", mode=0, lsb_in=true, lsb_out=true, 
+TVrange=true, matrix="709", matrix_out="709", cplace_in="mpeg2", 
+cplace_out="mpeg2", NoRing=false, interlaced=false)
 ________________________________
 SD 720x480 anamorphic to 16:9 NTSC
 
@@ -75,7 +93,8 @@ UHD 4:2:0 yv12 planar to FULL HD 4:4:4 yv24
 ### You need to take care of chroma alignment yourself!! ###
 ### For 4:2:0 MPEG-2 classic top-left src_left=-0.50, src_top=0 ###
 
-Y = ConvertToY8(matrix="Rec709").DeBilinearResizeMT(1920, 1080, src_left=-0.50, src_top=0)
+Y = ConvertToY8(matrix="Rec709").DeBilinearResizeMT(1920, 1080, src_left=-
+0.50, src_top=0)
 U = UToY8()
 V = VToY8()
 YToUV(U, V, Y)
@@ -85,11 +104,13 @@ FULL HD 4:2:0 yv12 planar to SD 720x576 4:4:4 yv24
 ### You need to take care of chroma alignment yourself!! ###
 ### For 4:2:0 MPEG-2 classic top-left src_left=-0.50, src_top=0 ###
 
-Y = ConvertToY8(matrix="Rec709").DeBilinearResizeMT(960, 540, src_left=-0.50, src_top=0)
+Y = ConvertToY8(matrix="Rec709").DeBilinearResizeMT(960, 540, src_left=-0.50, 
+src_top=0)
 U = UToY8()
 V = VToY8()
 YToUV(U, V, Y)
 Spline64Resize(720, 576)
+
 
 _________________________________
 #Check if upscale or not
