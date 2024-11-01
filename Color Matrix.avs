@@ -371,3 +371,8 @@ ____________________________________________________________
 #BT709 SDR to HDR HLG avsresize
 
 z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="709:709:709:limited=>2020ncl:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+
+____________________________________________________________
+#BT709 SDR to HDR PQ avsresize
+
+z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="709:709:709:limited=>2020:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
