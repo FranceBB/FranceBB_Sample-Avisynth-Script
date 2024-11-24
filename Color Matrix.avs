@@ -376,3 +376,48 @@ ____________________________________________________________
 #BT709 SDR to HDR PQ avsresize
 
 z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="709:709:709:limited=>2020:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+
+____________________________________________________________
+#Setting frame properties after the conversion
+
+#BT601 PAL output
+propSet("_ColorRange", 1) #Limited TV Range
+propSet("_Matrix", 5) #BT601 PAL
+propSet("_Transfer", 6) #BT601 PAL
+propSet("_Primaries", 5) #BT601 PAL
+
+#BT601 NTSC output
+propSet("_ColorRange", 1) #Limited TV Range
+propSet("_Matrix", 6) #BT601 NTSC
+propSet("_Transfer", 6) #BT601 NTSC
+propSet("_Primaries", 6) #BT601 NTSC
+
+#BT709 output
+propSet("_ColorRange", 1) #Limited TV Range
+propSet("_Matrix", 1) #BT709
+propSet("_Transfer", 1) #BT709
+propSet("_Primaries", 1) #BT709
+
+#BT2020 output
+propSet("_ColorRange", 1) #Limited TV Range
+propSet("_Matrix", 9) #BT2020
+propSet("_Transfer", 14) #BT2020
+propSet("_Primaries", 9) #BT2020
+
+#BT2020 HLG output
+propSet("_ColorRange", 1) #Limited TV Range
+propSet("_Matrix", 9) #BT2020
+propSet("_Transfer", 18) #HLG
+propSet("_Primaries", 9) #BT2020
+
+#BT2020 PQ output
+propSet("_ColorRange", 1) #Limited TV Range
+propSet("_Matrix", 9) #BT2020
+propSet("_Transfer", 16) #PQ
+propSet("_Primaries", 9) #BT2020
+
+#DCI P3 output
+propSet("_ColorRange", 1) #Limited TV Range
+propSet("_Matrix", 2) #unset
+propSet("_Transfer", 17) #DCI P3
+propSet("_Primaries", 11) #DCI P3
