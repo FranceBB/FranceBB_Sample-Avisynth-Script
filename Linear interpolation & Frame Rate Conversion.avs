@@ -20,3 +20,8 @@ MFlowFps(last,super,vecb,vecf,num=50000,den=1000,blend=false)
     backward_2 = MRecalculate(super, chroma=false, backward_1, blksize=8, blksizev=8, searchparam=0, search=3)
     forward_2  = MRecalculate(super, chroma=false, forward_1,  blksize=8, blksizev=8, searchparam=0, search=3)
     MBlockFps(super, backward_2, forward_2, num=50000, den=1000, mode=0)
+
+
+#Removes duplicated frames and fills them with interpolated frames
+#raise thresh to detect more dups
+FillDrops(thresh=0.1)
