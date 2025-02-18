@@ -89,20 +89,26 @@ For anime only upscale with neural network (8bit planar only):
 
 Waifu2x(nr=1, scale=2, models="C:\Programmi\AviSynth\models", jobs=4)
 _________________________________
-UHD 4:2:0 yv12 planar to FULL HD 4:4:4 yv24
-### You need to take care of chroma alignment yourself!! ###
-### For 4:2:0 MPEG-2 classic top-left src_left=-0.50, src_top=0 ###
+#UHD 4:2:0 Type 2 (top_left) to FULL HD 4:4:4
+### For 4:2:0 Type 2 H.265 no alignment needed
 
-Y = ConvertToY8(matrix="Rec709").DeBilinearResizeMT(1920, 1080, src_left=-
-0.50, src_top=0)
+Y = ConvertToY8(matrix="Rec2020").DeBilinearResizeMT(1920, 1080, src_left=0, src_top=0)
 U = UToY8()
 V = VToY8()
 YToUV(U, V, Y)
 
 _________________________________
-FULL HD 4:2:0 yv12 planar to SD 720x576 4:4:4 yv24
-### You need to take care of chroma alignment yourself!! ###
-### For 4:2:0 MPEG-2 classic top-left src_left=-0.50, src_top=0 ###
+#UHD 4:2:0 (left) to FULL HD 4:4:4
+### For 4:2:0 MPEG-2 classic src_left=-0.50, src_top=0
+
+Y = ConvertToY8(matrix="Rec709").DeBilinearResizeMT(1920, 1080, src_left=-0.50, src_top=0)
+U = UToY8()
+V = VToY8()
+YToUV(U, V, Y)
+
+_________________________________
+#FULL HD 4:2:0 (left) to SD 720x576 4:4:4
+### For 4:2:0 MPEG-2 classic src_left=-0.50, src_top=0 ###
 
 Y = ConvertToY8(matrix="Rec709").DeBilinearResizeMT(960, 540, src_left=-0.50, 
 src_top=0)
