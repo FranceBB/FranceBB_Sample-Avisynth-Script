@@ -8,12 +8,20 @@ video=FFVideoSource("video.mkv", fpsnum=24000, fpsden=1001)
 audio=FFAudioSource("audio.dts")
 Audiodub(video, audio)
 
+video=BSVideoSource("test.mxf")
+audio=BSAudioSource("test.mxf")
+AudioDub(video, audio)
+
+video=LWLibavVideoSource("video.mkv")
+audio=LWLibavAudioSource("video.mkv")
+AudioDub(video, audio)
+
+BRawSource("A004_10040638_C001.braw", bits=32)
+
 DGDecode_MPEG2Source("video.d2v", idct=0, cpu=6, moderate_h=20, moderate_v=40, upConv=0, i420=true)
 
 AVCSource("video.dga", deblock=true)
 
-LWLibavVideoSource("video.mkv")
-LWLibavAudioSource("video.mkv")
 
 OpenDMLSource("video.avi", audio=true, pixel_type="AUTO").ColorYUV(levels="PC->TV")
 
