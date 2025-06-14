@@ -43,7 +43,13 @@ ________________________________________________________________________________
 #From normal 4:2:0 to 4:2:0 Type 2
 #with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
 
-z_ConvertFormat(chromaloc_op="mpeg2=>top_left")
+z_ConvertFormat(chromaloc_op="left=>top_left")
+
+________________________________________________________________________________________________________
+#From 4:2:0 Type 2 to normal 4:2:0
+#with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
+
+z_ConvertFormat(chromaloc_op="top_left=>left")
 
 ________________________________________________________________________________________________________
 #From normal 4:2:0 8bit planar to 4:2:0 Type 2 8bit planar (Internal)
