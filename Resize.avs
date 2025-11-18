@@ -121,3 +121,18 @@ Spline64Resize(720, 576)
 _________________________________
 #Check if upscale or not
 UpscaleChecker()
+
+
+_________________________________
+#Generating airy disk
+BlankClip(length=200, width=1, height=1, pixel_type="YV24", color_yuv=$D07f7f)
+AddBorders(21, 21, 21, 21, color_yuv=$307f7f)
+
+#Upscale via Sinc
+Sinc=SincLin2Resize(width*15, height*15).Subtitle("SincResize 1D+1D")
+
+#Upscale via Jinc
+Jinc=JincResizeMT(width*15, height*15, tap=16).Subtitle("JincResize 2D")
+
+#Compare
+StackHorizontal(Sinc, Jinc)
