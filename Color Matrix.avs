@@ -115,10 +115,15 @@ ConvertLinearRGBtoYUV(Color=0,HDRMode=1,HLGLw=1200,HLGColor=2,OOTF=false)
 ________________________________________________________________________________________________________
 #BT2020 HLG HDR to BT709 SDR 8bit - 10bit - 16bit planar
 
+ConvertBits(16)
+
 ConvertYUVtoXYZ(Color=0, HDRmode=2)
-ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.1)
+
+ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.1, exposure_Y=2.1, exposure_Z=2.1)
 
 ConvertXYZtoYUV(pColor=0)
+
+Converttoyuv420()
 
 ________________________________________________________________________________________________________
 #BT2100 HDR PQ to BT709 SDR 8bit - 10bit - 16bit planar
@@ -127,7 +132,7 @@ ConvertBits(16)
 
 ConvertYUVtoXYZ(Color=0, OutputMode=1, HDRMode=0, fullrange=false)
 
-ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.5, contrast_X=0.9)
+ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.5, contrast_X=0.9, exposure_Y=2.5, contrast_Y=0.9, exposure_Z=2.5, contrast_Z=0.9)
 
 ConvertXYZtoYUV(pColor=0)
 
@@ -427,3 +432,4 @@ propSet("_ColorRange", 1) #Limited TV Range
 propSet("_Matrix", 2) #unset
 propSet("_Transfer", 17) #DCI P3
 propSet("_Primaries", 11) #DCI P3
+
