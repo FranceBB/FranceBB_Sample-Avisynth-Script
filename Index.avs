@@ -22,6 +22,7 @@ DGDecode_MPEG2Source("video.d2v", idct=0, cpu=6, moderate_h=20, moderate_v=40, u
 
 AVCSource("video.dga", deblock=true)
 
+RawSourcePlus("video.y4m")
 
 OpenDMLSource("video.avi", audio=true, pixel_type="AUTO").ColorYUV(levels="PC->TV")
 
@@ -34,3 +35,4 @@ ImageSource("image.bmp") #images
 
 #For IPCM
 NicLPCMSource("IPCM_Sample_track2.ipcm", 48000, -24, 2)
+
