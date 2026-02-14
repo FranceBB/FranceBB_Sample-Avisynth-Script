@@ -4,17 +4,25 @@ DirectShowSource2("video.avi", fps=29.970, pixel_type="YV12")
 
 FFmpegSource2("video.mp4", fpsnum=24000, fpsden=1001, atrack=-1)
 
-video=FFVideoSource("video.mkv", fpsnum=24000, fpsden=1001)
-audio=FFAudioSource("audio.dts")
+#FFVideo normal
+video=FFVideoSource("video.mxf", fpsnum=24000, fpsden=1001)
+audio=FFAudioSource("audio.mxf")
 Audiodub(video, audio)
 
 video=BSVideoSource("test.mxf")
 audio=BSAudioSource("test.mxf")
 AudioDub(video, audio)
 
-video=LWLibavVideoSource("video.mkv")
-audio=LWLibavAudioSource("video.mkv")
+#LWLibav normal
+video=LWLibavVideoSource("video.mxf")
+audio=LWLibavAudioSource("video.mxf")
 AudioDub(video, audio)
+
+#LWLibav fill audio gaps
+video=LWLibavVideoSource("video.mxf")
+audio=LWLibavAudioSource("video.mxf", fill_agaps=1)
+AudioDub(video, audio)
+
 
 BRawSource("A004_10040638_C001.braw", bits=32)
 
@@ -35,4 +43,5 @@ ImageSource("image.bmp") #images
 
 #For IPCM
 NicLPCMSource("IPCM_Sample_track2.ipcm", 48000, -24, 2)
+
 
