@@ -9,11 +9,6 @@ video=FFVideoSource("video.mxf", fpsnum=24000, fpsden=1001)
 audio=FFAudioSource("audio.mxf")
 Audiodub(video, audio)
 
-#FFMS2 fill audio gaps
-video=FFVideoSource("video.mxf", fpsnum=24000, fpsden=1001)
-audio=FFAudioSource("audio.mxf", fillgaps=1)
-Audiodub(video, audio)
-
 video=BSVideoSource("test.mxf")
 audio=BSAudioSource("test.mxf")
 AudioDub(video, audio)
@@ -48,6 +43,7 @@ ImageSource("image.bmp") #images
 
 #For IPCM
 NicLPCMSource("IPCM_Sample_track2.ipcm", 48000, -24, 2)
+
 
 
 
