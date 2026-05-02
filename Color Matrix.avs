@@ -64,25 +64,25 @@ ConverttoYUV420(matrix="Rec2020", ChromaInPlacement="MPEG2", ChromaOutPlacement=
 ________________________________________________________________________________________________________
 #Matrix Conversion BT601 PAL to BT709 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
 
-z_ConvertFormat(colorspace_op="470bg:601:470bg=>709:709:709", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(colorspace_op="470bg:601:470bg=>709:709:709", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 ________________________________________________________________________________________________________
 #Matrix Conversion BT709 to BT601 PAL with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
 
-z_ConvertFormat(colorspace_op="709:709:709=>470bg:601:470bg", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(colorspace_op="709:709:709=>470bg:601:470bg", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 ________________________________________________________________________________________________________
 #Matrix Conversion BT709 to BT2020 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
 
-z_ConvertFormat(colorspace_op="709:709:709:limited=>2020:2020:2020:limited", dither_type="error_diffusion")
+z_ConvertFormat(colorspace_op="709:709:709:limited=>2020:2020:2020:limited", dither_type="error_diffusion", use_props=0)
 ________________________________________________________________________________________________________
 #Matrix Conversion BT2020 to BT709 with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
 
-z_ConvertFormat(colorspace_op="2020:2020:2020:limited=>709:709:709:limited", dither_type="error_diffusion")
+z_ConvertFormat(colorspace_op="2020:2020:2020:limited=>709:709:709:limited", dither_type="error_diffusion", use_props=0)
 ________________________________________________________________________________________________________
 #Matrix Conversion BT2020 to BT601 PAL with 8bit, 10bit, 12bit, 14bit, 16bit planar and 32bit float precision
 
-z_ConvertFormat(colorspace_op="2020:2020:2020:limited=>470bg:601:470bg:limited", dither_type="error_diffusion")
+z_ConvertFormat(colorspace_op="2020:2020:2020:limited=>470bg:601:470bg:limited", dither_type="error_diffusion", use_props=0)
 ________________________________________________________________________________________________________
 #Matrix Convertion BT601 to BT709 16bit interleaved 
 
@@ -309,50 +309,50 @@ ____________________________________________________________
 #Narrow range in Narrow range out LUT
 
 #From 4:2:2 16bit planar Narrow Range to RGB Planar 16bit Narrow Range
-z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:st2084:2020:limited=>rgb:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:st2084:2020:limited=>rgb:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From PQ to HLG with 16bit precision
 Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\WarnerBros_PQToHLG_MaxCLL_2508.cube", fullrange=1, interp=1)
 
 #From RGB 16bit planar Narrow Range to YUV422 10bit planar Narrow Range with dithering
-z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:limited=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:limited=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 ____________________________________________________________
 #BBC HDR PQ to HDR HLG LUT
 
 #From 4:2:2 16bit planar Narrow Range to RGB Planar 16bit Full Range
-z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:st2084:2020:limited=>rgb:st2084:2020:full", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:st2084:2020:limited=>rgb:st2084:2020:full", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From PQ to HLG with 16bit precision
 Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\1a_PQ1000_HLG_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
 
 #From RGB 16bit planar Full Range to YUV422 10bit planar Narrow Range with dithering
-z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:full=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:full=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 ____________________________________________________________
 #BBC BT709 SDR to HDR HLG LUT
 
 #From 4:2:0 16bit planar Narrow Range to RGB Planar 16bit Full Range
-z_ConvertFormat(pixel_type="RGBP16", colorspace_op="709:709:709:limited=>rgb:709:709:full", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="709:709:709:limited=>rgb:709:709:full", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From BT709 SDR to BT2020 HDR HLG with 16bit precision
 Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\5a_BT709_HLG_UPCONVERT_DISPLAY_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
 
 #From RGB 16bit planar Full Range to YUV422 10bit planar Narrow Range with dithering
-z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:full=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:full=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 
 ____________________________________________________________
 #BBC HDR HLG to HDR PQ LUT
 
 #From 4:2:2 16bit planar Narrow Range to RGB Planar 16bit Full Range
-z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:std-b67:2020:limited=>rgb:std-b67:2020:full", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:std-b67:2020:limited=>rgb:std-b67:2020:full", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From PQ to HLG with 16bit precision
 Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\7a_HLG_PQ1000_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
 
 #From RGB 16bit planar Full Range to YUV422 10bit planar Narrow Range with dithering
-z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:st2084:2020:full=>2020:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:st2084:2020:full=>2020:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 
 ____________________________________________________________
@@ -360,8 +360,7 @@ ____________________________________________________________
 
 
 #From 4:2:2 16bit planar Narrow Range to RGB Planar 16bit Narrow Range
-z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:std-b67:2020:limited=>rgb:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", 
-use_props=0)
+z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:std-b67:2020:limited=>rgb:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From HLG to BT709 with 16bit precision
 Cube("\\mibctvan000.avid.mi.bc.sky.it\avdb\Server\encoder\encoder\Processors\avs_plugins\LUTs\9c_HLG_BT709_Type3_Display_DownMapping_SuperWhite_nocomp-v1_5.cube", 
@@ -381,12 +380,12 @@ MaxCLLFind()
 ____________________________________________________________
 #BT709 SDR to HDR HLG avsresize
 
-z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="709:709:709:limited=>2020ncl:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="709:709:709:limited=>2020ncl:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 ____________________________________________________________
 #BT709 SDR to HDR PQ avsresize
 
-z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="709:709:709:limited=>2020:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion")
+z_ConvertFormat(pixel_type="YUV422P16", colorspace_op="709:709:709:limited=>2020:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 ____________________________________________________________
 #Setting frame properties after the conversion
