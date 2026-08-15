@@ -21,3 +21,6 @@ ConvertToMono()
 left_channel = WavSource("c:\left_channel.wav")
 right_channel = WavSource("c:\right_channel.wav")
 MonoToStereo(left_channel, right_channel)
+
+#Downmix 5.1 to Stereo via the Dolby Pro Logic II downmix matrix
+Dmix6Dpl2()
