@@ -123,7 +123,7 @@ ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.1, exposure_Y=2.1, exposure_Z=2.1)
 
 ConvertXYZtoYUV(pColor=0)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ________________________________________________________________________________________________________
 #BT2100 HDR PQ to BT709 SDR 8bit - 10bit - 16bit planar
@@ -136,7 +136,7 @@ ConvertXYZ_Reinhard_HDRtoSDR(exposure_X=2.5, contrast_X=0.9, exposure_Y=2.5, con
 
 ConvertXYZtoYUV(pColor=0)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ________________________________________________________________________________________________________
 #HDTV to SDTV or DVD
@@ -172,7 +172,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\PQ_to_BT709_v1.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ____________________________________________________________
 #BT2100 HDR PQ to BT709 SDR 16bit planar
@@ -183,7 +183,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\PQ_to_BT709_v2.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ____________________________________________________________
 #BT2020 HDR HLG to BT709 SDR 16bit planar
@@ -194,7 +194,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\HLG_to_BT709.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 ____________________________________________________________
 #BT709 SDR to BT2100 HDR PQ 16bit planar
 
@@ -204,7 +204,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\BT709_to_PQ.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+Converttoyuv422(matrix="Rec2020")
 
 ____________________________________________________________
 #BT709 SDR to BT2020 HDR HLG 16bit planar
@@ -215,7 +215,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\BT709_to_HLG.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+Converttoyuv422(matrix="Rec2020")
 
 ____________________________________________________________
 #BT2100 HDR PQ to BT2020 HDR HLG 16bit planar
@@ -226,7 +226,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\PQ_to_HLG.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+Converttoyuv422(matrix="Rec2020")
 
 ____________________________________________________________
 #S-Log2 to BT709 SDR 16bit planar
@@ -237,7 +237,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\Slog2_to_BT709.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ____________________________________________________________
 #S-Log3 to BT709 SDR 16bit planar
@@ -248,7 +248,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\Slog3_to_BT709.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ____________________________________________________________
 #C-Log3 to BT709 SDR 16bit planar
@@ -259,7 +259,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\C-Log3_to_BT709.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ____________________________________________________________
 #C-Log3 to BT2100 HDR PQ 16bit planar
@@ -270,7 +270,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\C-Log3_to_HDR_PQ.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+Converttoyuv422(matrix="Rec2020")
 
 ____________________________________________________________
 #C-Log3 to BT2020 HDR HLG 16bit planar
@@ -281,7 +281,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\C-Log3_to_HDR_HLG.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+Converttoyuv422(matrix="Rec2020")
 
 ____________________________________________________________
 #Log-C to to BT709 SDR 16bit planar
@@ -292,7 +292,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\LogC_to_BT709.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ____________________________________________________________
 #Z-Log to to BT709 SDR 16bit planar
@@ -303,7 +303,7 @@ ConvertToPlanarRGB()
 
 Cube("C:\Programmi\AviSynth+\LUTs\Z-Log_to_BT709.cube", fullrange=1, interp=1)
 
-Converttoyuv420()
+ConverttoYUV422(matrix="Rec709")
 
 ____________________________________________________________
 #Narrow range in Narrow range out LUT
