@@ -14,3 +14,15 @@ crop(4,0,-4,0)
 Normalize(0.22)
 AddBorders(106,0,106,0)
 Spline36Resize(1280, 720)
+
+#Deinterlace top field
+BWDIF(field=1, thr=0.0)
+
+#Deinterlace keep bottom field
+BWDIF(field=0, thr=0.0)
+
+#Bob Deinterlace start with top field
+BWDIF(field=3, thr=0.0)
+
+#Bob Deinterlace start with bottom field
+BWDIF(field=2, thr=0.0)
