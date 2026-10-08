@@ -15,7 +15,15 @@ separatefields()
 selectevery(4,0,3)
 weave()
 
-
-
 #Populating frame properties
 propSet("_FieldBased", 2) #interlaced TFF
+
+
+#UHD 50p to FULL HD 25i with p parameter
+#larger p = softer = less aliasing
+#lower p = sharper = more aliasing
+SinPowerResize(1920, 1080, p=3.0)
+assumeTFF()
+separatefields()
+selectevery(4,0,3)
+weave()
