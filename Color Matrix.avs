@@ -312,7 +312,7 @@ ____________________________________________________________
 z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:st2084:2020:limited=>rgb:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From PQ to HLG with 16bit precision
-Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\WarnerBros_PQToHLG_MaxCLL_2508.cube", fullrange=1, interp=1)
+Cube("C:\Program Files (x86)\AviSynth+\LUTs\WarnerBros_PQToHLG_MaxCLL_2508.cube", fullrange=1, interp=1)
 
 #From RGB 16bit planar Narrow Range to YUV422 10bit planar Narrow Range with dithering
 z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:limited=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
@@ -324,7 +324,7 @@ ____________________________________________________________
 z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:st2084:2020:limited=>rgb:st2084:2020:full", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From PQ to HLG with 16bit precision
-Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\1a_PQ1000_HLG_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
+Cube("C:\Program Files (x86)\AviSynth+\LUTs\1a_PQ1000_HLG_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
 
 #From RGB 16bit planar Full Range to YUV422 10bit planar Narrow Range with dithering
 z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:full=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
@@ -336,7 +336,7 @@ ____________________________________________________________
 z_ConvertFormat(pixel_type="RGBP16", colorspace_op="709:709:709:limited=>rgb:709:709:full", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From BT709 SDR to BT2020 HDR HLG with 16bit precision
-Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\5a_BT709_HLG_UPCONVERT_DISPLAY_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
+Cube("C:\Program Files (x86)\AviSynth+\LUTs\5a_BT709_HLG_UPCONVERT_DISPLAY_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
 
 #From RGB 16bit planar Full Range to YUV422 10bit planar Narrow Range with dithering
 z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:std-b67:2020:full=>2020:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
@@ -349,7 +349,7 @@ ____________________________________________________________
 z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:std-b67:2020:limited=>rgb:std-b67:2020:full", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From PQ to HLG with 16bit precision
-Cube("\\mibcisilonsc\avisynth\Server\encoder\encoder\Processors\avs_plugins\LUTs\7a_HLG_PQ1000_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
+Cube("C:\Program Files (x86)\AviSynth+\LUTs\7a_HLG_PQ1000_mode-nar_in-nar_out-nar_nocomp.cube", fullrange=1, interp=1)
 
 #From RGB 16bit planar Full Range to YUV422 10bit planar Narrow Range with dithering
 z_ConvertFormat(pixel_type="YUV422P10", colorspace_op="rgb:st2084:2020:full=>2020:st2084:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
@@ -363,7 +363,7 @@ ____________________________________________________________
 z_ConvertFormat(pixel_type="RGBP16", colorspace_op="2020:std-b67:2020:limited=>rgb:std-b67:2020:limited", resample_filter_uv="spline64", dither_type="error_diffusion", use_props=0)
 
 #From HLG to BT709 with 16bit precision
-Cube("\\mibctvan000.avid.mi.bc.sky.it\avdb\Server\encoder\encoder\Processors\avs_plugins\LUTs\9c_HLG_BT709_Type3_Display_DownMapping_SuperWhite_nocomp-v1_5.cube", 
+Cube("C:\Program Files (x86)\AviSynth+\LUTs\9c_HLG_BT709_Type3_Display_DownMapping_SuperWhite_nocomp-v1_5.cube", 
 fullrange=1, interp=1)
 
 #From RGB 16bit planar Narrow Range to YUV420 8bit planar Narrow Range with dithering
