@@ -2,6 +2,9 @@
 
 InterFrame(GPU=false, Preset="Medium", Tuning="Animation", NewNum=60000, NewDen=1001, InputType="2D", OverrideAlgo=13, Cores=1, FrameDouble=false)
 
+#On GPU - Film
+InterFrame(GPU=true, Preset="Medium", Tuning="Film", NewNum=50000, NewDen=1000, InputType="2D", OverrideAlgo=13, Cores=6, FrameDouble=false)
+
 #blending
 ConvertFPS(29.97) 
 
