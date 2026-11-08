@@ -25,6 +25,8 @@ MonoToStereo(left_channel, right_channel)
 #Downmix 5.1 to Stereo via the Dolby Pro Logic II downmix matrix
 Dmix6Dpl2()
 
+#Upmixing using the safe Sound On Sound method
+UpSoundOnSound()
 
 #Remove Channel Mask Property
 SetChannelMask(false, 0)
